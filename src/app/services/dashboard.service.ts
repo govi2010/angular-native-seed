@@ -1,7 +1,7 @@
 import { Injectable, Optional, Inject } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
-import { Configuration, URLS } from '../app.constants';
+import { Configuration } from '../app.constants';
 import { Router } from '@angular/router';
 import { HttpWrapperService } from './httpWrapper.service';
 import { BaseResponse } from '../models/api-models/BaseResponse';

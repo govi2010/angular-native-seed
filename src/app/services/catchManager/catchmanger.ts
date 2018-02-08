@@ -4,13 +4,13 @@ import { ToasterService } from '../toaster.service';
 import { Observable } from 'rxjs/Observable';
 // import { LoginActions } from '../actions/login.action';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../store';
+// import { AppState } from '../../store';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
 export class ErrorHandler {
 
-  constructor(private _toaster: ToasterService, private store: Store<AppState>) {
+  constructor(private _toaster: ToasterService, private store: Store<any>) {
   }
 
   public HandleCatch<TResponce, TRequest>(r: HttpErrorResponse, request?: any, queryString?: any): Observable<BaseResponse<TResponce, TRequest>> {

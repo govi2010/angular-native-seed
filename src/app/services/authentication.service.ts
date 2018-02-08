@@ -12,7 +12,7 @@ import { ErrorHandler } from './catchManager/catchmanger';
 import { HttpClient, HttpRequest, HttpHeaders } from '@angular/common/http';
 import { GeneralService } from './general.service';
 import { ServiceConfig, IServiceConfigArgs } from './service.config';
-import { SignUpWithPassword, LoginWithPassword } from '../models/api-models/login';
+import { SignUpWithPassword, LoginWithPassword, ResetPasswordV2 } from '../models/api-models/login';
 
 @Injectable()
 export class AuthenticationService {
@@ -41,7 +41,22 @@ export class AuthenticationService {
             return data;
         }).catch((e) => this.errorHandler.HandleCatch<VerifyEmailResponseModel, VerifyEmailModel>(e, model));
     }
-
+    public ForgotPassword(email: string): Observable<BaseResponse<string, string>> {
+        return this._http.put(this.config.apiUrl +
+            LOGIN_API.ForgotPassword.replace(':email', email), '').map((res) => {
+                let data: BaseResponse<string, string> = res.json();
+                // data.request = modele;
+                return data;
+            }).catch((e) => this.errorHandler.HandleCatch<string, string>(e));
+    }
+    public ResetPasswordV2(request: ResetPasswordV2): Observable<BaseResponse<string, ResetPasswordV2>> {
+        return this._http.put(this.config.apiUrl +
+            LOGIN_API.ResetPasswordV2, request).map((res) => {
+                let data: BaseResponse<string, ResetPasswordV2> = res.json();
+                data.request = request;
+                return data;
+            }).catch((e) => this.errorHandler.HandleCatch<string, ResetPasswordV2>(e));
+    }
     public SignupWithMobile(model: SignupWithMobile): Observable<BaseResponse<string, SignupWithMobile>> {
         return this._http.post(this.config.apiUrl + LOGIN_API.SignupWithMobile, model).map((res) => {
             let data: BaseResponse<string, SignupWithMobile> = res;

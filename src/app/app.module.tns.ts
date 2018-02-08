@@ -1,5 +1,5 @@
 import { NgModule, NO_ERRORS_SCHEMA, NgModuleFactoryLoader } from '@angular/core';
-import {HttpClientModule, HttpClient} from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 // nativescript
 import { NativeScriptRouterModule } from "nativescript-angular/router";
@@ -14,6 +14,7 @@ import { Config } from './common/index';
 import { AppComponent } from './app.component';
 import { SHARED_MODULES } from './app.common';
 import { AppRoutes } from './app.routes';
+import { ServiceModule } from './services/service.module';
 Config.PLATFORM_TARGET = Config.PLATFORMS.MOBILE_NATIVE;
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -29,6 +30,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         NativeScriptFormsModule,
         NativeScriptCommonModule,
         NativeScriptRouterModule,
+        ServiceModule.forRoot(),
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

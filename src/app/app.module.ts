@@ -8,6 +8,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { Config } from './common/index';
 import { AppComponent } from './app.component';
 import { SHARED_MODULES } from './app.common';
+import { ServiceModule } from './services/service.module';
 
 Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
 
@@ -20,7 +21,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     declarations: [AppComponent],
     imports: [
         BrowserAnimationsModule,
-        HttpClientModule ,
+        HttpClientModule,
+        ServiceModule.forRoot(),
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

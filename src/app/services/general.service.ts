@@ -3,8 +3,17 @@ import { UserDetails } from '../models/api-models/loginModels';
 import { Subject } from 'rxjs/Subject';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 // import { eventsConst } from 'app/shared/header/components/eventsConst';
-declare class eventsConst { };
-
+export enum eventsConst {
+    groupAdded,
+    groupUpdated,
+    groupDeleted,
+    groupMoved,
+    accountAdded,
+    accountUpdated,
+    accountDeleted,
+    accountMoved,
+    accountMerged
+}
 @Injectable()
 export class GeneralService {
     public eventHandler: Subject<{ name: eventsConst, payload: any }> = new Subject();

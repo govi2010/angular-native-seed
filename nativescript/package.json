@@ -52,7 +52,8 @@
     "nativescript-social-login-linkedin": "^3.0.8",
     "nativescript-toast": "^1.4.6",
     "nativescript-webview-interface": "^1.4.2",
-    "ngrx-store-logger": "0.2.0"
+    "ngrx-store-logger": "0.2.0",
+    "reselect": "^3.0.1"
   },
   "devDependencies": {
     "@angular/compiler-cli": "~5.2.0",

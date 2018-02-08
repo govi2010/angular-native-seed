@@ -1,7 +1,6 @@
-import * as _ from '../../lodash-optimized';
+import * as _ from 'lodash';
 import { IInvoiceTax } from './Invoice';
-import { GIDDH_DATE_FORMAT } from '../../shared/helpers/defaultDateFormat';
-import { isNull, pick } from '../../lodash-optimized';
+// import { GIDDH_DATE_FORMAT } from '../../shared/helpers/defaultDateFormat';
 
 /**
  * IMP by dude
@@ -86,10 +85,10 @@ export class AccountDetailsClass {
     this.billingDetails = new GstDetailsClass();
     this.shippingDetails = new GstDetailsClass();
     if (attrs) {
-      Object.assign(this, pick(attrs, ['name', 'uniqueName', 'attentionTo', 'email', 'country']));
+      Object.assign(this, _.pick(attrs, ['name', 'uniqueName', 'attentionTo', 'email', 'country']));
       this.mobileNumber = attrs.mobileNo;
       if (attrs.addresses.length > 0) {
-        let str = isNull(attrs.addresses[0].address) ? '' : attrs.addresses[0].address;
+        let str = _.isNull(attrs.addresses[0].address) ? '' : attrs.addresses[0].address;
         // set billing
         this.billingDetails.address = [];
         this.billingDetails.address.push(str);

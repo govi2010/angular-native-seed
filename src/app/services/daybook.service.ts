@@ -7,7 +7,7 @@ import { BaseResponse } from '../models/api-models/BaseResponse';
 import { UserDetails } from '../models/api-models/loginModels';
 import { ErrorHandler } from './catchManager/catchmanger';
 import { TB_PL_BS_API } from './apiurls/tl-pl.api';
-import { saveAs } from 'file-saver';
+// import { saveAs } from 'file-saver';
 import { GeneralService } from './general.service';
 import { ServiceConfig, IServiceConfigArgs } from '../services/service.config';
 import { DayBookRequestModel, DaybookQueryRequest } from '../models/api-models/DaybookRequest';

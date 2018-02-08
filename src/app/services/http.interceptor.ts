@@ -7,6 +7,7 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/empty';
 
 @Injectable()
 export class GiddhHttpInterceptor implements HttpInterceptor {

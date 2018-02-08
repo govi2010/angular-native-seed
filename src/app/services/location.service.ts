@@ -1,5 +1,4 @@
 import { Injectable, Inject, Optional } from '@angular/core';
-import { Domain } from '../models/domain';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { GeoLocationSearch } from '../models/other-models/GeoLocationSearch';
 import { IServiceConfigArgs, ServiceConfig } from './service.config';

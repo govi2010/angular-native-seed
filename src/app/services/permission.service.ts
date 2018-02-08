@@ -6,9 +6,9 @@ import { PERMISSION_API } from './apiurls/permission.api';
 import { UserDetails } from '../models/api-models/loginModels';
 import { BaseResponse } from '../models/api-models/BaseResponse';
 import { ErrorHandler } from './catchManager/catchmanger';
-import { IPageStr } from '../permissions/permission.utility';
 import { GeneralService } from './general.service';
 import { ServiceConfig, IServiceConfigArgs } from './service.config';
+import { IPageStr } from '../models/interfaces/permissions.interface';
 
 @Injectable()
 export class PermissionService {

@@ -1,5 +1,5 @@
 import { MagicLinkService } from './magic-link.service';
-import { PermissionDataService } from './../permissions/permission-data.service';
+// import { PermissionDataService } from './../permissions/permission-data.service';
 import { LogsService } from './logs.service';
 import { ErrorHandler } from './catchManager/catchmanger';
 import { ModuleWithProviders, NgModule } from '@angular/core';
@@ -37,7 +37,7 @@ import { SettingsLinkedAccountsService } from './settings.linked.accounts.servic
 import { PurchaseInvoiceService } from './purchase-invoice.service';
 import { SettingsFinancialYearService } from './settings.financial-year.service';
 import { SettingsPermissionService } from './settings.permission.service';
-import { LoaderService } from '../loader/loader.service';
+// import { LoaderService } from '../loader/loader.service';
 import { GeneralService } from './general.service';
 import { ServiceConfig, IServiceConfigArgs } from './service.config';
 
@@ -56,8 +56,6 @@ export class ServiceModule {
       ngModule: ServiceModule,
       providers: [
         GeneralService,
-        PermissionDataService,
-        LoaderService,
         StorageService,
         ErrorHandler,
         HttpWrapperService,

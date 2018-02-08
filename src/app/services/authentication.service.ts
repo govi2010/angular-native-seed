@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Configuration } from '../app.constants';
 import { Router } from '@angular/router';
 import { HttpWrapperService } from './httpWrapper.service';
-import { LoaderService } from './loader.service';
+// import { LoaderService } from './loader.service';
 import { LOGIN_API } from './apiurls/login.api';
 import { BaseResponse } from '../models/api-models/BaseResponse';
 import { AuthKeyResponse, LinkedInRequestModel, SignupWithMobile, UserDetails, VerifyEmailModel, VerifyEmailResponseModel, VerifyMobileModel, VerifyMobileResponseModel } from '../models/api-models/loginModels';

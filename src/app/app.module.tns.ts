@@ -15,15 +15,22 @@ import { AppComponent } from './app.component';
 import { SHARED_MODULES } from './app.common';
 import { AppRoutes } from './app.routes';
 import { ServiceModule } from './services/service.module';
-import { reducers } from './store';
-import { StoreModule } from '@ngrx/store';
+import { reducers, AppState } from './store';
+import { StoreModule, ActionReducer, MetaReducer } from '@ngrx/store';
 import { ActionModule } from './actions/actions.module';
 import { ServiceConfig } from './services/service.config';
+import { storeLogger } from './store/middleware/storeLogger';
 Config.PLATFORM_TARGET = Config.PLATFORMS.MOBILE_NATIVE;
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(<any>http, '/assets/i18n/', '.json');
 }
+
+export function logger(reducer: ActionReducer<AppState>): any {
+    // default, no options
+    return storeLogger()(reducer);
+}
+let metaReducers: Array<MetaReducer<any, any>> = [logger];
 
 @NgModule({
     bootstrap: [
@@ -35,7 +42,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         NativeScriptFormsModule,
         NativeScriptRouterModule,
         NativeScriptRouterModule.forRoot(AppRoutes, { enableTracing: false }),
-        StoreModule.forRoot(reducers, {}),
+        StoreModule.forRoot(reducers, { metaReducers }),
         ServiceModule.forRoot(),
         ActionModule.forRoot(),
         TranslateModule.forRoot({

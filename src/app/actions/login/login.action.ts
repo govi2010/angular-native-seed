@@ -10,6 +10,7 @@ import { SignUpWithPassword, LoginWithPassword, ResetPasswordV2 } from "../../mo
 import { VerifyMobileResponseModel, SignupWithMobile, VerifyMobileModel, VerifyEmailModel, VerifyEmailResponseModel } from "../../models/api-models/loginModels";
 import { HttpHeaders, HttpClient } from "@angular/common/http";
 import { Configuration } from "../../app.constants";
+import { ToasterService } from "../../services/toaster.service";
 
 
 let config = require('./../../config/config');
@@ -25,10 +26,9 @@ export class LoginActions {
         .map(response => {
             let res: BaseResponse<VerifyMobileResponseModel, SignUpWithPassword> = response;
             if (res.status !== 'success') {
-                // dialogs.alert(res.message);
+                this._toaster.errorToast(res.message);
             } else {
-                // let toast = Toast.makeText("Login Success");
-                // toast.show();
+                this._toaster.successToast('Login Success');
             }
             return this.signUpResponse(res);
         });
@@ -41,10 +41,9 @@ export class LoginActions {
         .map(response => {
             let res: BaseResponse<VerifyMobileResponseModel, LoginWithPassword> = response;
             if (res.status !== 'success') {
-                // dialogs.alert(res.message);
+                this._toaster.errorToast(res.message);
             } else {
-                // let toast = Toast.makeText("Login Success");
-                // toast.show();
+                this._toaster.successToast('Login Success');
             }
             return this.loginWithPasswordResponse(res);
         });
@@ -55,7 +54,7 @@ export class LoginActions {
         .switchMap((action: CustomActions) => this._authService.SignupWithMobile(action.payload))
         .map(response => {
             if (response.status !== 'success') {
-                // dialogs.alert(response.message);
+                this._toaster.errorToast(response.message);
             }
             return this.signupWithMobileResponce(response);
         });
@@ -69,7 +68,7 @@ export class LoginActions {
         .map(response => {
             let res: BaseResponse<VerifyMobileResponseModel, VerifyMobileModel> = response;
             if (res.status !== 'success') {
-                // dialogs.alert(res.message);
+                this._toaster.errorToast(res.message);
             }
             return this.verifyMobileResponce(res);
         });
@@ -81,7 +80,7 @@ export class LoginActions {
         .switchMap((action: CustomActions) => this._authService.SignupWithEmail(action.payload))
         .map(response => {
             if (response.status !== 'success') {
-                // dialogs.alert(response.message);
+                this._toaster.errorToast(response.message);
             }
 
             return this.signupWithEmailResponce(response);
@@ -97,7 +96,7 @@ export class LoginActions {
         .map(response => {
             let res: BaseResponse<VerifyEmailResponseModel, VerifyEmailModel> = response;
             if (response.status !== 'success') {
-                // dialogs.alert(response.message);
+                this._toaster.errorToast(response.message);
             }
             return this.verifyEmailResponce(res);
         });
@@ -111,7 +110,7 @@ export class LoginActions {
         .map(response => {
             let res: BaseResponse<VerifyMobileResponseModel, VerifyMobileModel> = response;
             if (response.status !== 'success') {
-                // dialogs.alert(response.message);
+                this._toaster.errorToast(response.message);
             }
             return this.verifyTwoWayAuthResponse(res);
         });
@@ -122,7 +121,7 @@ export class LoginActions {
         .map((action: CustomActions) => {
             let res: BaseResponse<VerifyEmailResponseModel, string> = action.payload;
             if (res.status !== 'success') {
-                // dialogs.alert(res.message);
+                this._toaster.errorToast(res.message);
             }
             return {
                 type: 'EmptyAction'
@@ -137,7 +136,7 @@ export class LoginActions {
         .map(response => {
             let res: BaseResponse<string, string> = response;
             if (res.status !== 'success') {
-                // dialogs.alert(res.message);
+                this._toaster.errorToast(res.message);
                 // return { type: '' }
             }
             return this.forgotPasswordResponse(res);
@@ -152,7 +151,7 @@ export class LoginActions {
         .map(response => {
             let res: BaseResponse<string, ResetPasswordV2> = response;
             if (res.status !== 'success') {
-                // dialogs.alert(res.message);
+                this._toaster.errorToast(res.message);
                 // return { type: '' }
             }
             return this.resetPasswordV2Response(res);
@@ -184,7 +183,8 @@ export class LoginActions {
             return this.signupWithGoogleResponse(data);
         });
 
-    constructor(private actions$: Actions, private _authService: AuthenticationService, public http: HttpClient) {
+    constructor(private actions$: Actions, private _authService: AuthenticationService, public http: HttpClient,
+    private _toaster: ToasterService) {
 
     }
 
@@ -368,12 +368,12 @@ export class LoginActions {
     private validateResponse<TResponse, TRequest>(response: BaseResponse<TResponse, TRequest>, successAction: CustomActions, showToast: boolean = false, errorAction: CustomActions = { type: 'EmptyAction' }): CustomActions {
         if (response.status === 'error') {
             if (showToast) {
-                // this._toasty.errorToast(response.message);
+                this._toaster.errorToast(response.message);
             }
             return errorAction;
         } else {
             if (showToast && typeof response.body === 'string') {
-                // this._toasty.successToast(response.body);
+                this._toaster.successToast(response.body);
             }
         }
         return successAction;

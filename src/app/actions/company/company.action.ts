@@ -17,6 +17,7 @@ import { GeneralService } from "../../services/general.service";
 // import * as Toast from 'nativescript-toast';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/take';
+import { ToasterService } from "../../services/toaster.service";
 @Injectable()
 
 export class CompanyActions {
@@ -28,7 +29,7 @@ export class CompanyActions {
         .map(response => {
             let res: BaseResponse<CompanyResponse[], string> = response;
             if (response.status === 'error') {
-                // dialogs.alert(response.message);
+                this._toaster.errorToast(res.message);
                 return { type: 'Error', payload: res }
             } else {
 
@@ -74,8 +75,8 @@ export class CompanyActions {
                 return this.changeCompanyResponse(dummyResponse);
             }
             this._generalServices.companyUniqueName = response.request;
-            // let toast = Toast.makeText('Company Switched Successfully');
-            // toast.show();
+            this._toaster.successToast('Company Switched Successfully');
+
             return this.changeCompanyResponse(response);
         });
 
@@ -93,7 +94,7 @@ export class CompanyActions {
             }
         });
     constructor(private actions$: Actions, private _authService: AuthenticationService, private _companyService: CompanyService,
-        private store: Store<AppState>, private _generalServices: GeneralService) {
+        private store: Store<AppState>, private _generalServices: GeneralService, private _toaster: ToasterService) {
 
     }
 

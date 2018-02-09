@@ -1,7 +1,7 @@
-import { IExpensesChartClosingBalanceResponse, IRevenueChartClosingBalanceResponse, ChartFilterType, ChartType } from "~/models/interfaces/dashboard.interface";
-import { CustomActions } from "~/store/customActions";
-import { DashboardConst } from "~/actions/dashboard/dashboard.const";
-import { ChartCustomFilter } from "~/models/api-models/Dashboard";
+import { IExpensesChartClosingBalanceResponse, IRevenueChartClosingBalanceResponse, ChartFilterType, ChartType } from "../../models/interfaces/dashboard.interface";
+import { CustomActions } from "../../store/customActions";
+import { DashboardConst } from "../../actions/dashboard/dashboard.const";
+import { ChartCustomFilter } from "../../models/api-models/Dashboard";
 
 export interface DashboardState {
   expensesChart: IExpensesChartClosingBalanceResponse;

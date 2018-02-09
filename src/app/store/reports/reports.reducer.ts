@@ -1,9 +1,9 @@
-import { CustomActions } from "~/store/customActions";
-import { ChartFilterType, IProfitLossChartResponse } from "~/models/interfaces/dashboard.interface";
-import { ReportConst } from "~/actions/reports/reports.const";
-import { BalanceSheetData, ProfitLossData } from "~/models/api-models/tb-pl-bs";
+import { CustomActions } from "../../store/customActions";
+import { ChartFilterType, IProfitLossChartResponse } from "../../models/interfaces/dashboard.interface";
+import { ReportConst } from "../../actions/reports/reports.const";
+import { BalanceSheetData, ProfitLossData } from "../../models/api-models/tb-pl-bs";
 import * as _ from 'lodash';
-import { ChartCustomFilter } from "~/models/api-models/Dashboard";
+import { ChartCustomFilter } from "../../models/api-models/Dashboard";
 
 interface PlState {
   data?: ProfitLossData;

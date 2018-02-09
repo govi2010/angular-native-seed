@@ -9,8 +9,8 @@ import {LoginConstants} from '../../actions/login/login.const';
 import {BaseResponse} from '../../models/api-models/BaseResponse';
 import {LoginWithPassword} from '../../models/api-models/Login';
 import {CompanyResponse, StateDetailsResponse} from '../../models/api-models/Company';
-import {CompanyConstants} from '~/actions/company/company.const';
-import {SettingsProfileConstants} from "~/actions/settings/profile/settings.profile.const";
+import {CompanyConstants} from '../../actions/company/company.const';
+import {SettingsProfileConstants} from "../../actions/settings/profile/settings.profile.const";
 import * as _ from 'lodash';
 
 export enum userLoginStateEnum {

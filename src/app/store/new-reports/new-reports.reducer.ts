@@ -1,7 +1,7 @@
-import { CustomActions } from "~/store/customActions";
-import { ChartFilterType, IReportChartData } from "~/models/interfaces/dashboard.interface";
-import { NewReportConst } from "~/actions/new-reports/new-reports.const";
-import { GroupHistoryResponse, CategoryHistoryResponse, ChartFilterConfigs } from "~/models/api-models/Dashboard";
+import { CustomActions } from "../../store/customActions";
+import { ChartFilterType, IReportChartData } from "../../models/interfaces/dashboard.interface";
+import { NewReportConst } from "../../actions/new-reports/new-reports.const";
+import { GroupHistoryResponse, CategoryHistoryResponse, ChartFilterConfigs } from "../../models/api-models/Dashboard";
 import * as _ from 'lodash';
 import * as moment from 'moment/moment';
 

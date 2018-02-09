@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { AppState } from '~/store';
 import { Observable } from 'rxjs/Observable';
 import { BaseResponse } from '../../../models/api-models/BaseResponse';
 import { Router } from '@angular/router';
 import { SettingsTaxesService } from '../../../services/settings.taxes.service';
 import { CustomActions } from '../../../store/customActions';
-import { SettingsTaxesConstants } from '~/actions/settings/taxes/settings.taxes.const';
-import * as dialogs from "ui/dialogs";
-import * as Toast from 'nativescript-toast';
+import { SettingsTaxesConstants } from './settings.taxes.const';
 import { ToasterService } from '../../../services/toaster.service';
+import { AppState } from '../../../store';
 
 @Injectable()
 export class SettingsTaxesActions {

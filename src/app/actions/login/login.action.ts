@@ -12,8 +12,6 @@ import { HttpHeaders, HttpClient } from "@angular/common/http";
 import { Configuration } from "../../app.constants";
 import { ToasterService } from "../../services/toaster.service";
 
-
-let config = require('./../../config/config');
 @Injectable()
 
 export class LoginActions {

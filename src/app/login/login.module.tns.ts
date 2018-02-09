@@ -5,11 +5,9 @@ import { RouterModule } from '../common';
 // nativescript
 import { NativeScriptCommonModule } from "nativescript-angular/common";
 import { NativeScriptFormsModule } from 'nativescript-angular/forms';
-import { NativeScriptRouterModule } from 'nativescript-angular/router';
 
 // app
 import { COMPONENTS, LoginComponent, LoginWithOtpComponent, LoginWithEmailComponent, ForgotComponent, SignUpComponent, LoginTwoWayComponent } from './components';
-import { LoginRoutingModule } from './login.routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { LoginRoutes } from './login.routes';
 

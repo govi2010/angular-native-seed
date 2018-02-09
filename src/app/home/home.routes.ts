@@ -1,16 +1,10 @@
-import { Routes } from '@angular/router';
-// app
-import { HomeComponent } from './components/home/home.component';
-import { NeedsAuthentication } from '../decorators/needsAuthentication';
+import { Routes } from "@angular/router";
+import { HomeComponent } from "./home.component";
+
 
 export const HomeRoutes: Routes = [
     {
-        path: 'home',
-        component: HomeComponent,
-        canActivate: [NeedsAuthentication]
+        path: '',
+        component: HomeComponent
     },
-    {
-        path: 'login',
-        loadChildren: 'app/login/login.module#LoginModule'
-    }
 ];

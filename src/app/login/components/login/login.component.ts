@@ -9,6 +9,7 @@ import { Page, Color, AnimationCurve, isIOS } from '../../../common/utils/enviro
 import { ToasterService } from '../../../services/toaster.service';
 import { RouterService } from '../../../services/router.service';
 import { Config } from '../../../common';
+import 'rxjs/add/operator/mergeMap';
 // import {EventData} from 'tns-core-modules/data/observable';
 // import {LoadEventData, WebView} from "tns-core-modules/ui/web-view";
 // import {isAndroid} from "tns-core-modules/platform"
@@ -170,7 +171,7 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
                 this._toaster.errorToast('Something Went Wrong! Please Try Again');
             } else {
                 this.authservice.GetAtuhToken(result)
-                    .mergeMap(token => this.authservice.LoginWithGoogle(token.access_token))
+                    .mergeMap((token: any) => this.authservice.LoginWithGoogle(token.access_token))
                     .subscribe(LoginResult => {
                         this.store.dispatch(this._loginActions.signupWithGoogleResponse(LoginResult));
                     }, err => {

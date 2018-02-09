@@ -230,4 +230,22 @@ export class AuthenticationService {
                 return data;
             }).catch((e) => this.errorHandler.HandleCatch<AuthKeyResponse, string>(e, ''));
     }
+
+    public GetAtuhToken(token: any) {
+        let args: any = { headers: {} };
+        args.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+        args.headers = new HttpHeaders(args.headers);
+        let creds = 'client_id=641015054140-3cl9c3kh18vctdjlrt9c8v0vs85dorv2.apps.googleusercontent.com'
+            + '&client_secret=eWzLFEb_T9VrzFjgE40Bz6_l'
+            + '&redirect_uri=https://giddh.com'
+            + '&grant_type=authorization_code'
+            + '&code=' + token.authCode;
+        return this._Http.post('https://accounts.google.com/o/oauth2/token', creds, {
+            headers: args.headers,
+            responseType: 'json'
+        }).map((res) => {
+            // let data = res.json();
+            return res;
+        });//.catch((e) => this.errorHandler.HandleCatch<VerifyEmailResponseModel, string>(e));
+    }
 }

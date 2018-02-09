@@ -1,19 +1,26 @@
-import { NgModule, Optional, SkipSelf, NO_ERRORS_SCHEMA } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 // app
-import { HomeComponent } from './components/home/home.component';
-import { SHARED_MODULES } from './home.common';
+import { HomeComponent } from './home.component';
+import { NeedsAuthentication } from '../decorators/needsAuthentication';
+import { SharedModule } from './../shared/shared.module';
+import { CommonModule } from '@angular/common';
+import { HomeRoutes } from './home.routes';
+
 
 @NgModule({
     imports: [
-        ...SHARED_MODULES
+        CommonModule,
+        RouterModule.forChild(<any>HomeRoutes),
+        FormsModule,
+        ReactiveFormsModule,
+        SharedModule
     ],
-    declarations: [HomeComponent]
+    declarations: [HomeComponent],
+    schemas: [
+        NO_ERRORS_SCHEMA
+    ]
 })
-export class HomeModule {
-
-    constructor( @Optional() @SkipSelf() parentModule: HomeModule) {
-        if (parentModule) {
-            throw new Error('HomeModule already loaded; Import in root module only.');
-        }
-    }
-}
+export class HomeModule { }

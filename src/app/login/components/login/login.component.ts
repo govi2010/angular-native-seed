@@ -8,6 +8,7 @@ import { AuthenticationService } from '../../../services/authentication.service'
 import { Page, Color, AnimationCurve, isIOS } from '../../../common/utils/environment';
 import { ToasterService } from '../../../services/toaster.service';
 import { RouterService } from '../../../services/router.service';
+import { Config } from '../../../common';
 // import {EventData} from 'tns-core-modules/data/observable';
 // import {LoadEventData, WebView} from "tns-core-modules/ui/web-view";
 // import {isAndroid} from "tns-core-modules/platform"
@@ -49,9 +50,11 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
             password: ['', [Validators.required]],
         });
 
-        this.page.backgroundColor = new Color(1, 0, 169, 157);
-        this.page.backgroundSpanUnderStatusBar = true;
-        this.page.actionBarHidden = true;
+        if (Config.IS_MOBILE_NATIVE) {
+            this.page.backgroundColor = new Color(1, 0, 169, 157);
+            this.page.backgroundSpanUnderStatusBar = true;
+            this.page.actionBarHidden = true;
+        }
 
         this.loginSuccess$.subscribe(s => {
             if (s) {

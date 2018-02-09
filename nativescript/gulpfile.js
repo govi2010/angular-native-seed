@@ -143,15 +143,16 @@ gulp.task(
 );
 
 gulp.task('tns.Livesync', () => {
-    return gulp.watch([`${SRC}**/*.tns.html`, `${SRC}/**/*.tns.scss`, `${SRC}/**/*.tns.phone.sass`, `${SRC}/**/*.component.ts`])
+    return gulp.watch([`../${SRC}**/*.common.ts`, `../${SRC}**/*.tns.ts`, `../${SRC}**/*.tns.html`, `../${SRC}**/*.service.ts`,
+    `../${SRC}**/*.tns.scss`, `../${SRC}**/*.scss`, `../${SRC}**/*.component.ts`, `../${SRC}**/*.routes.ts`,
+    `../${SRC}**/*.index.ts`])
         .on('change', (file) => {
-            var outputDest = file.replace(SRC, DEST);
-            outputDest = outputDest.substring(0, outputDest.lastIndexOf('/'));
+            var outputDest = file.substring(0, file.lastIndexOf('\\') + 1).replace(SRC.substring(0, SRC.length - 1), DEST).replace('..\\', '');
             gulp.src([file])
                 .pipe(rename(removeTns))
-                .pipe(replace('.scss\'', '.css\'', { logs: { enabled: false } }))
-                .pipe(replace('.sass\'', '.css\'', { logs: { enabled: false } }))
+                .pipe(replace('.scss\'', '.css\'', { logs: { enabled: true } }))
                 .pipe(debug({ title: 'tns.Livesync' }))
+                .pipe(debug({ title: 'out ' + outputDest }))
                 .pipe(gulp.dest(outputDest, { overwrite: true }));
         });
 });

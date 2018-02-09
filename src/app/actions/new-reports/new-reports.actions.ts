@@ -1,12 +1,12 @@
 import { Actions, Effect } from "@ngrx/effects";
-import { DashboardService } from "~/services/dashboard.service";
-import { CustomActions } from "~/store/customActions";
-import { NewReportConst } from "~/actions/new-reports/new-reports.const";
-import { ChartFilterType, IGroupHistoryGroups } from "~/models/interfaces/dashboard.interface";
-import { ChartCustomFilter, ChartFilterConfigs, GroupHistoryRequest, CategoryHistoryResponse, GroupHistoryResponse } from "~/models/api-models/Dashboard";
+import { DashboardService } from "../../services/dashboard.service";
+import { CustomActions } from "../../store/customActions";
+import { NewReportConst } from "../../actions/new-reports/new-reports.const";
+import { ChartFilterType, IGroupHistoryGroups } from "../../models/interfaces/dashboard.interface";
+import { ChartCustomFilter, ChartFilterConfigs, GroupHistoryRequest, CategoryHistoryResponse, GroupHistoryResponse } from "../../models/api-models/Dashboard";
 import { createSelector, Store } from "@ngrx/store";
-import { AppState } from "~/store/roots";
-import { ActiveFinancialYear } from "~/models/api-models/Company";
+import { AppState } from "../../store/roots";
+import { ActiveFinancialYear } from "../../models/api-models/Company";
 
 import * as _ from 'lodash';
 import * as moment from 'moment/moment';

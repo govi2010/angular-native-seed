@@ -1,5 +1,0 @@
-<StackLayout class="hr-light" *ngIf="mydraweritem.needTopHr"></StackLayout>
-<GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="mydraweritem.isSelected" (tap)="onNavItemTap()">
-  <Label col="0" [text]="mydraweritem.icon" *ngIf="mydraweritem.icon" [fontFamily]="mydraweritem.fontFamily"  class="icon"></Label>
-  <Label col="1" [text]="mydraweritem.title" class="p-r-10"></Label>
-</GridLayout>

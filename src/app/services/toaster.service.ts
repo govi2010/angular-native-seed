@@ -27,4 +27,9 @@ export class ToasterService {
     public clearAllToaster(): void {
         this._toaster.clear();
     }
+
+    public confirm(obj) {
+        let c = confirm(obj.message);
+        return new Promise((resolve, reject) => resolve(c));
+    }
 }

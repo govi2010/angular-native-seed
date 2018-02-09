@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { APP_DEFAULT_TITLE } from '../app.constants';
 // import { ToastrService } from 'ngx-toastr';
 import * as Toast from 'nativescript-toast';
+import * as dialogs from 'ui/dialogs';
 declare class ToastrService { }
 @Injectable()
 export class ToasterService {
@@ -32,5 +33,9 @@ export class ToasterService {
 
     public clearAllToaster(): void {
         //
+    }
+
+    public confirm(obj: any) {
+        return dialogs.confirm(obj);
     }
 }

@@ -22,9 +22,9 @@ export const LoginRoutes: Routes = [
     {
         path: 'forgot-password',
         component: ForgotComponent
-    }, {
-        path: 'linkedin-login',
-        component: LinkedInLoginComponent
+    // }, {
+    //     path: 'linkedin-login',
+    //     component: LinkedInLoginComponent
     },
     {
         path: 'signup',

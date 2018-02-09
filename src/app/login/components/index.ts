@@ -8,7 +8,7 @@ import { LoginWithEmailComponent } from './login-with-email/login-with-email.com
 import { LoginTwoWayComponent } from './login-two-way/login-two-way.component';
 import { LinkedInLoginComponent } from './linkedin-login/linkedin-login.component';
 
-export const COMPONENTS = [LoginComponent, LoginWithOtpComponent, ForgotComponent, SignUpComponent, LoginWithEmailComponent, LoginTwoWayComponent,LinkedInLoginComponent];
+export const COMPONENTS = [LoginComponent, LoginWithOtpComponent, ForgotComponent, SignUpComponent, LoginWithEmailComponent, LoginTwoWayComponent];
 
 export * from './login/login.component';
 export * from './signup/signup.component';

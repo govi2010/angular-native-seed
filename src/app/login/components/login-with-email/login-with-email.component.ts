@@ -40,7 +40,7 @@ export class LoginWithEmailComponent implements OnInit, OnDestroy {
         // });
 
         if (Config.IS_MOBILE_NATIVE) {
-            this.routerExtensions.router.events.subscribe(ev => {
+            (this.routerExtensions.router as any).router.events.subscribe(ev => {
                 if (ev instanceof NavigationStart) {
                     this.ngOnDestroy();
                 }

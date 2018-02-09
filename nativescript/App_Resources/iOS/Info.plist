@@ -2,10 +2,61 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+  <key>NSCalendarsUsageDescription</key>
+	<string>We need access to your calendar in order to schedule your tasks</string>
+  <key>NSAppTransportSecurity</key>
+  <dict>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
+  </dict>
+
+<!-- FACEBOOK AND GOOGLE LOGIN -->
+<key>CFBundleURLTypes</key>
+    <array>
+        <!-- GOOGLE START -->
+		    <dict>
+			      <key>CFBundleTypeRole</key>
+			      <string>Editor</string>
+			      <key>CFBundleURLSchemes</key>
+			      <array>
+			      	<string>com.googleusercontent.apps.641015054140-s6i3oreb3qvkn8eo9tlvceo0viuresse</string>
+                      <!-- It shoud look like this: com.googleusercontent.apps.123123123-172648sdfsd76f8s7d6f8sd -->
+                      <!-- Get it from your GoogleService-Info.plist -->
+                      <!-- Read more - https://developers.google.com/identity/sign-in/ios/start-integrating -->
+			      </array>
+		    </dict>
+		<!-- GOOGLE END -->
+    <!-- FACEBOOK START -->
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>fb{YOUR_FACEBOOK_APP_ID_HERE}</string>
+            </array>
+        </dict>
+    </array>
+    <key>CFBundleVersion</key>
+    <string>1.0</string>
+    <key>FacebookAppID</key>
+      <string>{YOUR_FACEBOOK_APP_ID_HERE}</string>
+    <key>FacebookDisplayName</key>
+    <string>FacebookLoginDemo</string>
+    <!-- FACEBOOK END -->
+    <key>LIAppId</key>
+    <string>75urm0g3386r26</string>
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>li3AJTvaKNOEG4ISJ0</string>
+            </array>
+        </dict>
+    </array>
+
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>${PRODUCT_NAME}</string>
+	<string>Giddh</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -19,7 +70,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>1.0.1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

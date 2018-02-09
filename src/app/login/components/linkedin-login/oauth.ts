@@ -1,7 +1,7 @@
 
 const queryString = require('query-string');
-import { AnimationCurve } from 'ui/enums';
 import { LoadEventData, WebView } from "tns-core-modules/ui/web-view";
+import { AnimationCurve } from "../../../common/utils/environment";
 const nodeUrl = require('url-parse');
 const generateRandomString = function (length) {
   let text = '';
@@ -92,6 +92,7 @@ export default (config, webview: WebView, routerExtension) => {
     };
 
     if (config.useBasicAuthorizationHeader) {
+      let Buffer = require('buffer');
       header.Authorization = 'Basic ' + new Buffer(config.clientId + ':' + config.clientSecret).toString('base64');
     } else {
       Object.assign(data, {

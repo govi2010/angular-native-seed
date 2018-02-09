@@ -1,0 +1,52 @@
+{
+  "project_info": {
+    "project_number": "641015054140",
+    "project_id": "giddh-1216"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:641015054140:android:9cb810a21df3ff3c",
+        "android_client_info": {
+          "package_name": "com.giddh.accounts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "641015054140-22m4v5kgtpnedfiq4peo9u3vcojmespu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.giddh.accounts",
+            "certificate_hash": "426febc87ef1cce94e0aec2536d3b4952063cb27"
+          }
+        },
+        {
+          "client_id": "641015054140-5p4laf3lbjvda9bmi94rvcs6m9q13q5v.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "641015054140-3cl9c3kh18vctdjlrt9c8v0vs85dorv2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCazQuERalUHjdXjgZNxUlK8LjngJZ8wME"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

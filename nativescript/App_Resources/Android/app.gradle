@@ -5,12 +5,39 @@
 //	compile 'com.android.support:recyclerview-v7:+'
 //}
 
-android {  
-  defaultConfig {  
+buildscript {
+    repositories {
+        jcenter()
+        mavenLocal()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.1.0'
+        classpath 'com.google.gms:google-services:3.0.0'
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://maven.fabric.io/public' }
+}
+
+dependencies {
+    compile 'com.google.android.gms:play-services-auth:8.4.0'
+}
+
+android {
+  defaultConfig {
     generatedDensities = []
-    applicationId = "__PACKAGE__"  
-  }  
-  aaptOptions {  
-    additionalParameters "--no-version-vectors"  
-  }  
-} 
+    applicationId = "com.giddh.accounts"
+  }
+  aaptOptions {
+    additionalParameters "--no-version-vectors"
+  }
+}
+
+def settingsGradlePath = "$rootDir/../../app/App_Resources/Android/settings.gradle";
+def settingsGradleFile = new File(settingsGradlePath);
+if(settingsGradleFile.exists())
+{
+    apply from: settingsGradleFile;
+}

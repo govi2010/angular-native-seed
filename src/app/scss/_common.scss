@@ -1,0 +1,230 @@
+// SASS theme setup: https://docs.nativescript.org/ui/theme#sass-usage
+// customized variables
+// @import '_variables';
+@import 'variables';
+// theme standard rulesets
+@import '~nativescript-theme-core/scss/index';
+// define our custom styles here...
+Page {
+  background-color: $white;
+}
+
+
+/**
+  * any font icons you may use, define the global class for the font
+  **/
+
+.fa {
+  font-family: 'FontAwesome';
+}
+
+.giddh {
+  font-family: '1515160234'
+}
+
+ActionBar {
+  color: rgb(12, 115, 115);
+  background-color: rgb(0, 169, 157);
+}
+
+.headerBtn {}
+
+.button {
+  background-color: $ab-background;
+  color: white;
+  box-shadow: 0;
+  margin: 0;
+}
+
+.icon-1:before {
+  content: "\61";
+}
+
+.icon-2:before {
+  content: "\62";
+}
+
+.icon-3:before {
+  content: "\63";
+}
+
+.icon-4:before {
+  content: "\64";
+}
+
+.icon-5:before {
+  content: "\65";
+}
+
+.icon-6:before {
+  content: "\66";
+}
+
+.icon-7:before {
+  content: "\67";
+}
+
+.icon-8:before {
+  content: "\68";
+}
+
+.icon-9:before {
+  content: "\69";
+}
+
+.icon-10:before {
+  content: "\6a";
+}
+
+.icon-11:before {
+  content: "\6b";
+}
+
+.icon-12:before {
+  content: "\6c";
+}
+
+.icon-13:before {
+  content: "\6d";
+}
+
+.icon-14:before {
+  content: "\6e";
+}
+
+.icon-15:before {
+  content: "\6f";
+}
+
+.icon-16:before {
+  content: "\70";
+}
+
+.icon-17:before {
+  content: "\71";
+}
+
+.setting_list,
+.setting_flexbox {
+  margin: 15;
+}
+
+.fab-button {
+  height: 50;
+  width: 50; /// this is required on iOS - Android does not require width so you might need to adjust styles
+  margin: 15;
+  background-color: #ff4081;
+  horizontal-align: right;
+  vertical-align: bottom;
+}
+
+
+FilterSelect{
+  border-style: solid;
+  padding: 3;
+  border-width: 1;
+  border-color: #ccc;
+  border-radius: 5;
+}
+.btn-filter-select{
+ vertical-align: top;
+ align-content: center;
+ margin: 0;
+ padding: 1;
+}
+.fa {
+font-family: FontAwesome, fontawesome-webfont;
+}
+
+.filter-select-tag-delete{
+  padding: 0;
+  margin: 0;
+  background-color: white;
+  height:20;
+  width: 20;
+  text-align: center;
+  border-color: white;
+  color:red;
+}
+
+
+.filter-select-tag{
+  margin:5;
+  margin-left: 8;
+  border-width: 1;
+  border-color: #ccc;
+  padding: 6;
+  height: auto;
+  border-radius: 20;
+  border-color: #ccc;
+  border-width: 1;
+}
+.filter-select-tag-label{
+  horizontal-align: right;
+}
+
+
+.filter-select-list label{
+padding: 20;
+}
+
+.filter-select-list{
+margin: 2;
+}
+.filter-select-hint{
+vertical-align: middle;
+text-align: center;
+margin-top: 8;
+}
+
+FilterSelect.disabled{
+  background-color:#ccc;
+}
+
+.item.filter-select-selected{
+  border-width: 1;
+  border-color: green;
+}
+
+
+.filter-select-label{
+  height: auto;
+  padding: 5;
+}
+.filter-select-label.hint{
+  color:rgb(82, 82, 82);
+}
+.filter-select-label.selected{
+ color:black;
+}
+.filter-select-icon{
+  margin-left:10;
+  width: 10;
+  horizontal-align:left;
+}
+
+FilterSelect.disabled{
+  background-color:#ccc;
+}
+
+.gen-font-style{
+  font-size: 13;
+  color: #4e4f53;
+}
+
+.gen-font-color {
+  color: #4e4f53;
+}
+
+.gen-card-style {
+  margin:5 4;
+  background-color: white;
+}
+
+.gen-label-style {
+  padding: 20 0 3 0;
+}
+
+.action-bar-title {
+  font-weight: 350 !important;
+}

@@ -7,7 +7,7 @@ import { ResetPasswordV2 } from '../../../models/api-models/Login';
 import { Observable } from 'rxjs/Observable';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { NavigationStart } from '@angular/router';
-import { ToasterService } from '../../../services/toaster.service.tns';
+import { ToasterService } from '../../../services/toaster.service';
 import { RouterService } from '../../../services/router.service';
 import { Config } from '../../../common';
 import { Page, Color, AnimationCurve } from '../../../common/utils/environment';

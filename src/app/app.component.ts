@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 // vendor dependencies
 import { TranslateService } from '@ngx-translate/core';
 // app
-import { MenuItem } from './menu/menu.common';
 
 @Component({
     moduleId: module.id,
@@ -11,7 +10,7 @@ import { MenuItem } from './menu/menu.common';
 })
 export class AppComponent {
 
-    menuItems: MenuItem[] = [
+    menuItems: any[] = [
         {
             title: 'menu.home',
             link: ['/home']

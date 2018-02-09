@@ -3,12 +3,19 @@
   "version": "0.0.0",
   "repository": "<fill-your-repository-here>",
   "nativescript": {
-    "id": "com.domain.project",
-    "tns-android": {
-      "version": "3.5.0-rc-2018.1.8.1"
-    },
+    "id": "com.giddh.accounts",
+    "name": "giddh",
+    "hooks": [
+      {
+        "type": "before-prepare",
+        "script": "./customHooks/before-prepare/nativescript-environment.js"
+      }
+    ],
     "tns-ios": {
-      "version": "3.5.0-rc-2018-01-08-02"
+      "version": "3.4.0"
+    },
+    "tns-android": {
+      "version": "3.4.1"
     }
   },
   "dependencies": {
@@ -21,21 +28,15 @@
     "@angular/platform-browser": "~5.2.0",
     "@angular/platform-browser-dynamic": "~5.2.0",
     "@angular/router": "~5.2.0",
-    "@ngx-translate/core": "~9.1.1",
-    "@ngx-translate/http-loader": "~2.0.1",
     "@ngrx/effects": "4.1.1",
     "@ngrx/router-store": "4.1.1",
     "@ngrx/store": "4.1.1",
     "@ngrx/store-devtools": "4.1.1",
-    "nativescript-angular": "^5.2.0",
-    "nativescript-theme-core": "~1.0.2",
-    "reflect-metadata": "~0.1.8",
-    "rxjs": "^5.5.0",
-    "tns-core-modules": "^3.4.0",
-    "typescript": "~2.6.0",
-    "zone.js": "^0.8.16",
+    "@ngx-translate/core": "~9.1.1",
+    "@ngx-translate/http-loader": "~2.0.1",
     "lodash": "4.17.4",
     "moment": "2.18.1",
+    "nativescript-angular": "^5.2.0",
     "nativescript-cardview": "2.0.4",
     "nativescript-carousel": "^3.1.1",
     "nativescript-checkbox": "3.0.3",
@@ -50,10 +51,16 @@
     "nativescript-pro-ui": "3.2.0",
     "nativescript-secure-storage": "2.2.1",
     "nativescript-social-login-linkedin": "^3.0.8",
+    "nativescript-theme-core": "~1.0.2",
     "nativescript-toast": "^1.4.6",
     "nativescript-webview-interface": "^1.4.2",
     "ngrx-store-logger": "0.2.0",
-    "reselect": "^3.0.1"
+    "reflect-metadata": "~0.1.8",
+    "reselect": "^3.0.1",
+    "rxjs": "^5.5.0",
+    "tns-core-modules": "^3.4.0",
+    "typescript": "~2.6.0",
+    "zone.js": "^0.8.16"
   },
   "devDependencies": {
     "@angular/compiler-cli": "~5.2.0",

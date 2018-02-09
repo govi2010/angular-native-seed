@@ -32,7 +32,7 @@ export class LoginWithOtpComponent implements OnInit, OnDestroy, AfterViewInit {
         this.isVerifyMobileInProcess$ = this.store.select(s => s.login.isVerifyMobileInProcess);
 
         if (Config.IS_MOBILE_NATIVE) {
-            this.routerExtensions.router.events.subscribe(ev => {
+            (this.routerExtensions.router as any).router.events.subscribe(ev => {
                 if (ev instanceof NavigationStart) {
                     this.ngOnDestroy();
                 }

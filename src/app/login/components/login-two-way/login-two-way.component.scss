@@ -1,0 +1,73 @@
+.login,
+.page {
+  background-color: rgb(0, 169, 157);
+}
+
+.login #logo {
+  margin-top: 13%;
+}
+
+.page {
+  margin: 0 5%;
+}
+
+.form {
+  margin-top: 10%;
+}
+
+
+
+.btn {
+  background-color: rgb(154, 214, 208);
+  color:rgb(40, 40, 90);
+  margin: 0;
+}
+.font{
+font-size:15px;
+color:rgb(40, 40, 90);
+}
+.color{
+  background-color:rgb(40, 40, 90);
+}
+
+.margin{
+  margin-top:20%;
+}
+.icon{
+  border-radius: 50%;
+  height: 40;
+  width: 40;
+  background-color:rgb(12, 115, 115);
+  color: white;
+  margin-top: 30;
+
+}
+.mar-l-r{
+  margin-right: 30;
+  margin-left: 30;
+}
+.icon-nam{
+  color:rgb(40, 40, 90);
+  font-size: 10;
+
+}
+.mar-l-r-nam{
+  margin-left: 35;
+  margin-right: 35;
+}
+.p-top{
+  padding-top: 50;
+}
+.p-bottom{
+  padding-bottom: 30;
+}
+
+.input {
+  background-color: rgb(12, 115, 115);
+  placeholder-color: rgb(80, 164, 161);
+  color: white;
+  margin-bottom: 50px;
+  border-radius: 2px;
+  border: 0;
+  padding: 10 10;
+}

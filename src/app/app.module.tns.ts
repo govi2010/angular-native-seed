@@ -18,6 +18,7 @@ import { ServiceModule } from './services/service.module';
 import { reducers } from './store';
 import { StoreModule } from '@ngrx/store';
 import { ActionModule } from './actions/actions.module';
+import { ServiceConfig } from './services/service.config';
 Config.PLATFORM_TARGET = Config.PLATFORMS.MOBILE_NATIVE;
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -34,7 +35,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         NativeScriptFormsModule,
         NativeScriptRouterModule,
         NativeScriptRouterModule.forRoot(AppRoutes, { enableTracing: false }),
-        StoreModule.forRoot(reducers, { }),
+        StoreModule.forRoot(reducers, {}),
         ServiceModule.forRoot(),
         ActionModule.forRoot(),
         TranslateModule.forRoot({
@@ -50,7 +51,10 @@ export function HttpLoaderFactory(http: HttpClient) {
         AppComponent
     ],
     providers: [
-        // Allows your {N} application to use lazy-loading
+        {
+            provide: ServiceConfig,
+            useValue: { apiUrl: 'http://api.giddh.com/', appUrl: 'http://api.giddh.com/' }
+        },
     ],
     schemas: [
         NO_ERRORS_SCHEMA

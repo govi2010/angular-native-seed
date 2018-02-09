@@ -12,6 +12,7 @@ import { ServiceModule } from './services/service.module';
 import { reducers } from './store';
 import { StoreModule } from '@ngrx/store';
 import { ActionModule } from './actions/actions.module';
+import { ServiceConfig } from './services/service.config';
 
 Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
 
@@ -25,7 +26,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     imports: [
         BrowserAnimationsModule,
         HttpClientModule,
-        StoreModule.forRoot(reducers, { }),
+        StoreModule.forRoot(reducers, {}),
         ServiceModule.forRoot(),
         ActionModule.forRoot(),
         TranslateModule.forRoot({
@@ -37,7 +38,12 @@ export function HttpLoaderFactory(http: HttpClient) {
         }),
         ...SHARED_MODULES
     ],
-    providers: [],
+    providers: [
+        {
+            provide: ServiceConfig,
+            useValue: { apiUrl: 'http://api.giddh.com/', appUrl: 'http://api.giddh.com/' }
+        },
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

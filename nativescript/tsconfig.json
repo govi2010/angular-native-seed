@@ -15,29 +15,16 @@
         },
         "target": "es5",
         "module": "commonjs",
-        "declaration": false,
-        "removeComments": true,
-        "noLib": false,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
+        "noEmitHelpers": true,
+        "noEmitOnError": true,
+        "moduleResolution": "node",
+        "importHelpers": false,
         "lib": [
             "dom",
             "es6",
             "es2015.iterable"
-        ],
-        "pretty": true,
-        "allowUnreachableCode": false,
-        "allowUnusedLabels": false,
-        "noImplicitAny": false,
-        "noImplicitReturns": true,
-        "noImplicitUseStrict": false,
-        "noFallthroughCasesInSwitch": true,
-        "typeRoots": [
-            "node_modules/@types",
-            "node_modules"
-        ],
-        "types": [
-            "jasmine"
         ]
     },
     "include": [

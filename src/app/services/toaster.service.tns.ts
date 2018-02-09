@@ -3,11 +3,11 @@ import { APP_DEFAULT_TITLE } from '../app.constants';
 // import { ToastrService } from 'ngx-toastr';
 import * as Toast from 'nativescript-toast';
 import * as dialogs from 'ui/dialogs';
-declare class ToastrService { }
+// declare class ToastrService { }
 @Injectable()
 export class ToasterService {
 
-    constructor(private _toaster: ToastrService) {
+    constructor() {
 
     }
 

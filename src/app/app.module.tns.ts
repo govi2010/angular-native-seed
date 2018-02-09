@@ -3,7 +3,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 // nativescript
 import { NativeScriptRouterModule } from "nativescript-angular/router";
-import { NativeScriptCommonModule } from "nativescript-angular/common";
+import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 // vendor dependencies
@@ -15,6 +15,9 @@ import { AppComponent } from './app.component';
 import { SHARED_MODULES } from './app.common';
 import { AppRoutes } from './app.routes';
 import { ServiceModule } from './services/service.module';
+import { reducers } from './store';
+import { StoreModule } from '@ngrx/store';
+import { ActionModule } from './actions/actions.module';
 Config.PLATFORM_TARGET = Config.PLATFORMS.MOBILE_NATIVE;
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -26,11 +29,14 @@ export function HttpLoaderFactory(http: HttpClient) {
         AppComponent
     ],
     imports: [
+        NativeScriptModule,
         NativeScriptHttpClientModule,
         NativeScriptFormsModule,
-        NativeScriptCommonModule,
         NativeScriptRouterModule,
+        NativeScriptRouterModule.forRoot(AppRoutes, { enableTracing: false }),
+        StoreModule.forRoot(reducers, { }),
         ServiceModule.forRoot(),
+        ActionModule.forRoot(),
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

@@ -4,7 +4,11 @@ import { HomeComponent } from "./home.component";
 
 export const HomeRoutes: Routes = [
     {
-        path: '',
+        path: 'home',
         component: HomeComponent
-    },
+    }, {
+        path: 'login',
+        loadChildren: './app/login/login.module#LoginModule'
+    }
+
 ];

@@ -9,6 +9,9 @@ import { Config } from './common/index';
 import { AppComponent } from './app.component';
 import { SHARED_MODULES } from './app.common';
 import { ServiceModule } from './services/service.module';
+import { reducers } from './store';
+import { StoreModule } from '@ngrx/store';
+import { ActionModule } from './actions/actions.module';
 
 Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
 
@@ -22,7 +25,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     imports: [
         BrowserAnimationsModule,
         HttpClientModule,
+        StoreModule.forRoot(reducers, { }),
         ServiceModule.forRoot(),
+        ActionModule.forRoot(),
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

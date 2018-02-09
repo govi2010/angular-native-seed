@@ -5,11 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { GeneralService } from './general.service';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/finally';
-
-declare class LoaderService {
-    show: () => void
-    hide: () => void
-};
+import { LoaderService } from './loader.service';
 
 @Injectable()
 export class HttpWrapperService {

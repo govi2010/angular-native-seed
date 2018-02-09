@@ -10,7 +10,7 @@ export class Color {
     }
 };
 export class topmost { };
-export class isIOS { };
+export const isIOS: boolean = false;
 export enum AnimationCurve {
     ease
 }

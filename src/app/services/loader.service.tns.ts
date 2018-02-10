@@ -39,13 +39,13 @@ export class LoaderService {
     public show(msg?: string) {
         if (msg && msg !== '') {
             let options = Object.assign({}, this.defaultOptions, { message: msg });
-            this.loader.show(options);
+            // this.loader.show(options);
         } else {
-            this.loader.show(this.defaultOptions);
+            // this.loader.show(this.defaultOptions);
         }
     }
 
     public hide() {
-        this.loader.hide();
+        // this.loader.hide();
     }
 }

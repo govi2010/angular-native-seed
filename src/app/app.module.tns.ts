@@ -20,17 +20,23 @@ import { StoreModule, ActionReducer, MetaReducer } from '@ngrx/store';
 import { ActionModule } from './actions/actions.module';
 import { ServiceConfig } from './services/service.config';
 import { storeLogger } from './store/middleware/storeLogger';
+import { localStorageSync } from './store/middleware/rehydrateAppState';
+import { NeedsAuthentication } from './decorators/needsAuthentication';
 Config.PLATFORM_TARGET = Config.PLATFORMS.MOBILE_NATIVE;
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(<any>http, '/assets/i18n/', '.json');
 }
 
+export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
+    return localStorageSync({ keys: ['session'], rehydrate: true })(reducer);
+}
+
 export function logger(reducer: ActionReducer<AppState>): any {
     // default, no options
     return storeLogger()(reducer);
 }
-let metaReducers: Array<MetaReducer<any, any>> = [logger];
+let metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer, logger];
 
 @NgModule({
     bootstrap: [
@@ -58,6 +64,7 @@ let metaReducers: Array<MetaReducer<any, any>> = [logger];
         AppComponent
     ],
     providers: [
+        NeedsAuthentication,
         {
             provide: ServiceConfig,
             useValue: { apiUrl: 'http://api.giddh.com/', appUrl: 'http://api.giddh.com/' }

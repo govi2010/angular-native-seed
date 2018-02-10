@@ -84,6 +84,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     public ngOnDestroy(): void {
         // this.lo
     }
+
+    public goTo(route: string[]) {
+        (this.routerExtensions.router as any).navigate(route);
+    }
+
     public onDrawerButtonTap(): void {
         this.drawerComponent.sideDrawer.showDrawer();
     }

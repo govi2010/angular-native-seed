@@ -1,0 +1,74 @@
+<ActionBar class="action-bar" width="100%">
+  <GridLayout columns="40,*,auto" rows="*" width="100%">
+    <Button row="0" col="0" class="button" height="50" textAlignment="center" text="&#xf060;" fontFamily="FontAwesome" (tap)="onNavBtnTap()">
+    </Button>
+    <Label row="0" col="1" class="action-bar-title" [text]="'Select Time'" fontWeight="400" horizontalAlignment="left"></Label>
+
+    <Button row="0" col="2" class="button" height="50" textAlignment="center" text="Save" fontFamily="FontAwesome" (tap)="saveAndClose()">
+    </Button>
+
+  </GridLayout>
+</ActionBar>
+
+<ScrollView>
+  <StackLayout margin="5">
+    <CardView class="gen-card-style gen-font-style" height="350" elevation="3" radius="1">
+
+      <ListView [items]="items" margin="0 15">
+        <ng-template let-item="item" let-i="index">
+          <CheckBox #elem [text]="item.text" [checked]="item.selected" (checkedChange)="elem.checked !== item.selected && changeCheckedRadio(item)"
+            boxType="circle"></CheckBox>
+        </ng-template>
+      </ListView>
+
+    </CardView>
+
+    <CardView class="gen-card-style gen-font-style" elevation="3" radius="1" [visibility]="showCustomFilterInputs ? 'visible' : 'collapsed'">
+
+      <GridLayout rows="auto,*" columns="*">
+        <StackLayout row="0" col="0" horizontalAlignment="center">
+          <Label fontSize="15" text="Current Year" fontWeight="500" textWrap="true"></Label>
+        </StackLayout>
+
+        <StackLayout margin="10" padding="10" row="1" col="0" orientation="horizontal">
+
+          <StackLayout width="50%" (tap)="openFromDatePicker('activeYear')">
+            <Label class="gen-font-style" text="From Date"></Label>
+            <Label text="{{ customFilterObj.activeYear.startDate | date:'dd-MM-yyyy' }}" textWrap="true" marginTop="15" verticalAlignment="bottom"></Label>
+          </StackLayout>
+
+          <StackLayout width="50%" (tap)="openToDatePicker('activeYear')">
+            <Label class="gen-font-style" text="To Date"></Label>
+            <Label text="{{ customFilterObj.activeYear.endDate | date:'dd-MM-yyyy' }}" textWrap="true" marginTop="15" verticalAlignment="bottom"></Label>
+          </StackLayout>
+
+        </StackLayout>
+      </GridLayout>
+
+    </CardView>
+
+    <CardView class="gen-card-style gen-font-style" elevation="3" radius="1" [visibility]="showCustomFilterInputs ? 'visible' : 'collapsed'">
+
+      <GridLayout rows="auto,*" columns="*">
+        <StackLayout row="0" col="0" horizontalAlignment="center">
+          <Label fontSize="15" text="Last Year" fontWeight="500" textWrap="true"></Label>
+        </StackLayout>
+
+        <StackLayout margin="10" padding="10" row="1" col="0" orientation="horizontal">
+
+          <StackLayout width="50%" (tap)="openFromDatePicker('lastYear')">
+            <Label class="gen-font-style" text="From Date"></Label>
+            <Label text="{{ customFilterObj.lastYear.startDate | date:'dd-MM-yyyy' }}" textWrap="true" marginTop="15" verticalAlignment="bottom"></Label>
+          </StackLayout>
+
+          <StackLayout width="50%" (tap)="openToDatePicker('lastYear')">
+            <Label class="gen-font-style" text="To Date"></Label>
+            <Label text="{{ customFilterObj.lastYear.endDate | date:'dd-MM-yyyy' }}" textWrap="true" marginTop="15" verticalAlignment="bottom"></Label>
+          </StackLayout>
+
+        </StackLayout>
+      </GridLayout>
+
+    </CardView>
+  </StackLayout>
+</ScrollView>

@@ -1,8 +1,8 @@
-import { Routes } from "@angular/router";
+
 import { LoginComponent, LoginWithOtpComponent, LoginWithEmailComponent, LoginTwoWayComponent, ForgotComponent, SignUpComponent } from "./components";
 import { LinkedInLoginComponent } from "./components/linkedin-login/linkedin-login.component";
 
-export const LoginRoutes: Routes = [
+export const LoginRoutes = [
     {
         path: '',
         component: LoginComponent

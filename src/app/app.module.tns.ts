@@ -47,7 +47,7 @@ let metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer, logge
         NativeScriptHttpClientModule,
         NativeScriptFormsModule,
         NativeScriptRouterModule,
-        NativeScriptRouterModule.forRoot(AppRoutes, { enableTracing: false }),
+        NativeScriptRouterModule.forRoot(AppRoutes, { enableTracing: true }),
         StoreModule.forRoot(reducers, { metaReducers }),
         ServiceModule.forRoot(),
         ActionModule.forRoot(),

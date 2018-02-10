@@ -22,6 +22,7 @@ import { RouterModule } from '../common';
         ReactiveFormsModule,
         SharedModule
     ],
+    exports:[RouterModule],
     declarations: [HomeComponent],
     schemas: [
         NO_ERRORS_SCHEMA

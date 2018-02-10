@@ -1,0 +1,60 @@
+<StackLayout rows="10,*" columns="*" padding="0 10">
+
+  <FlexboxLayout row="0" col="0" justifyContent="space-between" margin="10">
+    <Label text="Revenue ({{ chartFilterTitle }})" class="gen-font-color"></Label>
+    <Label text="&#xf1de;" fontSize="20" [nsRouterLink]="['/dashboard','filter', chartType]" class="" fontFamily="FontAwesome"></Label>
+  </FlexboxLayout>
+
+  <StackLayout class="hr-light"></StackLayout>
+
+  <StackLayout>
+
+    <FlexboxLayout justifyContent="flex-end" margin="5 0">
+        <Label [text]="selectedSeriesLabel" color="#418dcb" textWrap="true"></Label>
+    </FlexboxLayout>
+
+    <FlexboxLayout justifyContent="space-around">
+      <ns-pie-chart [maxPoint]="activePieChartAmount" [chartColor]="'#c1c1c1'" [indicatorColor]="'#4e9895'"></ns-pie-chart>
+      <ns-pie-chart [maxPoint]="lastPieChartAmount" [chartColor]="'#c1c1c1'" [indicatorColor]="'#3b8d8a'"></ns-pie-chart>
+    </FlexboxLayout>
+
+    <FlexboxLayout justifyContent="space-around">
+      <Label color="#404040" text="Rs. {{ ((activePieChartAmount * activeYearGrandAmount) / 100) | number: '1.1-2' }}"></Label>
+      <Label color="#404040" text="Rs. {{ ((lastPieChartAmount * lastYearGrandAmount) / 100) | number: '1.1-2' }}"></Label>
+    </FlexboxLayout>
+
+    <FlexboxLayout justifyContent="space-around">
+      <Label text="{{ activeYearChartFormatedDate }}"></Label>
+      <Label text="{{ lastYearChartFormatedDate }}"></Label>
+    </FlexboxLayout>
+
+    <StackLayout *ngIf="activeYearAccounts.length > 0 || lastYearAccounts.length > 0" marginTop="20">
+
+      <RadCartesianChart height="200" tkExampleTitle tkToggleNavButton (pointSelected)="calculatePieChartPer($event)">
+        <RadCartesianChartGrid tkCartesianGrid horizontalLinesVisible="true" horizontalStripLinesVisible="true" horizontalStrokeWidth="0.5"
+          horizontalStripLineColor="#fafafa, #fff"></RadCartesianChartGrid>
+        <CategoricalAxis tkCartesianHorizontalAxis labelFitMode="Rotate"></CategoricalAxis>
+        <LinearAxis tkCartesianVerticalAxis lineHidden="true" labelFormat="%.0f"></LinearAxis>
+
+        <BarSeries seriesName="activeYearSeries" tkCartesianSeries [items]="activeYearAccountsRanks" selectionMode="DataPoint" categoryProperty="name"
+          valueProperty="amount"></BarSeries>
+        <BarSeries seriesName="lastYearSeries" tkCartesianSeries [items]="lastYearAccountsRanks" selectionMode="DataPoint" categoryProperty="name"
+          valueProperty="amount"></BarSeries>
+
+        <Palette tkCartesianPalette seriesName="activeYearSeries">
+          <PaletteEntry tkCartesianPaletteEntry fillColor="#4e9895" strokeWidth="0"></PaletteEntry>
+        </Palette>
+
+        <Palette tkCartesianPalette seriesName="lastYearSeries">
+          <PaletteEntry tkCartesianPaletteEntry fillColor="#3b8d8a" strokeWidth="0"></PaletteEntry>
+        </Palette>
+
+      </RadCartesianChart>
+
+    </StackLayout>
+
+    <ActivityIndicator *ngIf="requestInFlight" #activityIndicator [busy]="requestInFlight" width="100" height="100" class="activity-indicator"></ActivityIndicator>
+    <Label *ngIf="activeYearAccounts.length === 0 && lastYearAccounts.length === 0" text="No Data"></Label>
+  </StackLayout>
+
+</StackLayout>

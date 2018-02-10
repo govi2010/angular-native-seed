@@ -20,6 +20,7 @@ import { LoginRoutes } from './login.routes';
         ReactiveFormsModule,
         SharedModule
     ],
+    exports:[RouterModule],
     declarations: [...COMPONENTS],
     schemas: [
         NO_ERRORS_SCHEMA

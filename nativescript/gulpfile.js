@@ -29,6 +29,11 @@ gulp.task('resources.App_Resources', () => {
         .pipe(gulp.dest(`${DEST}App_Resources`));
 });
 
+gulp.task('resources.SCSS', () => {
+    return gulp.src(['scss/**/*'], { follow: true })
+        .pipe(gulp.dest(`${DEST}scss`));
+});
+
 gulp.task('resources.Assets', () => {
     return gulp.src([`${SRC}**/*`, `!${SRC}app/`, `!${SRC}test/`, '!**/*.spec.*', '!**/*.js', '!**/*.ts', '!**/*.scss', '!**/*.sass', '!**/*.html'], { follow: true })
         // .pipe(debug({title: 'resources.Assets'}))
@@ -96,6 +101,7 @@ gulp.task(
     gulp.series(
         'clean.Dist',
         'resources.App_Resources',
+        'resources.SCSS',
         'resources.Assets',
         'project.Typescript',
         'project.Styles',

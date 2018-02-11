@@ -29,7 +29,7 @@ export class LinkedInLoginComponent implements OnInit, OnDestroy, AfterViewInit 
     constructor(private routerExtensions: RouterService, private page: Page, private _fb: FormBuilder,
         private store: Store<AppState>, private _loginActions: LoginActions) {
         if (Config.IS_MOBILE_NATIVE) {
-            (this.routerExtensions.router as any).router.events.subscribe(ev => {
+            (this.routerExtensions.router as any).router.events.takeUntil(this.destroyed$).subscribe(ev => {
                 if (ev instanceof NavigationStart) {
                     this.ngOnDestroy();
                 }

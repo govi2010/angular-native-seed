@@ -13,6 +13,7 @@ import { DashboardActions } from '../../../actions/dashboard/dashboard.action';
 import { Page } from '../../../common/utils/environment';
 import { Config } from '../../../common';
 import { INameUniqueName } from '../../../models/interfaces/nameUniqueName.interface';
+import { RouterService } from '../../../services/router.service';
 
 @Component({
     selector: 'ns-expenses-chart,[ns-expenses-chart]',
@@ -40,7 +41,8 @@ export class ExpensesChartComponent implements OnInit {
     public selectedSeriesLabel: string = '';
     private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
-    constructor(private store: Store<AppState>, private _dashboardActions: DashboardActions, private page: Page, private cd: ChangeDetectorRef) {
+    constructor(private store: Store<AppState>, private _dashboardActions: DashboardActions, private page: Page,
+        private cd: ChangeDetectorRef, private routerExtensions: RouterService) {
         this.expensesChartData$ = this.store.select(p => p.dashboard.expensesChart).takeUntil(this.destroyed$);
         this.chartFilterType$ = this.store.select(p => p.dashboard.expensesChartFilter).takeUntil(this.destroyed$);
         Config.IS_MOBILE_NATIVE && (this.page as any).on((Page as any).unloadedEvent, ev => this.ngOnDestroy());
@@ -185,6 +187,10 @@ export class ExpensesChartComponent implements OnInit {
         // this.lastYearAccountsRanks = new ObservableArray([]);
         this.lastYearGrandAmount = 0;
         this.lastPieChartAmount = 0;
+    }
+
+    public openFilters() {
+        this.routerExtensions.router.navigate(['/dashboard', 'filter', this.chartType]);
     }
 
     public ngOnDestroy() {

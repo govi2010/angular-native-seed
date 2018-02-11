@@ -40,8 +40,9 @@ export class LoginWithEmailComponent implements OnInit, OnDestroy {
         // });
 
         if (Config.IS_MOBILE_NATIVE) {
-            (this.routerExtensions.router as any).router.events.subscribe(ev => {
+            (this.routerExtensions.router as any).router.events.takeUntil(this.destroyed$).subscribe(ev => {
                 if (ev instanceof NavigationStart) {
+                    console.log(JSON.stringify(ev));
                     this.ngOnDestroy();
                 }
             });
@@ -51,6 +52,7 @@ export class LoginWithEmailComponent implements OnInit, OnDestroy {
     }
 
     public ngOnInit(): void {
+        console.log('login with email init');
         this.store.dispatch(this._loginActions.resetLoginWithEmailFlags());
         this.emailVerifyForm = this._fb.group({
             email: ['', [Validators.required, Validators.email]],
@@ -70,6 +72,7 @@ export class LoginWithEmailComponent implements OnInit, OnDestroy {
         })
     }
     public ngOnDestroy(): void {
+        console.log('login with email destroyed');
         this.store.dispatch(this._loginActions.resetLoginWithEmailFlags());
         this.destroyed$.next(true);
         this.destroyed$.complete();

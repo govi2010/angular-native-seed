@@ -37,7 +37,7 @@ export class ForgotComponent implements OnInit, OnDestroy {
         this.isResetPasswordInProcess$ = this.store.select(s => s.login.isResetPasswordInProcess).takeUntil(this.destroyed$);
         // this.page.on(Page.unloadedEvent, ev => this.ngOnDestroy());
         if (Config.IS_MOBILE_NATIVE) {
-            (this.routerExtensions.router as any).router.events.subscribe(ev => {
+            (this.routerExtensions.router as any).router.events.takeUntil(this.destroyed$).subscribe(ev => {
                 if (ev instanceof NavigationStart) {
                     this.ngOnDestroy();
                 }

@@ -16,6 +16,7 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { AppState } from '../../../store';
 import { Page } from '../../../common/utils/environment';
 import { Config } from '../../../common';
+import { RouterService } from '../../../services/router.service';
 
 @Component({
     selector: 'ns-revenue-chart,[ns-revenue-chart]',
@@ -42,7 +43,8 @@ export class RevenueChartComponent implements OnInit, OnDestroy {
     public activeYearChartFormatedDate: string;
     public lastYearChartFormatedDate: string;
     private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
-    constructor(private store: Store<AppState>, private _dashboardActions: DashboardActions, private page: Page) {
+    constructor(private store: Store<AppState>, private _dashboardActions: DashboardActions, private page: Page,
+        private routerExtensions: RouterService) {
         this.revenueChartData$ = this.store.select(p => p.dashboard.revenueChart).takeUntil(this.destroyed$);
 
         this.chartFilterType$ = this.store.select(p => p.dashboard.revenueChartFilter).takeUntil(this.destroyed$);
@@ -188,6 +190,9 @@ export class RevenueChartComponent implements OnInit, OnDestroy {
         this.lastPieChartAmount = 0;
     }
 
+    public openFilters() {
+        this.routerExtensions.router.navigate(['/dashboard','filter', this.chartType]);
+    }
 
     public ngOnDestroy() {
         this.destroyed$.next(true);

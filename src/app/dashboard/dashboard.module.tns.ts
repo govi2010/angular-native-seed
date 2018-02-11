@@ -3,7 +3,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // nativescript
 import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 import { NativeScriptCommonModule } from "nativescript-angular/common";
-import { RouterModule } from '../common';
+import { NativeScriptRouterModule } from "nativescript-angular/router";
+// import { RouterModule } from '../common';
 // app
 import { NeedsAuthentication } from '../decorators/needsAuthentication';
 
@@ -23,9 +24,9 @@ import { DashboardRoutes } from './dashboard.routes';
         FormsModule,
         ReactiveFormsModule,
         SharedModule,
-        RouterModule.forChild(DashboardRoutes),
+        NativeScriptRouterModule.forChild(DashboardRoutes),
     ],
-    exports:[RouterModule],
+    exports: [NativeScriptRouterModule],
     declarations: [DashboardComponent, RevenueChartComponent, ExpensesChartComponent, DashboardFilterComponent, DashboardChartComponent],
     schemas: [
         NO_ERRORS_SCHEMA

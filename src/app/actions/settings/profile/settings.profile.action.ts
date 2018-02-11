@@ -4,7 +4,6 @@ import { Action, Store } from '@ngrx/store';
 import { AppState } from '../../../store';
 import { Observable } from 'rxjs/Observable';
 import { BaseResponse } from '../../../models/api-models/BaseResponse';
-import { Router } from '@angular/router';
 import { SettingsProfileService } from '../../../services/settings.profile.service';
 import { CustomActions } from '../../../store/customActions';
 import { SettingsProfileConstants } from "../../../actions/settings/profile/settings.profile.const";
@@ -35,7 +34,6 @@ export class SettingsProfileActions {
         });
 
     constructor(private action$: Actions,
-        private router: Router,
         private store: Store<AppState>,
         private settingsProfileService: SettingsProfileService,
         private _toaster: ToasterService) {

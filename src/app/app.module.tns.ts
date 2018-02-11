@@ -23,7 +23,8 @@ import { storeLogger } from './store/middleware/storeLogger';
 import { localStorageSync } from './store/middleware/rehydrateAppState';
 import { NeedsAuthentication } from './decorators/needsAuthentication';
 Config.PLATFORM_TARGET = Config.PLATFORMS.MOBILE_NATIVE;
-
+import { Fab } from 'nativescript-floatingactionbutton';
+import * as elementRegistryModule from 'nativescript-angular/element-registry';
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(<any>http, '/assets/i18n/', '.json');
 }
@@ -36,7 +37,15 @@ export function logger(reducer: ActionReducer<AppState>): any {
     // default, no options
     return storeLogger()(reducer);
 }
+
+
 let metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer, logger];
+
+elementRegistryModule.registerElement("CardView", () => require("nativescript-cardview").CardView);
+elementRegistryModule.registerElement("Fab", () => Fab);
+elementRegistryModule.registerElement("Carousel", () => require("nativescript-carousel").Carousel);
+elementRegistryModule.registerElement("CarouselItem", () => require("nativescript-carousel").CarouselItem);
+elementRegistryModule.registerElement("FilterSelect", () => require("nativescript-filter-select").FilterSelect);
 
 @NgModule({
     bootstrap: [
@@ -70,6 +79,7 @@ let metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer, logge
             useValue: { apiUrl: 'http://api.giddh.com/', appUrl: 'http://api.giddh.com/' }
         },
     ],
+    exports: [NativeScriptRouterModule],
     schemas: [
         NO_ERRORS_SCHEMA
     ]

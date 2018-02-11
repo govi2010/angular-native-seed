@@ -10,19 +10,19 @@ import { HomeComponent } from './home.component';
 import { NeedsAuthentication } from '../decorators/needsAuthentication';
 import { SharedModule } from './../shared/shared.module';
 import { HomeRoutes } from './home.routes';
-import { RouterModule } from '../common';
+import { NativeScriptRouterModule } from "nativescript-angular/router";
 
 
 @NgModule({
     imports: [
         NativeScriptCommonModule,
         NativeScriptFormsModule,
-        RouterModule.forChild(HomeRoutes),
+        NativeScriptRouterModule.forChild(HomeRoutes),
         FormsModule,
         ReactiveFormsModule,
         SharedModule
     ],
-    exports:[RouterModule],
+    exports: [NativeScriptRouterModule],
     declarations: [HomeComponent],
     schemas: [
         NO_ERRORS_SCHEMA

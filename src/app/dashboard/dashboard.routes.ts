@@ -8,7 +8,6 @@ export const DashboardRoutes = [
     {
         path: '',
         component: DashboardComponent,
-        pathMatch: 'full',
         children: [
             {
                 path: '',

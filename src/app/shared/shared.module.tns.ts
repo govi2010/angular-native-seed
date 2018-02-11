@@ -12,10 +12,12 @@ import { DropDownModule } from "nativescript-drop-down/angular";
 import { TNSCheckBoxModule } from 'nativescript-checkbox/angular';
 import { MyChipsComponent } from "../shared/my-chips/my-chips.component";
 import { TNSFontIconModule } from "nativescript-ngx-fonticon";
+import { NativeScriptRouterModule } from "nativescript-angular/router";
 
 @NgModule({
     imports: [
         NativeScriptCommonModule,
+        NativeScriptRouterModule,
         NativeScriptUISideDrawerModule,
         NativeScriptUIGaugesModule,
         DropDownModule,
@@ -33,6 +35,7 @@ import { TNSFontIconModule } from "nativescript-ngx-fonticon";
         MyChipsComponent
     ],
     exports: [
+        NativeScriptRouterModule,
         MyDrawerComponent,
         MyButonComponent,
         MyLogoutComponent,

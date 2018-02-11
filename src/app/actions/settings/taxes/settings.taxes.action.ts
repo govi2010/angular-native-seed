@@ -3,7 +3,6 @@ import { Actions, Effect } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { BaseResponse } from '../../../models/api-models/BaseResponse';
-import { Router } from '@angular/router';
 import { SettingsTaxesService } from '../../../services/settings.taxes.service';
 import { CustomActions } from '../../../store/customActions';
 import { SettingsTaxesConstants } from './settings.taxes.const';
@@ -71,7 +70,6 @@ export class SettingsTaxesActions {
     //   });
 
     constructor(private action$: Actions,
-        private router: Router,
         private store: Store<AppState>,
         private settingsTaxesService: SettingsTaxesService,
         private _toaster: ToasterService) {

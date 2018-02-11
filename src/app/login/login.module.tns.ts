@@ -1,6 +1,6 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '../common';
+import { NativeScriptRouterModule } from "nativescript-angular/router";
 
 // nativescript
 import { NativeScriptCommonModule } from "nativescript-angular/common";
@@ -15,12 +15,12 @@ import { LoginRoutes } from './login.routes';
     imports: [
         NativeScriptCommonModule,
         NativeScriptFormsModule,
-        RouterModule.forChild(LoginRoutes),
+        NativeScriptRouterModule.forChild(LoginRoutes),
         FormsModule,
         ReactiveFormsModule,
         SharedModule
     ],
-    exports:[RouterModule],
+    exports:[NativeScriptRouterModule],
     declarations: [...COMPONENTS],
     schemas: [
         NO_ERRORS_SCHEMA

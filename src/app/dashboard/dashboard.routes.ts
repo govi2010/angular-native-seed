@@ -8,7 +8,6 @@ import { Routes } from "@angular/router";
 export const DashboardRoutes: Routes = [
     {
         path: '',
-<<<<<<< HEAD
         component: DashboardComponent,
         children: [
             {
@@ -25,10 +24,7 @@ export const DashboardRoutes: Routes = [
                 component: DashboardFilterComponent
             }
         ]
-=======
-        redirectTo: 'charts',
-        pathMatch: 'full'
->>>>>>> dbee36f119ff5dc6464ed294ef61e879876f15fb
+
     },
     {
         path: 'charts',

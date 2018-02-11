@@ -22,7 +22,15 @@ import { ServiceConfig } from './services/service.config';
 import { storeLogger } from './store/middleware/storeLogger';
 import { localStorageSync } from './store/middleware/rehydrateAppState';
 import { NeedsAuthentication } from './decorators/needsAuthentication';
+import * as elementRegistryModule from 'nativescript-angular/element-registry';
+import { Fab } from 'nativescript-floatingactionbutton';
 Config.PLATFORM_TARGET = Config.PLATFORMS.MOBILE_NATIVE;
+
+elementRegistryModule.registerElement("CardView", () => require("nativescript-cardview").CardView);
+elementRegistryModule.registerElement("Fab", () => Fab);
+elementRegistryModule.registerElement("Carousel", () => require("nativescript-carousel").Carousel);
+elementRegistryModule.registerElement("CarouselItem", () => require("nativescript-carousel").CarouselItem);
+elementRegistryModule.registerElement("FilterSelect", () => require("nativescript-filter-select").FilterSelect);
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(<any>http, '/assets/i18n/', '.json');
@@ -47,7 +55,7 @@ let metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer, logge
         NativeScriptHttpClientModule,
         NativeScriptFormsModule,
         NativeScriptRouterModule,
-        NativeScriptRouterModule.forRoot(AppRoutes, { enableTracing: true }),
+        NativeScriptRouterModule.forRoot(AppRoutes, { enableTracing: false }),
         StoreModule.forRoot(reducers, { metaReducers }),
         ServiceModule.forRoot(),
         ActionModule.forRoot(),

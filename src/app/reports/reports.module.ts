@@ -23,5 +23,5 @@ import { ReportsRoutes } from './reports.routes';
         NO_ERRORS_SCHEMA
     ]
 })
-export class NewReportsModule {
+export class ReportsModule {
 }

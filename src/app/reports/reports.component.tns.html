@@ -1,0 +1,35 @@
+<ActionBar class="action-bar" width="100%">
+  <GridLayout columns="auto,*,auto" rows="*" width="100%">
+    <Button row="0" col="0" class="button" height="50" width="50" (tap)="goBack()" textAlignment="center" text="&#xf060;" fontFamily="FontAwesome">
+    </Button>
+    <Label row="0" col="1" class="action-bar-title" fontWeight="400" [text]="pageTitle" horizontalAlignment="left"></Label>
+
+    <!-- <Button class="button" row="0" col="2" textAlignment="center" text="&#xf019;" fontFamily="FontAwesome">
+    </Button> -->
+  </GridLayout>
+</ActionBar>
+
+<GridLayout rows="*" columns="*" margin="5">
+  <Carousel indicatorColor="#2C2866" indicatorColorUnselected="#B9B6DA" row="0" col="0" showIndicator="true" (pageChanged)="pageChanged($event)">
+
+    <CarouselItem id="slide1" verticalAlignment="center">
+      <ScrollView>
+        <StackLayout>
+          <CardView class="gen-card-style" elevation="3" radius="1" ns-new-pl-chart>
+          </CardView>
+        </StackLayout>
+      </ScrollView>
+    </CarouselItem>
+
+    <CarouselItem id="slide2" verticalAlignment="center">
+      <ScrollView>
+        <StackLayout>
+          <CardView class="gen-card-style" elevation="3" radius="1">
+            <Label text="Slide No 2" textWrap="true"></Label>
+          </CardView>
+        </StackLayout>
+      </ScrollView>
+    </CarouselItem>
+
+  </Carousel>
+</GridLayout>

@@ -27,5 +27,5 @@ import { RouterModule } from '../common';
         NO_ERRORS_SCHEMA
     ]
 })
-export class NewReportsModule {
+export class ReportsModule {
 }

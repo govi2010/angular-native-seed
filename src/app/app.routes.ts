@@ -25,4 +25,9 @@ export const AppRoutes = [
         loadChildren: './app/settings/settings.module#SettingsModule',
         canActivate: [NeedsAuthentication]
     },
+    {
+        path: 'reports',
+        loadChildren: './app/reports/reports.module#ReportsModule',
+        canActivate: [NeedsAuthentication]
+    }
 ];

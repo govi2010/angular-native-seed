@@ -19,5 +19,10 @@ export const AppRoutes = [
         path: 'dashboard',
         loadChildren: './app/dashboard/dashboard.module#DashboardModule',
         canActivate: [NeedsAuthentication]
-    }
+    },
+    {
+        path: 'settings',
+        loadChildren: './app/settings/settings.module#SettingsModule',
+        canActivate: [NeedsAuthentication]
+    },
 ];

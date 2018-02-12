@@ -26,14 +26,6 @@ import * as elementRegistryModule from 'nativescript-angular/element-registry';
 import { Fab } from 'nativescript-floatingactionbutton';
 Config.PLATFORM_TARGET = Config.PLATFORMS.MOBILE_NATIVE;
 
-
-elementRegistryModule.registerElement("CardView", () => require("nativescript-cardview").CardView);
-elementRegistryModule.registerElement("Fab", () => Fab);
-elementRegistryModule.registerElement("Carousel", () => require("nativescript-carousel").Carousel);
-elementRegistryModule.registerElement("CarouselItem", () => require("nativescript-carousel").CarouselItem);
-elementRegistryModule.registerElement("FilterSelect", () => require("nativescript-filter-select").FilterSelect);
-
-
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(<any>http, '/assets/i18n/', '.json');
 }

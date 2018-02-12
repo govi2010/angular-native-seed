@@ -6,7 +6,7 @@ export class LoaderService {
 
     }
 
-    show() {
+    show(msg?: string) {
 
     }
 

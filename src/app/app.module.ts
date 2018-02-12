@@ -16,6 +16,7 @@ import { ServiceConfig } from './services/service.config';
 import { storeLogger } from './store/middleware/storeLogger';
 import { NeedsAuthentication } from './decorators/needsAuthentication';
 import { ToastrModule } from 'ngx-toastr';
+import { localStorageSync } from 'ngrx-store-localstorage';
 
 Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
 
@@ -24,16 +25,16 @@ export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
 }
 
-// export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
-//     return localStorageSync({ keys: ['session'], rehydrate: true })(reducer);
-// }
+export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
+    return localStorageSync({ keys: ['session'], rehydrate: true })(reducer);
+}
 
 export function logger(reducer: ActionReducer<AppState>): any {
     // default, no options
     return storeLogger()(reducer);
 }
 
-let metaReducers: Array<MetaReducer<any, any>> = [logger];
+let metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer, logger];
 
 @NgModule({
     declarations: [AppComponent],

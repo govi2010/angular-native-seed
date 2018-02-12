@@ -20,7 +20,11 @@ gulp.task('clean.Dist', () => {
         'app/**/*',
         '!**/vendor.ts',
         '!**/vendor-platform.android.ts',
-        '!**/vendor-platform.ios.ts'
+        '!**/vendor-platform.ios.ts',
+        '!**/_app.-common.scss',
+        '!**/app.android.scdd',
+        '!**/app.ios.scss',
+        '!**/scss/**'
     ]);
 });
 

@@ -1,5 +1,16 @@
 {
     "compilerOptions": {
+        "module": "commonjs",
+        "target": "es5",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "noEmitHelpers": true,
+        "noEmitOnError": true,
+        "lib": [
+            "dom",
+            "es6",
+            "es2015.iterable"
+        ],
         "baseUrl": ".",
         "paths": {
             "app/*": [
@@ -12,28 +23,11 @@
                 "./node_modules/tns-core-modules/*",
                 "./node_modules/*"
             ]
-        },
-        "target": "es5",
-        "module": "commonjs",
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "noEmitHelpers": true,
-        "noEmitOnError": true,
-        "moduleResolution": "node",
-        "importHelpers": false,
-        "lib": [
-            "dom",
-            "es6",
-            "es2015.iterable"
-        ]
+        }
     },
-    "include": [
-        "app/**/*"
-    ],
     "exclude": [
         "node_modules",
         "platforms",
-        "**/*.aot.ts",
         "hooks",
         "src",
         "gulpfile.js"

@@ -39,7 +39,7 @@ export class SettingsComponent {
                 }
             });
         } else {
-            this.routerExtensions.router.navigate([item.path]);
+            this.routerExtensions.router.navigate(['/settings', item.path]);
         }
     }
 

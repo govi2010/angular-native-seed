@@ -26,12 +26,12 @@ export const DashboardRoutes: Routes = [
         ]
 
     },
-    {
-        path: 'charts',
-        component: DashboardChartComponent
-    },
-    {
-        path: 'filter/:chartType',
-        component: DashboardFilterComponent
-    }
+    // {
+    //     path: 'charts',
+    //     component: DashboardChartComponent
+    // },
+    // {
+    //     path: 'filter/:chartType',
+    //     component: DashboardFilterComponent
+    // }
 ];

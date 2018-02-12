@@ -34,7 +34,7 @@ export class MyDrawerComponent implements OnInit {
 
     onNavItemTap(item: MyDrawerItem): void {
         if (item.router && item.router !== '') {
-            this.routerExtensions.router.navigate([item.router]);
+            this.routerExtensions.router.navigate([item.router],{ clearHistory: true });
         } else {
             this.itemSelected.emit(item);
         }

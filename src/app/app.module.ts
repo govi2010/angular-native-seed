@@ -13,7 +13,6 @@ import { reducers, AppState } from './store';
 import { StoreModule, ActionReducer, MetaReducer } from '@ngrx/store';
 import { ActionModule } from './actions/actions.module';
 import { ServiceConfig } from './services/service.config';
-import { localStorageSync } from './store/middleware/rehydrateAppState';
 import { storeLogger } from './store/middleware/storeLogger';
 import { NeedsAuthentication } from './decorators/needsAuthentication';
 
@@ -24,16 +23,16 @@ export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
 }
 
-export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
-    return localStorageSync({ keys: ['session'], rehydrate: true })(reducer);
-}
+// export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
+//     return localStorageSync({ keys: ['session'], rehydrate: true })(reducer);
+// }
 
 export function logger(reducer: ActionReducer<AppState>): any {
     // default, no options
     return storeLogger()(reducer);
 }
 
-let metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer, logger];
+let metaReducers: Array<MetaReducer<any, any>> = [logger];
 
 @NgModule({
     declarations: [AppComponent],

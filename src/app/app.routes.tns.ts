@@ -8,26 +8,26 @@ export const AppRoutes = [
     { path: '', pathMatch: 'full', redirectTo: '/home' },
     {
         path: 'home',
-        loadChildren: 'app/home/home.module#HomeModule',
+        loadChildren: './app/home/home.module#HomeModule',
         canActivate: [NeedsAuthentication]
     },
     {
         path: 'login',
-        loadChildren: 'app/login/login.module#LoginModule'
+        loadChildren: './app/login/login.module#LoginModule'
     },
     {
         path: 'dashboard',
-        loadChildren: 'app/dashboard/dashboard.module#DashboardModule',
+        loadChildren: './app/dashboard/dashboard.module#DashboardModule',
         canActivate: [NeedsAuthentication]
     },
     {
         path: 'settings',
-        loadChildren: 'app/settings/settings.module#SettingsModule',
+        loadChildren: './app/settings/settings.module#SettingsModule',
         canActivate: [NeedsAuthentication]
     },
     {
         path: 'reports',
-        loadChildren: 'app/reports/reports.module#ReportsModule',
+        loadChildren: './app/reports/reports.module#ReportsModule',
         canActivate: [NeedsAuthentication]
     }
 ];

@@ -9,6 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ReportsComponent } from '../reports/reports.component';
 import { PlChartComponent } from '../reports/components/pl-chart/pl-chart.component';
 import { ReportsRoutes } from './reports.routes';
+import { RouterModule } from '../common';
 
 
 @NgModule({
@@ -16,7 +17,7 @@ import { ReportsRoutes } from './reports.routes';
         NativeScriptCommonModule,
         NativeScriptFormsModule,
         FormsModule,
-        ReportsRoutes,
+        RouterModule.forChild(ReportsRoutes),
         ReactiveFormsModule,
         SharedModule,
         NativeScriptUIChartModule

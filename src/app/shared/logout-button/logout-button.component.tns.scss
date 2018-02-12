@@ -1,0 +1,8 @@
+// Custom common variables
+@import '../../../scss/variables';
+.button {
+  background-color: $ab-background;
+  color: white;
+  box-shadow: 0;
+  margin: 0;
+}

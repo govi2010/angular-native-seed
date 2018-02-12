@@ -13,7 +13,7 @@ import { Config } from '../../../common';
     selector: 'ns-login-two-way',
     moduleId: module.id,
     templateUrl: './login-two-way.component.html',
-    styleUrls: ['./login-two-way.component.css']
+    styleUrls: ['./login-two-way.component.scss']
 })
 export class LoginTwoWayComponent implements OnInit, OnDestroy {
     public isTwoWayAuthSuccess$: Observable<boolean>;

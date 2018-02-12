@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
     selector: 'ns-dashboard-filter',
     moduleId: module.id,
     templateUrl: `./dashboard-filter.component.html`,
-    styleUrls: ['./dashboard-filter.component.css']
+    styleUrls: ['./dashboard-filter.component.scss']
 })
 export class DashboardFilterComponent implements OnInit {
 

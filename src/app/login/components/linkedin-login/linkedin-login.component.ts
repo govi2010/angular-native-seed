@@ -4,7 +4,7 @@ import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit } fr
     selector: 'ns-linkedin-login',
     moduleId: module.id,
     templateUrl: './linkedin-login.component.html',
-    styleUrls: ['./linkedin-login.component.css']
+    styleUrls: ['./linkedin-login.component.scss']
 })
 export class LinkedInLoginComponent implements OnInit, OnDestroy, AfterViewInit {
 

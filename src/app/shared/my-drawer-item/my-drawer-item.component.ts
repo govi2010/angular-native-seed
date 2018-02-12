@@ -6,7 +6,7 @@ import { RouterService } from "../../services/router.service";
     selector: "MyDrawerItem",
     moduleId: module.id,
     templateUrl: "./my-drawer-item.component.html",
-    styleUrls: ["./my-drawer-item.component.css"]
+    styleUrls: ["./my-drawer-item.component.scss"]
 })
 export class MyDrawerItemComponent implements OnInit {
     @Input() mydraweritem: MyDrawerItem;

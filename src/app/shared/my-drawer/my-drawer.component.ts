@@ -14,7 +14,7 @@ import { RouterService } from "../../services/router.service";
     selector: "MyDrawer",
     moduleId: module.id,
     templateUrl: "./my-drawer.component.html",
-    styleUrls: ["./my-drawer.component.css"]
+    styleUrls: ["./my-drawer.component.scss"]
 })
 export class MyDrawerComponent implements OnInit {
     public user$: Observable<VerifyEmailResponseModel>;

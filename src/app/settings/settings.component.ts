@@ -10,7 +10,7 @@ import { Config } from '../common';
     selector: 'ns-settings',
     moduleId: module.id,
     templateUrl: './settings.component.html',
-    styleUrls: ["./settings.component.css"]
+    styleUrls: ["./settings.component.scss"]
 })
 export class SettingsComponent {
     public items: Array<{ icon: string, text: string, path: string }>;

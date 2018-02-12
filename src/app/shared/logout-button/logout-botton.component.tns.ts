@@ -13,7 +13,7 @@ import { ToasterService } from "../../services/toaster.service";
     selector: "LogoutButton",
     moduleId: module.id,
     templateUrl: "./logout-button.component.html",
-    styleUrls: ["./logout-button.component.css"]
+    styleUrls: ["./logout-button.component.scss"]
 })
 export class MyLogoutComponent implements OnInit, OnChanges {
 

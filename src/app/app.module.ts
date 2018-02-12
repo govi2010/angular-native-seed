@@ -15,6 +15,7 @@ import { ActionModule } from './actions/actions.module';
 import { ServiceConfig } from './services/service.config';
 import { storeLogger } from './store/middleware/storeLogger';
 import { NeedsAuthentication } from './decorators/needsAuthentication';
+import { ToastrModule } from 'ngx-toastr';
 
 Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
 
@@ -42,6 +43,7 @@ let metaReducers: Array<MetaReducer<any, any>> = [logger];
         StoreModule.forRoot(reducers, { metaReducers }),
         ServiceModule.forRoot(),
         ActionModule.forRoot(),
+        ToastrModule.forRoot(),
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

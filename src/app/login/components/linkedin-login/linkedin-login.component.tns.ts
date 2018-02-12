@@ -18,7 +18,7 @@ const LINKEDIN_SECRET_KEY = '3AJTvaKNOEG4ISJ0';
     selector: 'ns-linkedin-login',
     moduleId: module.id,
     templateUrl: './linkedin-login.component.html',
-    styleUrls: ['./linkedin-login.component.css']
+    styleUrls: ['./linkedin-login.component.scss']
 })
 export class LinkedInLoginComponent implements OnInit, OnDestroy, AfterViewInit {
     @ViewChild("myWebView") webViewRef: ElementRef;

@@ -88,7 +88,8 @@ export class ServiceModule {
         SettingsPermissionService,
         DaybookService,
         RouterService,
-        LoaderService
+        LoaderService,
+        ToasterService
       ]
     };
   }

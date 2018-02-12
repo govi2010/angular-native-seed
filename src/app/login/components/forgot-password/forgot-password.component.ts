@@ -17,7 +17,7 @@ import 'rxjs/add/operator/takeUntil';
     selector: 'ns-forgot-password',
     moduleId: module.id,
     templateUrl: './forgot-password.component.html',
-    styleUrls: ['./forgot-password.component.css']
+    styleUrls: ['./forgot-password.component.scss']
 })
 export class ForgotComponent implements OnInit, OnDestroy {
     public forgotPasswordForm: FormGroup;

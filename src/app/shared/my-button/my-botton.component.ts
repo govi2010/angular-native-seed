@@ -9,7 +9,7 @@ import { MyDrawerItem } from "../my-drawer-item/my-drawer-item";
   selector: "MyButton",
   moduleId: module.id,
   templateUrl: "./my-button.component.html",
-  styleUrls: ["./my-button.component.css"]
+  styleUrls: ["./my-button.component.scss"]
 })
 export class MyButonComponent implements OnInit, OnChanges {
 

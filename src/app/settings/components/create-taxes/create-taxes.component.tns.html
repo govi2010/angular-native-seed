@@ -1,0 +1,97 @@
+<ActionBar class="action-bar" width="100%">
+  <GridLayout columns="auto,*,auto" rows="*" width="100%">
+    <Button row="0" col="0" class="button" height="50" width="50" textAlignment="center" text="&#xf0c9;"
+            fontFamily="FontAwesome"
+            (tap)="onDrawerButtonTap()">
+    </Button>
+    <Label row="0" col="1" class="action-bar-title" fontWeight="400" text="Create Tax" horizontalAlignment="left"></Label>
+
+    <Button class="button" row="0" col="2" textAlignment="center" (tap)="submit()" text="Save">
+    </Button>
+  </GridLayout>
+</ActionBar>
+
+
+<RadSideDrawer #drawer showOverNavigation="true" [drawerTransition]="sideDrawerTransition">
+  <!--
+          Use the tkDrawerContent directive to display the content of the app drawer on this page.
+          -->
+  <StackLayout tkDrawerContent>
+    <MyDrawer [pages]="navItemObj$ | async"></MyDrawer>
+  </StackLayout>
+
+  <ScrollView tkMainContent>
+    <StackLayout margin="5" [formGroup]="taxForm">
+
+      <CardView class="gen-card-style" elevation="3" radius="1">
+        <StackLayout margin="7" padding="7">
+
+          <Label class="gen-font-style" text="Tax Name"></Label>
+          <TextField hint="Name" text="" formControlName="name"></TextField>
+
+          <StackLayout [visibility]="!selectedTaxObj ? 'visible' : 'collapsed'">
+            <Label class="gen-font-style" text="Unique No"></Label>
+            <TextField hint="Unique Number" text="" formControlName="taxNumber"></TextField>
+          </StackLayout>
+
+          <StackLayout marginTop="5">
+            <Label text="Tax Type" textWrap="true"></Label>
+            <DropDown backroundColor="red" marginTop="15" formControlName="taxType" [hint]="'Select Tax Type'"
+                      verticalAlignment="bottom" [isEnabled]="!selectedTaxObj"
+                      [items]='taxTypeList' (selectedIndexChanged)="taxTypeChanged($event)"></DropDown>
+          </StackLayout>
+
+          <StackLayout marginTop="5">
+            <Label text="Linked Account" textWrap="true" [visibility]="!selectedTaxObj && showLinkedAccounts ? 'visible' : 'collapsed'"></Label>
+
+            <DropDown backroundColor="red" marginTop="15" formControlName="account" [hint]="'Select Account'"
+                      verticalAlignment="bottom" [items]='flatternAccountList'
+                      [visibility]="!selectedTaxObj && showLinkedAccounts ? 'visible' : 'collapsed'" (selectedIndexChanged)="accountChanged($event)"></DropDown>
+            <StackLayout [visibility]="selectedTaxObj && selectedTaxObj.accounts ? 'visible' : 'collapsed'">
+              <MyChips *ngFor="let acc of taxForm.get('accounts').value" [text]="acc.name"
+                       [isClosable]="false"></MyChips>
+            </StackLayout>
+
+            <!--<FilterSelect height="100%" [items]="flattenAccountsStream$ | async" hint="Select Account" modal_title="Account"-->
+            <!--search_param="name" (change)="onAccountSelected($event)" [selected]="taxForm.get('accounts').value" primary_key="uniqueName" multiple="true" allowSearch="true"></FilterSelect>-->
+
+          </StackLayout>
+
+          <StackLayout orientation="horizontal" marginTop="5">
+            <StackLayout width="50%">
+              <Label class="gen-font-style" text="Tax Rate"></Label>
+              <TextField hint="in percentage" text="" keyboardType="number" formControlName="taxValue"></TextField>
+            </StackLayout>
+
+            <StackLayout width="50%" (tap)="openDatePicker()">
+              <Label class="gen-font-style" text="Apply Tax From"></Label>
+              <Label text="{{ taxForm.get('date').value }}" textWrap="true" marginTop="15"
+                     verticalAlignment="bottom"></Label>
+              <StackLayout class="hr-dark"></StackLayout>
+              <!-- <DatePicker formControlName="date"></DatePicker> -->
+              <!-- <DropDown backroundColor="red" marginTop="15" formControlName="date" [hint]="'Select Tax Type'" verticalAlignment="bottom" [items]='[1,2,3,4]'></DropDown> -->
+            </StackLayout>
+          </StackLayout>
+
+          <StackLayout orientation="horizontal" marginTop="5">
+            <StackLayout width="50%">
+              <Label class="gen-font-style" text="Tax Duration"></Label>
+              <DropDown backroundColor="red" formControlName="duration" marginTop="15" [hint]="'Select'"
+                        verticalAlignment="bottom" [items]='taxDurationList'></DropDown>
+            </StackLayout>
+
+            <StackLayout width="50%">
+              <Label class="gen-font-style" text="Tax File Date"></Label>
+              <DropDown backroundColor="red" formControlName="taxFileDate" marginTop="15" [hint]="'Select'"
+                        verticalAlignment="bottom"
+                        [items]='days'></DropDown>
+            </StackLayout>
+          </StackLayout>
+
+        </StackLayout>
+      </CardView>
+
+    </StackLayout>
+  </ScrollView>
+
+</RadSideDrawer>

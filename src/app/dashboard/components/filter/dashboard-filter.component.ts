@@ -4,10 +4,10 @@ import * as moment from 'moment/moment';
 import { ChartType, ChartFilterType } from '../../../models/interfaces/dashboard.interface';
 import { ChartCustomFilter } from '../../../models/api-models/Dashboard';
 import { DashboardActions } from '../../../actions/dashboard/dashboard.action';
-import { ReportsAction } from '../../../actions/reports/reports.action';
 import { AppState } from '../../../store';
 import { RouterService } from '../../../services/router.service';
 import { Config, ActivatedRoute } from '../../../common';
+import { ReportsActions } from '../../../actions/reports/reports.actions';
 
 @Component({
     selector: 'ns-dashboard-filter',
@@ -22,7 +22,7 @@ export class DashboardFilterComponent implements OnInit {
     public customFilterObj: ChartCustomFilter;
 
     constructor(private routerExtensions: RouterService, private store: Store<AppState>,
-        private _dashboardActions: DashboardActions, private _reportsActions: ReportsAction, private activatedRouter: ActivatedRoute) {
+        private _dashboardActions: DashboardActions, private _reportsActions: ReportsActions, private activatedRouter: ActivatedRoute) {
 
         this.items = [
             { val: ChartFilterType.ThisMonthToDate, text: 'This Month to Date', selected: false },
@@ -89,7 +89,7 @@ export class DashboardFilterComponent implements OnInit {
 
         if (this.chartType === ChartType.ProfitLoss) {
             url = '/new-reports';
-            this.store.dispatch(this._reportsActions.setProfitLossChartFilter(item.val, customFilterObj));
+            // this.store.dispatch(this._reportsActions.setProfitLossChartFilter(item.val, customFilterObj));
         } else {
             url = '/dashboard';
             this.store.dispatch(this._dashboardActions.setChartFilter(this.chartType, item.val, customFilterObj));

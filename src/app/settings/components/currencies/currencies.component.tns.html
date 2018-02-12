@@ -1,0 +1,43 @@
+<ActionBar class="action-bar" width="100%">
+  <GridLayout columns="auto,*,auto" rows="*" width="100%">
+    <Button row="0" col="0" class="button" height="50" width="50" text="&#xf0c9;" fontFamily="FontAwesome"
+      (tap)="onDrawerButtonTap()">
+    </Button>
+    <Label row="0" col="1" class="action-bar-title" fontWeight="400" text="Currencies" horizontalAlignment="left"></Label>
+
+    <!--<Button class="button" row="0" col="2" textAlignment="center" text="Save">-->
+    <!--</Button>-->
+  </GridLayout>
+</ActionBar>
+
+
+<RadSideDrawer #drawer showOverNavigation="true" [drawerTransition]="sideDrawerTransition">
+  <!--
+      Use the tkDrawerContent directive to display the content of the app drawer on this page.
+      -->
+  <StackLayout tkDrawerContent>
+    <MyDrawer [pages]="navItemObj$ | async"></MyDrawer>
+  </StackLayout>
+
+  <GridLayout tkMainContent>
+    <StackLayout margin="5">
+      <CardView class="gen-card-style" elevation="3" radius="1">
+        <GridLayout rows="auto, *" padding="0 15">
+
+          <ListView row="1" [items]="currenciesStream$ | async" class="">
+            <ng-template let-item="item" let-i="index">
+              <!-- <CardView elevation="3" radius="1"> -->
+                <Label class="gen-label-style gen-font-style" text="{{ item }}" verticalAlignment="bottom" textWrap="true"></Label>
+              <!-- </CardView> -->
+            </ng-template>
+          </ListView>
+
+          <!--<FAB row="1" icon="~/assets/image/ic_add_white.png" backgroundColor="#514FA1"-->
+          <!--rippleColor="#ff4081" class="fab-button" (tap)="createCurrencies()"></FAB>-->
+
+        </GridLayout>
+      </CardView>
+    </StackLayout>
+  </GridLayout>
+
+</RadSideDrawer>

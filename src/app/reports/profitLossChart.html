@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="../www/lib/es6-promise.min.js"></script>
+  <script src="../www/lib/nativescript-webview-interface.js"></script>
+  <script src='../www/lib/highcharts.js'></script>
+  <script src='../www/lib/exporting.js'></script>
+</head>
+
+<body>
+  <div id='container' style='height: 400px; margin: 0 auto'></div>
+
+
+  <script type='text/javascript'>
+    (function () {
+      var oWebViewInterface = window.nsWebViewInterface;
+
+      oWebViewInterface.on('seriesUpdated', function (seriesUpdated) {
+        // document.getElementById("container").style.width = width + 'px';
+        // oWebViewInterface.emit('languageSelection', width + 'px');
+        Highcharts.chart('container', {
+          chart: {
+            type: 'column'
+          },
+          xAxis: {
+            categories: seriesUpdated.categories || []
+          },
+          yAxis: {
+            min: 0,
+            title: {
+              text: 'Rainfall (mm)'
+            }
+          },
+          tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+              '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+          },
+          plotOptions: {
+            column: {
+              stacking: 'normal'
+            }
+          },
+          series: seriesUpdated.series || []
+        });
+      });
+
+      function addNativeMsgListener() {
+
+      }
+
+
+    })();
+
+  </script>
+</body>
+
+</html>

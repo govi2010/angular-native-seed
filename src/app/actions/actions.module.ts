@@ -7,7 +7,7 @@ import { DashboardActions } from './dashboard/dashboard.action';
 import { GeneralActions } from './general/general.actions';
 import { SettingsTaxesActions } from './settings/taxes/settings.taxes.action';
 import { SettingsProfileActions } from "./settings/profile/settings.profile.action";
-import { ReportsAction } from "./reports/reports.action";
+import { ReportsActions } from './reports/reports.actions';
 
 @NgModule({
     imports: [
@@ -18,7 +18,7 @@ import { ReportsAction } from "./reports/reports.action";
             GeneralActions,
             SettingsTaxesActions,
             SettingsProfileActions,
-            ReportsAction
+            ReportsActions
         ])
     ],
     exports: [EffectsModule]

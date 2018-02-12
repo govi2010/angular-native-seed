@@ -1,0 +1,31 @@
+<ActionBar class="action-bar" width="100%">
+    <GridLayout columns="auto,*,auto" rows="*" width="100%">
+        <Button row="0" col="0" class="button" height="50" width="50" textAlignment="center" text="&#xf0c9;" fontFamily="FontAwesome"
+            (tap)="onDrawerButtonTap()">
+        </Button>
+        <Label row="0" col="1" class="action-bar-title" [text]="'Sales'" fontWeight="400" horizontalAlignment="left"></Label>
+
+        <Button row="0" col="2" class="button" [nsRouterLink]="['/create-stock']" height="50" textAlignment="center" text="Add" fontFamily="FontAwesome">
+        </Button>
+
+    </GridLayout>
+</ActionBar>
+
+
+<RadSideDrawer #drawer showOverNavigation="true" [drawerTransition]="sideDrawerTransition">
+    <StackLayout tkDrawerContent>
+        <MyDrawer [pages]="navItemObj$ | async" [selectedPage]="'sale'"></MyDrawer>
+    </StackLayout>
+    <FlexboxLayout flexDirection="column" tkMainContent>
+        <Button row="0" col="2" class="button" [nsRouterLink]="['/create-stock']" height="50" textAlignment="center" text="Create Stock"
+            fontFamily="FontAwesome">
+        </Button>
+
+        <Button row="0" col="2" class="button" [nsRouterLink]="['/create-group']" height="50" textAlignment="center" text="Create Group"
+            fontFamily="FontAwesome">
+        </Button>
+
+        <Button row="0" col="2" class="button" [nsRouterLink]="['/add']" height="50" textAlignment="center" text="Add" fontFamily="FontAwesome">
+        </Button>
+    </FlexboxLayout>
+</RadSideDrawer>

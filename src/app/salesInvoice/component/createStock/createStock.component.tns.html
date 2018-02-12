@@ -1,0 +1,24 @@
+<ActionBar class="action-bar" width="100%">
+  <GridLayout columns="auto,*,auto" rows="*" width="100%">
+    <Button row="0" col="0" class="button" height="50" width="50" textAlignment="center" text="&#xf060;"
+      fontFamily="FontAwesome" (tap)="_routerExtension.back()">
+    </Button>
+    <Label row="0" col="1" class="action-bar-title" [text]="'Create Stock'" horizontalAlignment="left"></Label>
+
+    <Button row="0" col="2" class="button" textAlignment="center" text="Save">
+    </Button>
+  </GridLayout>
+</ActionBar>
+
+<StackLayout>
+  <SegmentedBar [items]="myItems" selectedIndex="0" (selectedIndexChange)="onSelectedIndexChange($event)" class="m-5"></SegmentedBar>
+
+  <StackLayout visibility="{{ selectedIndex === 0 ? 'visible' : 'collapsed' }}">
+    <!-- add product -->
+    <ns-stock-create-add-product></ns-stock-create-add-product>
+  </StackLayout>
+
+  <StackLayout visibility="{{ selectedIndex === 1 ? 'visible' : 'collapsed' }}">
+    <ns-stock-create-add-service></ns-stock-create-add-service>
+  </StackLayout>
+</StackLayout>

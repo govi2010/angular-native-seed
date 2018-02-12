@@ -1,0 +1,84 @@
+<ScrollView>
+  <StackLayout margin="10">
+
+    <CardView margin="5" elevation="10" radius="1">
+      <StackLayout margin="5">
+
+        <Label color="#59595B" text="Product Name"></Label>
+        <TextField hint="Dummy Name" text="" verticalAlignment="bottom"></TextField>
+
+        <Label color="#59595B" text="Group Name"></Label>
+        <StackLayout orientation="horizontal">
+          <DropDown #dd backroundColor="red" width="95%" [items]='[1,2,3,4]' [hint]="'Select Group'" verticalAlignment="center"></DropDown>
+          <Label text="&#xf067;" color="#428ECB" fontFamily="FontAwesome" verticalAlignment="center"></Label>
+        </StackLayout>
+
+        <StackLayout orientation="horizontal" marginTop="5">
+          <StackLayout width="50%">
+            <Label color="#59595B" text="Unit"></Label>
+            <DropDown backroundColor="red" marginTop="15" [hint]="'Select'" [items]='[1,2,3,4]' verticalAlignment="center"></DropDown>
+          </StackLayout>
+
+          <StackLayout width="50%">
+            <Label color="#59595B" text="HSN Code"></Label>
+            <TextField hint="12345" text="" verticalAlignment="bottom"></TextField>
+          </StackLayout>
+        </StackLayout>
+
+        <StackLayout orientation="horizontal" marginTop="5">
+          <StackLayout width="50%">
+            <Label color="#59595B" text="Quantity"></Label>
+            <TextField hint="10" text="" verticalAlignment="bottom"></TextField>
+          </StackLayout>
+
+          <StackLayout width="50%">
+            <Label color="#59595B" text="Amount (in INR)"></Label>
+            <TextField hint="1000.00" text="" verticalAlignment="bottom"></TextField>
+          </StackLayout>
+        </StackLayout>
+
+      </StackLayout>
+    </CardView>
+
+    <CardView margin="5" elevation="10" radius="1">
+      <StackLayout margin="5">
+
+        <Label color="#59595B" text="Purchase Account"></Label>
+        <DropDown backroundColor="red" [hint]="'Select Account'" [items]='[1,2,3,4]' verticalAlignment="center"></DropDown>
+
+        <StackLayout orientation="horizontal" marginTop="5">
+          <StackLayout width="50%">
+            <Label color="#59595B" text="Unit"></Label>
+            <DropDown backroundColor="red" marginTop="15" [hint]="'Select'" [items]='[1,2,3,4]' verticalAlignment="center"></DropDown>
+          </StackLayout>
+
+          <StackLayout width="50%">
+            <Label color="#59595B" text="Rate"></Label>
+            <TextField hint="1500.00" text="" verticalAlignment="bottom"></TextField>
+          </StackLayout>
+        </StackLayout>
+
+      </StackLayout>
+    </CardView>
+
+    <CardView margin="5" elevation="10" radius="1">
+      <StackLayout margin="5">
+
+        <Label color="#59595B" text="Applicable Taxes"></Label>
+        <DropDown backroundColor="red" [hint]="'Select Account'" [items]='[1,2,3,4]' verticalAlignment="center"></DropDown>
+
+        <Label text="Applied Taxes" textWrap="true"></Label>
+        <WrapLayout orientation="horizontal">
+          <MyChips [text]="'VAT 14%'"></MyChips>
+          <MyChips [text]="'GST 12%'"></MyChips>
+          <MyChips [text]="'GST 12%'"></MyChips>
+          <MyChips [text]="'GST 12%'"></MyChips>
+          <MyChips [text]="'GST 12%'"></MyChips>
+        </WrapLayout>
+
+      </StackLayout>
+    </CardView>
+
+
+  </StackLayout>
+</ScrollView>

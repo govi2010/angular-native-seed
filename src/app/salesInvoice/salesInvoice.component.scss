@@ -1,0 +1,52 @@
+@import '../scss/variables';
+ActionBar {
+  background-color: $ab-background;
+  padding: 0;
+}
+
+.left {
+  float: left;
+}
+
+.action-image {
+  width: 40;
+  height: 40;
+  vertical-align: center;
+}
+
+.action-label {
+  color: black;
+  font-size: 24;
+  font-weight: bold;
+  vertical-align: center;
+}
+
+.button {
+  background-color: $ab-background;
+  color: white;
+  box-shadow: 0;
+  margin: 0;
+}
+
+.b-button {
+  color: $ab-background;
+  border-color: rgb(250, 190, 190);
+  border-style: solid;
+  border-width: 2pt;
+  margin: 5pt;
+  background-color: #fff;
+}
+
+.hidden {
+  visibility: hidden;
+  display: none;
+}
+
+@keyframes fa-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}

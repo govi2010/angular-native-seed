@@ -1,0 +1,85 @@
+<ActionBar class="action-bar" width="100%">
+  <GridLayout columns="auto,*,auto" rows="*" width="100%">
+    <Button row="0" col="0" class="button" height="50" width="50" textAlignment="center" text="&#xf060;" fontFamily="FontAwesome"
+      (tap)="_routerExtension.back()">
+    </Button>
+    <Label row="0" col="1" class="action-bar-title" [text]="'Create Account'" horizontalAlignment="left"></Label>
+
+    <Button row="0" col="2" class="button" textAlignment="center" text="Save">
+    </Button>
+  </GridLayout>
+</ActionBar>
+
+<ScrollView>
+  <StackLayout margin="10" [formGroup]="addAccountForm">
+
+    <CardView margin="5" elevation="10" radius="1">
+      <StackLayout margin="5">
+
+        <Label color="#59595B" text="Account Name"></Label>
+        <TextField hint="Dummy Name" formControlName="name" text="" verticalAlignment="bottom"></TextField>
+
+        <StackLayout orientation="horizontal" marginTop="5">
+
+          <StackLayout width="50%">
+            <Label color="#59595B" text="Parent Group"></Label>
+            <DropDown backroundColor="red" marginTop="15" [hint]="'Select'" [items]='flatAccountWGroupsList' verticalAlignment="center"
+              formControlName="parentGroupUniqueName" name="parentGroupUniqueName"></DropDown>
+          </StackLayout>
+
+          <StackLayout width="50%" formGroupName="country">
+            <Label color="#59595B" text="Country"></Label>
+            <DropDown backroundColor="red" formControlName="countryCode" marginTop="15" [hint]="'Select'" [items]='countrySource' verticalAlignment="center"></DropDown>
+          </StackLayout>
+
+        </StackLayout>
+
+      </StackLayout>
+    </CardView>
+
+    <CardView margin="5" elevation="10" radius="1">
+      <StackLayout margin="5">
+
+        <Label color="#59595B" text="Attention to (will be used in invoice)"></Label>
+        <TextField hint="wiil be used in invoice" formControlName="attentionTo" text="" verticalAlignment="bottom"></TextField>
+
+        <StackLayout orientation="horizontal" marginTop="5">
+          <StackLayout width="50%">
+            <Label color="#59595B" text="Opening Balance"></Label>
+            <TextField hint="1000.00" text="" formControlName="openingBalance" verticalAlignment="bottom"></TextField>
+          </StackLayout>
+
+          <StackLayout width="50%">
+            <Label color="#59595B" text="Currency"></Label>
+            <TextField hint="INR-India" formControlName="currency" text="" verticalAlignment="bottom"></TextField>
+          </StackLayout>
+        </StackLayout>
+
+      </StackLayout>
+    </CardView>
+
+    <CardView margin="5" elevation="10" radius="1">
+      <StackLayout margin="5">
+
+        <StackLayout orientation="horizontal" marginTop="5">
+          <StackLayout width="50%">
+            <Label color="#59595B" text="Mobile Number"></Label>
+            <TextField hint="1000.00" formControlName="mobileNo" text="" verticalAlignment="bottom"></TextField>
+          </StackLayout>
+
+          <StackLayout width="50%">
+            <Label color="#59595B" text="Email ID"></Label>
+            <TextField hint="1000.00" formControlName="email" text="" verticalAlignment="bottom"></TextField>
+          </StackLayout>
+        </StackLayout>
+
+        <Label color="#59595B" text="Description"></Label>
+        <TextField hint="Dummy Data" formControlName="description" text="" verticalAlignment="bottom"></TextField>
+
+
+      </StackLayout>
+    </CardView>
+
+
+  </StackLayout>
+</ScrollView>

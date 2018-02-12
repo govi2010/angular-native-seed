@@ -29,5 +29,10 @@ export const AppRoutes = [
         path: 'reports',
         loadChildren: './app/reports/reports.module#ReportsModule',
         canActivate: [NeedsAuthentication]
-    }
+    },
+    {
+        path: 'sale',
+        loadChildren: './app/salesInvoice/salesInvoice.module#SalesInvoiceModule',
+        canActivate: [NeedsAuthentication]
+    },
 ];

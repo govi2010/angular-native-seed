@@ -4,7 +4,7 @@ require("ui/styling/style-scope");
 const appCssContext = require.context("~/", false, /^\.\/app\.(css|scss|less|sass)$/);
 global.registerWebpackModules(appCssContext);
 application.loadAppCss();
-
+console.log("-------------------------------------- App CSS loaded --------------------------")
 require("./vendor-platform");
 
 require("reflect-metadata");

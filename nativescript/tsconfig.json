@@ -28,7 +28,10 @@
         ]
     },
     "include": [
-        "app/**/*"
+        "references.d.ts",
+        "app/main.aot.ts",
+        "app/vendor*",
+        "app/**/*.module.ts"
     ],
     "exclude": [
         "node_modules",

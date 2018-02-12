@@ -5,7 +5,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
   selector: "MyChips",
   moduleId: module.id,
   templateUrl: "./my-chips.component.html",
-  styleUrls: ["./my-chips.component.css"]
+  styleUrls: ["./my-chips.component.scss"]
 })
 
 export class MyChipsComponent implements OnInit {

@@ -15,7 +15,7 @@ import { Config } from '../../../common';
     selector: 'ns-login-with-email',
     moduleId: module.id,
     templateUrl: './login-with-email.component.html',
-    styleUrls: ['./login-with-email.component.css']
+    styleUrls: ['./login-with-email.component.scss']
 })
 export class LoginWithEmailComponent implements OnInit, OnDestroy {
     public isLoginWithEmailInProcess$: Observable<boolean>;

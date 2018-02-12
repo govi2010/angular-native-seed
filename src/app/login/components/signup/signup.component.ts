@@ -12,7 +12,7 @@ import { Config } from '../../../common';
     selector: 'ns-signup',
     moduleId: module.id,
     templateUrl: './signup.component.html',
-    styleUrls: ['./signup.component.css']
+    styleUrls: ['./signup.component.scss']
 })
 export class SignUpComponent implements OnInit, OnDestroy {
     public signUpProcess$: Observable<boolean>;

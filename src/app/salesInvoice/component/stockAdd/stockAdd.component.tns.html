@@ -1,0 +1,60 @@
+<ActionBar class="action-bar" width="100%">
+  <GridLayout columns="auto,*,auto" rows="*" width="100%">
+    <Button row="0" col="0" class="button" height="50" width="50" textAlignment="center" text="&#xf060;"
+    fontFamily="FontAwesome" (tap)="_routerExtension.back()">
+    </Button>
+    <Label row="0" col="1" class="action-bar-title" [text]="'Add Stock'" horizontalAlignment="left"></Label>
+
+    <Button row="0" col="2" class="button" textAlignment="center" text="Save">
+    </Button>
+  </GridLayout>
+</ActionBar>
+
+<ScrollView>
+  <StackLayout margin="5">
+
+    <CardView class="gen-card-style gen-font-style" elevation="3" radius="1">
+      <StackLayout margin="5">
+
+        <Label color="#59595B" text="Stock"></Label>
+
+        <StackLayout orientation="horizontal">
+          <DropDown #dd backroundColor="red" [hint]="'Select Stock'" width="95%" [items]='[1,2,3,4]' verticalAlignment="center"></DropDown>
+          <Label text="&#xf067;" color="#428ECB" fontFamily="FontAwesome" verticalAlignment="center"></Label>
+        </StackLayout>
+
+
+        <StackLayout marginTop="5">
+          <Label text="Description" textWrap="true"></Label>
+          <TextField hint="Dummy Text" text=""></TextField>
+        </StackLayout>
+
+        <StackLayout orientation="horizontal" marginTop="5">
+          <StackLayout width="50%">
+            <Label color="#59595B" text="Quantity"></Label>
+            <TextField hint="5" text=""></TextField>
+          </StackLayout>
+
+          <StackLayout width="50%">
+            <Label color="#59595B" text="Rate"></Label>
+            <TextField hint="5" text=""></TextField>
+          </StackLayout>
+        </StackLayout>
+
+        <StackLayout orientation="horizontal" marginTop="5">
+          <StackLayout width="50%">
+            <Label color="#59595B" text="Tax Rate"></Label>
+            <DropDown backroundColor="red" marginTop="15" [hint]="'Select Rate'" verticalAlignment="bottom" [items]='[1,2,3,4]'></DropDown>
+          </StackLayout>
+
+          <StackLayout width="50%">
+              <Label color="#59595B" text="Tax Amount (in INR)"></Label>
+              <TextField hint="100.00" text="" verticalAlignment="bottom"></TextField>
+          </StackLayout>
+        </StackLayout>
+
+      </StackLayout>
+    </CardView>
+
+  </StackLayout>
+</ScrollView>

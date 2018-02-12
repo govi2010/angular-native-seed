@@ -1,0 +1,20 @@
+<ScrollView>
+  <StackLayout margin="10">
+
+    <CardView margin="5" elevation="10" radius="1">
+      <StackLayout margin="5">
+
+        <Label color="#59595B" text="Group Name"></Label>
+        <TextField hint="Dummy Name" text="" verticalAlignment="bottom"></TextField>
+
+        <Label color="#59595B" text="Adding to"></Label>
+        <DropDown #dd backroundColor="red" width="95%" [items]='[1,2,3,4]' [hint]="'Select Group'" verticalAlignment="center"></DropDown>
+        <StackLayout orientation="horizontal">
+          <CheckBox #elem [text]="'Assign as a Parent Group'" [checked]="true"></CheckBox>
+        </StackLayout>
+
+      </StackLayout>
+    </CardView>
+
+  </StackLayout>
+</ScrollView>

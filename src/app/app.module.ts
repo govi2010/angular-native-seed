@@ -13,9 +13,10 @@ import { reducers, AppState } from './store';
 import { StoreModule, ActionReducer, MetaReducer } from '@ngrx/store';
 import { ActionModule } from './actions/actions.module';
 import { ServiceConfig } from './services/service.config';
-import { localStorageSync } from './store/middleware/rehydrateAppState';
 import { storeLogger } from './store/middleware/storeLogger';
 import { NeedsAuthentication } from './decorators/needsAuthentication';
+import { ToastrModule } from 'ngx-toastr';
+import { localStorageSync } from 'ngrx-store-localstorage';
 
 Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
 
@@ -43,6 +44,7 @@ let metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer, logge
         StoreModule.forRoot(reducers, { metaReducers }),
         ServiceModule.forRoot(),
         ActionModule.forRoot(),
+        ToastrModule.forRoot(),
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

@@ -7,7 +7,7 @@ import { RouterService } from '../services/router.service';
     selector: 'ns-dashboard',
     moduleId: module.id,
     templateUrl: `./dashboard.component.html`,
-    styleUrls: ['./dashboard.component.css']
+    styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
     constructor(private store: Store<AppState>, private routerExtensions: RouterService) {

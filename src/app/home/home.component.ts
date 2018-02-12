@@ -16,7 +16,7 @@ import { ToasterService } from '../services/toaster.service';
     selector: 'ns-home',
     moduleId: module.id,
     templateUrl: './home.component.html',
-    styleUrls: ['./home.component.css']
+    styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy {
     public logoutIcon: string = String.fromCharCode(0xf073);

@@ -1,0 +1,145 @@
+<ActionBar class="action-bar" width="100%">
+  <GridLayout columns="auto,*,auto" rows="*" width="100%">
+    <Button row="0" col="0" class="button" height="50" width="50" textAlignment="center" text="&#xf060;" fontFamily="FontAwesome"
+      (tap)="_routerExtension.back()">
+    </Button>
+    <Label row="0" col="1" class="action-bar-title" [text]="'Sales Invoice'" fontWeight="400" horizontalAlignment="left"></Label>
+
+    <Button row="0" col="2" class="button" textAlignment="center" text="Save">
+    </Button>
+  </GridLayout>
+</ActionBar>
+
+<ScrollView>
+  <StackLayout margin="5">
+
+    <CardView class="gen-card-style gen-font-style" elevation="3" radius="1" padding="0 10">
+      <StackLayout margin="10">
+        <Label class="gen-font-style" text="Customer Name"></Label>
+
+        <StackLayout orientation="horizontal">
+          <DropDown #dd backroundColor="red" width="95%" [items]='[1,2,3,4]' verticalAlignment="center"></DropDown>
+          <Label text="&#xf067;" [nsRouterLink]="['/create-account']" color="#428ECB" fontFamily="FontAwesome" verticalAlignment="center"></Label>
+        </StackLayout>
+
+        <StackLayout class="hr-light"></StackLayout>
+
+        <Button backgroundColor="white" color="#478ECB" text="Add Entry Against Cash/Bank" width="100%"></Button>
+
+        <StackLayout marginTop="10">
+          <Label class="gen-font-style" text="Add Entry Against"></Label>
+          <DropDown backroundColor="red" [hint]="'Select Cash/Bank'" [items]='[1,2,3,4]' verticalAlignment="center"></DropDown>
+        </StackLayout>
+
+        <StackLayout marginTop="10">
+          <Label class="gen-font-style" text="Attention to" textWrap="true"></Label>
+          <TextField hint="will be used in invoice" text=""></TextField>
+        </StackLayout>
+
+        <StackLayout class="hr-light"></StackLayout>
+      </StackLayout>
+    </CardView>
+
+    <CardView class="gen-card-style gen-font-style" elevation="3" radius="1" padding="0 10">
+      <StackLayout margin="10">
+        <StackLayout orientation="horizontal" margin="5">
+
+          <StackLayout width="50%">
+            <Label text="Country"></Label>
+            <DropDown backroundColor="red" [hint]="'Select'" [items]='[1,2,3,4]' verticalAlignment="center"></DropDown>
+          </StackLayout>
+
+          <StackLayout width="50%">
+            <Label text="Invoice Number"></Label>
+            <DropDown backroundColor="red" [hint]="'Select'" [items]='[1,2,3,4]' verticalAlignment="center"></DropDown>
+          </StackLayout>
+        </StackLayout>
+
+        <StackLayout orientation="horizontal" margin="10 5 5 5">
+          <StackLayout width="50%">
+            <Label text="Date"></Label>
+            <DropDown backroundColor="red" [hint]="'Select'" [items]='[1,2,3,4]' verticalAlignment="center"></DropDown>
+          </StackLayout>
+
+          <StackLayout width="50%">
+            <Label text="Due"></Label>
+            <DropDown backroundColor="red" [hint]="'Select'" [items]='[1,2,3,4]' verticalAlignment="center"></DropDown>
+          </StackLayout>
+        </StackLayout>
+      </StackLayout>
+    </CardView>
+
+    <CardView class="gen-card-style gen-font-style" elevation="3" radius="1" padding="0 10">
+      <StackLayout margin="10">
+        <StackLayout margin="5">
+          <Label text="Billing Address" textWrap="true"></Label>
+          <TextField hint="Text" text=""></TextField>
+        </StackLayout>
+
+
+        <StackLayout orientation="horizontal" margin="5">
+          <StackLayout width="50%">
+            <Label text="Date"></Label>
+            <DropDown backroundColor="red" [hint]="'Select'" [items]='[1,2,3,4]' verticalAlignment="center"></DropDown>
+          </StackLayout>
+
+          <StackLayout width="50%">
+            <Label text="Due"></Label>
+            <DropDown backroundColor="red" [hint]="'Select'" [items]='[1,2,3,4]' verticalAlignment="center"></DropDown>
+          </StackLayout>
+        </StackLayout>
+      </StackLayout>
+    </CardView>
+
+    <CardView class="gen-card-style gen-font-style" elevation="3" radius="1" padding="0 10">
+      <StackLayout margin="10">
+
+        <GridLayout rows="auto" columns="auto,*" class="list-group" *ngFor="let item of [1,2]">
+          <Label text="&#xf147;" row="0" col="0" color="#CDCED0" fontFamily="FontAwesome" verticalAlignment="center" class="list-group-item"></Label>
+
+          <FlexboxLayout row="0" col="1" borderBottomWidth="0.5">
+            <Label text="Product 1" flexGrow="1" class="list-group-item"></Label>
+            <Label text="3600" class="list-group-item"></Label>
+          </FlexboxLayout>
+        </GridLayout>
+
+        <StackLayout orientation="horizontal">
+          <Label text="&#xf067;" color="#428ECB" fontFamily="FontAwesome" verticalAlignment="center"></Label>
+          <Label text="Add Stock" [nsRouterLink]="['/add-stock']" color="#4290D5" fontSize="16" textWrap="true"></Label>
+        </StackLayout>
+
+        <FlexboxLayout justifyContent="space-between">
+          <Label text="Subtotal" textWrap="true"></Label>
+          <Label text="0000" textWrap="true"></Label>
+        </FlexboxLayout>
+
+        <FlexboxLayout justifyContent="space-between">
+          <Label text="Discount" textWrap="true"></Label>
+          <Label text="000" textWrap="true"></Label>
+        </FlexboxLayout>
+
+        <FlexboxLayout justifyContent="space-between">
+          <Label text="Deposit" textWrap="true"></Label>
+          <Label text="000" textWrap="true"></Label>
+        </FlexboxLayout>
+
+        <FlexboxLayout justifyContent="space-between">
+          <Label text="Balance Due" textWrap="true"></Label>
+          <Label text="0000" textWrap="true"></Label>
+        </FlexboxLayout>
+
+      </StackLayout>
+    </CardView>
+
+    <CardView class="gen-card-style gen-font-style" elevation="3" radius="1" padding="0 10">
+      <StackLayout margin="5">
+        <StackLayout>
+          <Label text="Footer Note" textWrap="true"></Label>
+          <TextField hint="Thanks for your business" text=""></TextField>
+        </StackLayout>
+
+      </StackLayout>
+    </CardView>
+
+  </StackLayout>
+</ScrollView>

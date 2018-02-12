@@ -1,0 +1,22 @@
+<ActionBar class="action-bar" width="100%">
+  <GridLayout columns="40,*,auto" rows="*" width="100%">
+    <Button row="0" col="0" class="button" height="50" textAlignment="center" text="&#xf060;" fontFamily="FontAwesome" (tap)="onNavBtnTap()">
+    </Button>
+    <Label row="0" col="1" class="action-bar-title" [text]="'Select Tax Rate'" horizontalAlignment="center"></Label>
+
+    <Button row="0" col="2" class="button" height="50" textAlignment="center" text="Save" fontFamily="FontAwesome" (tap)="saveAndClose()">
+    </Button>
+
+  </GridLayout>
+</ActionBar>
+
+<GridLayout>
+  <CardView margin="10" elevation="40" radius="1">
+    <ListView [items]="items">
+      <ng-template let-item="item" let-i="index">
+        <CheckBox #elem [text]="item.text" [checked]="item.selected" (checkedChange)="elem.checked !== item.selected && changeCheckedRadio(item)"
+          boxType="circle"></CheckBox>
+      </ng-template>
+    </ListView>
+  </CardView>
+</GridLayout>

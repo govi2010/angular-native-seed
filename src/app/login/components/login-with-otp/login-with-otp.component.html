@@ -35,17 +35,17 @@
     </div>
     <span>&nbsp;&nbsp;or login with&nbsp;&nbsp;</span>
 
-    <div class="social">
-        <ul>
+    <div class="helperlinks">
+        <ul class="helperlinks">
             <li>
-                <a href="#">
-                    <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-                </a>
+                <a [routerLink]="['forgot-password']">Forgot Password</a> |
+                <a [routerLink]="['login-with-otp']">Login with OTP</a>
             </li>
             <li>
-                <a href="#">
-                    <i class="fa fa-google-plus-official" aria-hidden="true"></i>
-                </a>
+                <a [routerLink]="['login-with-email']">Login with Email</a>
+            </li>
+            <li>
+                <a [routerLink]="['signup']">Sign UP</a>
             </li>
         </ul>
     </div>

@@ -44,7 +44,7 @@ export class AuthenticationService {
     public ForgotPassword(email: string): Observable<BaseResponse<string, string>> {
         return this._http.put(this.config.apiUrl +
             LOGIN_API.ForgotPassword.replace(':email', email), '').map((res) => {
-                let data: BaseResponse<string, string> = res.json();
+                let data: BaseResponse<string, string> = res;
                 // data.request = modele;
                 return data;
             }).catch((e) => this.errorHandler.HandleCatch<string, string>(e));
@@ -52,7 +52,7 @@ export class AuthenticationService {
     public ResetPasswordV2(request: ResetPasswordV2): Observable<BaseResponse<string, ResetPasswordV2>> {
         return this._http.put(this.config.apiUrl +
             LOGIN_API.ResetPasswordV2, request).map((res) => {
-                let data: BaseResponse<string, ResetPasswordV2> = res.json();
+                let data: BaseResponse<string, ResetPasswordV2> = res;
                 data.request = request;
                 return data;
             }).catch((e) => this.errorHandler.HandleCatch<string, ResetPasswordV2>(e));

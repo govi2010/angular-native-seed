@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Optional } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../store';
@@ -29,7 +29,7 @@ export class ForgotComponent implements OnInit, OnDestroy {
     private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
     // private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
-    constructor(private routerExtensions: RouterService, private page: Page, private _fb: FormBuilder,
+    constructor(private routerExtensions: RouterService, @Optional() private page: Page, private _fb: FormBuilder,
         private store: Store<AppState>, private _loginActions: LoginActions, private _toaster: ToasterService) {
         this.isForgotPasswordSuccess$ = this.store.select(s => s.login.isForgotPasswordSuccess).takeUntil(this.destroyed$);
         this.isResetPasswordSuccess$ = this.store.select(s => s.login.isResetPasswordSuccess).takeUntil(this.destroyed$);
@@ -81,7 +81,7 @@ export class ForgotComponent implements OnInit, OnDestroy {
                 }
             });
         } else {
-            //
+            this.routerExtensions.router.navigate(['/login']);
         }
     }
 

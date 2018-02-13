@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Optional } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../store';
 import { Observable } from 'rxjs/Observable';
@@ -25,7 +25,7 @@ export class LoginWithEmailComponent implements OnInit, OnDestroy {
     public emailVerifyForm: FormGroup;
 
     private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
-    constructor(private _fb: FormBuilder, private store: Store<AppState>, private _loginActions: LoginActions, private routerExtensions: RouterService, private page: Page) {
+    constructor(private _fb: FormBuilder, private store: Store<AppState>, private _loginActions: LoginActions, private routerExtensions: RouterService,@Optional() private page: Page) {
         this.isLoginWithEmailInProcess$ = this.store.select(s => s.login.isLoginWithEmailInProcess).takeUntil(this.destroyed$);
         this.isVerifyEmailInProcess$ = this.store.select(s => s.login.isVerifyEmailInProcess).takeUntil(this.destroyed$);
         this.isVerifyEmailSuccess$ = this.store.select(s => s.login.isVerifyEmailSuccess).takeUntil(this.destroyed$);
@@ -67,7 +67,11 @@ export class LoginWithEmailComponent implements OnInit, OnDestroy {
 
         this.isVerifyEmailSuccess$.subscribe(s => {
             if (s) {
-                (this.routerExtensions.router as any).navigate(['/home'], { clearHistory: true });
+                if (Config.IS_MOBILE_NATIVE) {
+                    (this.routerExtensions.router as any).navigate(['/home'], { clearHistory: true });
+                } else {
+                    this.routerExtensions.router.navigate(['/home']);
+                }
             }
         })
     }
@@ -92,12 +96,16 @@ export class LoginWithEmailComponent implements OnInit, OnDestroy {
     }
 
     public backToLogin() {
-        (this.routerExtensions.router as any).navigate(['/login'], {
-            clearHistory: true, animated: true,
-            transition: {
-                name: 'slideRight',
-                curve: AnimationCurve.ease
-            }
-        });
+        if (Config.IS_MOBILE_NATIVE) {
+            (this.routerExtensions.router as any).navigate(['/login'], {
+                clearHistory: true, animated: true,
+                transition: {
+                    name: 'slideRight',
+                    curve: AnimationCurve.ease
+                }
+            });
+        } else {
+            this.routerExtensions.router.navigate(['/login']);
+        }
     }
 }

@@ -7,12 +7,13 @@
             <div *ngIf="!(isLoginWithMobileSubmited$ | async)">
                 <input type="text" class="uname" formControlName="mobileNumber" placeholder="Mobile No">
                 <input class="btn" type="button" [disabled]="mobileVerifyForm.get('mobileNumber').invalid" (click)="getOtp()" name="submit"
-                    value="Get Verification Code">
+                    value="Get Verification Code" [ladda]='isLoginWithMobileInProcess$ | async'>
             </div>
 
             <div *ngIf="(isLoginWithMobileSubmited$ | async)">
                 <input type="password" name="password" formControlName="otp" class="pass" placeholder="Otp">
-                <input class="btn" type="button" [disabled]="mobileVerifyForm.invalid" name="submit" (click)="verifyCode()" value="Submit">
+                <input class="btn" type="button" [disabled]="mobileVerifyForm.invalid" name="submit" [ladda]='isVerifyMobileInProcess$ | async'
+                    (click)="verifyCode()" value="Submit">
             </div>
         </form>
 

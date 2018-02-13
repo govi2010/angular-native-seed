@@ -1,0 +1,52 @@
+<div class="center">
+    <img class="logo" src="../../../assets/image/logo.png">
+
+    <div class="form">
+
+        <form name="login" action="#" [formGroup]="emailVerifyForm">
+            <div *ngIf="!(isLoginWithEmailSubmited$ | async)">
+                <input type="text" class="uname" formControlName="email" placeholder="Email Id">
+                <input class="btn" type="button" [disabled]="emailVerifyForm.get('email').invalid" (click)="loginWithEmail()" name="submit"
+                    value="Submit" [ladda]='isLoginWithEmailInProcess$ | async'>
+            </div>
+
+            <div *ngIf="(isLoginWithEmailSubmited$ | async)">
+                <input type="password" name="password" formControlName="token" class="pass" placeholder="Otp">
+                <input class="btn" type="button" [disabled]="emailVerifyForm.invalid" name="submit" [ladda]='isVerifyEmailInProcess$ | async'
+                    (click)="verifyEmail()" value="Submit">
+            </div>
+        </form>
+
+        <div class="helperlinks">
+            <ul class="helperlinks">
+                <li>
+                    <a>Forgot Password</a> |
+                    <a>Login with OTP</a>
+                </li>
+                <li>
+                    <a>Login with Email</a>
+                </li>
+                <li>
+                    <a>Sign UP</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <span>&nbsp;&nbsp;or login with&nbsp;&nbsp;</span>
+
+    <div class="social">
+        <ul>
+            <li>
+                <a href="#">
+                    <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-google-plus-official" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

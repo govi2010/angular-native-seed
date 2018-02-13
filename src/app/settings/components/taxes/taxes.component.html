@@ -1,0 +1,14 @@
+<div class="card">
+    <div class="card-block">
+        <ul class="list-group list-group-flush">
+            <li *ngFor="let item of (taxList$ | async)" class="list-group-item" [routerLink]="['/settings','create-taxes', item.uniqueName]">
+                <p class="card-text">{{ item.name }}</p>
+            </li>
+        </ul>
+
+        <div class="card-block">
+            <a href="#" [routerLink]="['/settings','create-taxes']" class="card-link">Add</a>
+        </div>
+
+    </div>
+</div>

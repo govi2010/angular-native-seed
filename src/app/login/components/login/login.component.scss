@@ -1,78 +1,73 @@
-.login,
-.page {
-  background-color: rgb(0, 169, 157);
+.center {
+    width: 30%;
+    height: auto;
+    display: block;
+    margin: 40px auto;
+    background: transparent;
+
 }
-
-.login #logo {
-  margin-top: 13%;
+.logo {
+    position: relative;
+    display: block;
+    margin: 5px auto;
+    padding: 30px;
+    }
+.form{
+    width: 100%;
+    position: relative;
+    margin: 5px auto;
 }
-
-.page {
-  margin: 0 5%;
+input {
+    width: 100%;
+    height: 30px;
+    margin: 10px auto;
+    background: #28c170;
+    border: 1px solid #24a05f;
+    border-radius: 1px;
 }
-
-.form {
-  margin-top: 10%;
+input.btn {
+    background:rgba(168, 193, 190,.7) ;
 }
-
-
-.btn {
-  background-color: rgb(154, 214, 208);
-  color: rgb(40, 40, 90);
-  margin: 0;
+a {
+    color: #0c2b5b;
+    width: 100%;
+    text-align-last: center;
 }
-
-.font {
-  font-size: 15px;
-  color: rgb(40, 40, 90);
+.helperlinks{
+    display: block;
+    margin: 0 auto;
 }
-
-.color {
-  background-color: rgb(40, 40, 90);
+span {
+    position: relative;
 }
-
-.margin {
-  margin-top: 20%;
+span:before ,span:after {
+    content: "";
+    width: calc(11vw + 3px);
+    height: 3px;
+    background:#0c2b5b;
+    display:inline-block;
+    position: relative;
+    bottom: 2px;
 }
-
-.icon {
-  border-radius: 50%;
-  height: 40;
-  width: 40;
-  background-color: rgb(12, 115, 115);
-  color: white;
-  margin-top: 30;
+ul.helperlinks {
+    display: block;
+    margin: 0 auto;
+    list-style: none;
+    text-align-last: center;
 }
-
-.mar-l-r {
-  margin-right: 30;
-  margin-left: 30;
+ul {
+    list-style: none;
 }
-
-.icon-nam {
-  color: rgb(40, 40, 90);
-  font-size: 10;
+li a {
+    width: 100%;
+    padding: 1px;
 }
-
-.mar-l-r-nam {
-  margin-left: 35;
-  margin-right: 35;
+.social {
+    width: 100%;
+    margin: 0 30%;
 }
-
-.p-top {
-  padding-top: 50;
-}
-
-.p-bottom {
-  padding-bottom: 30;
-}
-
-.input {
-  background-color: rgb(12, 115, 115);
-  placeholder-color: rgb(80, 164, 161);
-  color: white;
-  margin-bottom: 20;
-  border-radius: 2;
-  border: 0;
-  padding: 5 10;
+.social li {
+    display: inline-block;
+    margin: 0 auto;
+    font-size: 30px;
 }

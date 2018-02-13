@@ -1,4 +1,4 @@
-import { OnInit, OnDestroy } from "@angular/core";
+import { OnInit, OnDestroy, Component } from "@angular/core";
 
 @Component({
     selector: 'ns-create-account',

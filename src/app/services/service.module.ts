@@ -48,49 +48,48 @@ import { RouterModule } from '../common';
  */
 
 @NgModule({
-  imports: [CommonModule, RouterModule
-  ],
-  exports: [CommonModule, FormsModule, RouterModule]
+    imports: [CommonModule, RouterModule
+    ],
+    exports: [CommonModule, FormsModule, RouterModule]
 })
 export class ServiceModule {
-  public static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: ServiceModule,
-      providers: [
-        GeneralService,
-        StorageService,
-        ErrorHandler,
-        HttpWrapperService,
-        AuthenticationService,
-        ToasterService,
-        DashboardService,
-        CompanyService,
-        SalesService,
-        LocationService,
-        GroupService,
-        AccountService,
-        InventoryService,
-        PermissionService,
-        ManufacturingService,
-        SearchService,
-        InvoiceService,
-        InvoiceTemplatesService,
-        LogsService,
-        TlPlService,
-        LedgerService,
-        MagicLinkService,
-        SettingsIntegrationService,
-        SettingsProfileService,
-        SettingsTaxesService,
-        SettingsLinkedAccountsService,
-        PurchaseInvoiceService,
-        SettingsFinancialYearService,
-        SettingsPermissionService,
-        DaybookService,
-        RouterService,
-        LoaderService,
-        ToasterService
-      ]
-    };
-  }
+    public static forRoot(): ModuleWithProviders {
+        return {
+            ngModule: ServiceModule,
+            providers: [
+                GeneralService,
+                StorageService,
+                ErrorHandler,
+                HttpWrapperService,
+                AuthenticationService,
+                DashboardService,
+                CompanyService,
+                SalesService,
+                LocationService,
+                GroupService,
+                AccountService,
+                InventoryService,
+                PermissionService,
+                ManufacturingService,
+                SearchService,
+                InvoiceService,
+                InvoiceTemplatesService,
+                LogsService,
+                TlPlService,
+                LedgerService,
+                MagicLinkService,
+                SettingsIntegrationService,
+                SettingsProfileService,
+                SettingsTaxesService,
+                SettingsLinkedAccountsService,
+                PurchaseInvoiceService,
+                SettingsFinancialYearService,
+                SettingsPermissionService,
+                DaybookService,
+                RouterService,
+                LoaderService,
+                ToasterService
+            ]
+        };
+    }
 }

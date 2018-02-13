@@ -1,0 +1,51 @@
+<div class="center">
+    <img class="logo" src="../../../assets/image/logo.png">
+
+    <div class="form">
+
+        <form name="login" action="#" [formGroup]="mobileVerifyForm">
+            <div *ngIf="!(isLoginWithMobileSubmited$ | async)">
+                <input type="text" class="uname" formControlName="mobileNumber" placeholder="Mobile No">
+                <input class="btn" type="button" [disabled]="mobileVerifyForm.get('mobileNumber').invalid" (click)="getOtp()" name="submit"
+                    value="Get Verification Code">
+            </div>
+
+            <div *ngIf="(isLoginWithMobileSubmited$ | async)">
+                <input type="password" name="password" formControlName="otp" class="pass" placeholder="Otp">
+                <input class="btn" type="button" [disabled]="mobileVerifyForm.invalid" name="submit" (click)="verifyCode()" value="Submit">
+            </div>
+        </form>
+
+        <div class="helperlinks">
+            <ul class="helperlinks">
+                <li>
+                    <a>Forgot Password</a> |
+                    <a>Login with OTP</a>
+                </li>
+                <li>
+                    <a>Login with Email</a>
+                </li>
+                <li>
+                    <a>Sign UP</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <span>&nbsp;&nbsp;or login with&nbsp;&nbsp;</span>
+
+    <div class="social">
+        <ul>
+            <li>
+                <a href="#">
+                    <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-google-plus-official" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

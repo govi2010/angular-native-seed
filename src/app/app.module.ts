@@ -18,6 +18,7 @@ import { NeedsAuthentication } from './decorators/needsAuthentication';
 import { ToastrModule } from 'ngx-toastr';
 import { localStorageSync } from 'ngrx-store-localstorage';
 
+
 Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
 
 // AoT requires an exported function for factories
@@ -44,7 +45,7 @@ let metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer, logge
         StoreModule.forRoot(reducers, { metaReducers }),
         ServiceModule.forRoot(),
         ActionModule.forRoot(),
-        ToastrModule.forRoot(),
+        ToastrModule.forRoot({ preventDuplicates: true, maxOpened: 3 }),
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

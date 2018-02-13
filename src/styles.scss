@@ -1,8 +1,82 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~ngx-toastr/toastr";
 body {
     margin:0;
     font-family: 'Open Sans', sans-serif;
 }
 .container {
     margin:40px;
+}
+
+.center {
+    width: 30%;
+    height: auto;
+    display: block;
+    margin: 40px auto;
+    background: transparent;
+
+}
+.logo {
+    position: relative;
+    display: block;
+    margin: 5px auto;
+    padding: 30px;
+    }
+.form{
+    width: 100%;
+    position: relative;
+    margin: 5px auto;
+}
+input {
+    width: 100%;
+    height: 30px;
+    margin: 10px auto;
+    background: #28c170;
+    border: 1px solid #24a05f;
+    border-radius: 1px;
+}
+input.btn {
+    background:rgba(168, 193, 190,.7) ;
+}
+a {
+    color: #0c2b5b;
+    width: 100%;
+    text-align-last: center;
+}
+.helperlinks{
+    display: block;
+    margin: 0 auto;
+}
+span {
+    position: relative;
+}
+span:before ,span:after {
+    content: "";
+    width: calc(11vw + 3px);
+    height: 3px;
+    background:#0c2b5b;
+    display:inline-block;
+    position: relative;
+    bottom: 2px;
+}
+ul.helperlinks {
+    display: block;
+    margin: 0 auto;
+    list-style: none;
+    text-align-last: center;
+}
+ul {
+    list-style: none;
+}
+li a {
+    width: 100%;
+    padding: 1px;
+}
+.social {
+    width: 100%;
+    margin: 0 30%;
+}
+.social li {
+    display: inline-block;
+    margin: 0 auto;
+    font-size: 30px;
 }

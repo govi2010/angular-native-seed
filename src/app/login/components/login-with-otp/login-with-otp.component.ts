@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, Inject, Optional } from '@angular/core';
 import { SignupWithMobile, VerifyMobileModel } from '../../../models/api-models/loginModels';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../store';
@@ -24,7 +24,7 @@ export class LoginWithOtpComponent implements OnInit, OnDestroy, AfterViewInit {
     public isLoginWithMobileInProcess$: Observable<boolean>;
     public isVerifyMobileInProcess$: Observable<boolean>;
     private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
-    constructor(private routerExtensions: RouterService, private page: Page, private store: Store<AppState>,
+    constructor(private routerExtensions: RouterService,@Optional() private page: Page, private store: Store<AppState>,
         private _fb: FormBuilder, private _loginActions: LoginActions) {
         this.isLoginWithMobileSubmited$ = this.store.select(s => s.login.isLoginWithMobileSubmited);
         this.isVerifyMobileSuccess$ = this.store.select(s => s.login.isVerifyMobileSuccess);
@@ -48,7 +48,6 @@ export class LoginWithOtpComponent implements OnInit, OnDestroy, AfterViewInit {
             mobileNumber: ['', [Validators.required]],
             otp: ['', [Validators.required]],
         });
-        this.isLoginWithMobileSubmited$.subscribe()
     }
     ngAfterViewInit() {
         // this.items = this.itemService.getItems();
@@ -60,7 +59,11 @@ export class LoginWithOtpComponent implements OnInit, OnDestroy, AfterViewInit {
 
         this.isVerifyMobileSuccess$.subscribe(s => {
             if (s) {
-                (this.routerExtensions.router as any).navigate(['/home'], { clearHistory: true });
+                if (Config.IS_MOBILE_NATIVE) {
+                    (this.routerExtensions.router as any).navigate(['/home'], { clearHistory: true });
+                } else {
+                    this.routerExtensions.router.navigate(['/home']);
+                }
             }
         });
     }
@@ -70,13 +73,17 @@ export class LoginWithOtpComponent implements OnInit, OnDestroy, AfterViewInit {
         this.destroyed$.complete();
     }
     backToLogin() {
-        (this.routerExtensions.router as any).navigate(['/login'], {
-            clearHistory: true, animated: true,
-            transition: {
-                name: 'slideRight',
-                curve: AnimationCurve.ease
-            }
-        });
+        if (Config.IS_MOBILE_NATIVE) {
+            (this.routerExtensions.router as any).navigate(['/login'], {
+                clearHistory: true, animated: true,
+                transition: {
+                    name: 'slideRight',
+                    curve: AnimationCurve.ease
+                }
+            });
+        } else {
+            this.routerExtensions.router.navigate(['/login']);
+        }
     }
 
     public getOtp() {

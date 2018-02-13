@@ -9,6 +9,20 @@ import { MyChipsComponent } from "./my-chips/my-chips.component";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import {
+    MatButtonModule, MatCardModule, MatListModule, MatGridListModule, MatChipsModule, MatDatepickerModule,
+    MatFormFieldModule, MatToolbarModule, MatSidenavModule
+} from '@angular/material';
+
+const matModules = [MatButtonModule,
+    MatCardModule,
+    MatListModule,
+    MatGridListModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatToolbarModule,
+    MatSidenavModule];
 
 @NgModule({
     imports: [
@@ -16,6 +30,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
         RouterModule,
         FormsModule,
         ReactiveFormsModule,
+        ...matModules
     ],
     declarations: [
         MyDrawerComponent,
@@ -31,6 +46,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
         MyLogoutComponent,
         MyChipsComponent,
         PieChartComponent,
+        ...matModules
     ],
     schemas: [
         NO_ERRORS_SCHEMA

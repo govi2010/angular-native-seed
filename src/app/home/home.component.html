@@ -1,15 +1,20 @@
-<ul class="list-group">
-    <li class="list-group-item">
-        <a class="btn btn-primary" [routerLink]="['/dashboard']">Dashboard</a>
-    </li>
-    <li class="list-group-item">
-        <a class="btn btn-primary" [routerLink]="['/sale']">Sales Invoice</a>
-    </li>
-    <li class="list-group-item">
-        <a class="btn btn-primary" [routerLink]="['/reports']">Reports</a>
-    </li>
-    <li class="list-group-item">
-        <a class="btn btn-primary" [routerLink]="['/settings']">Settings</a>
-    </li>
-</ul>
-<button class="btn btn-danger" (click)="logout()">Logout</button>
+<mat-list role="list">
+    <mat-list-item role="listitem">
+        <a matLine>Dashboard </a>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item role="listitem">
+        <a matLine>Sales Invoice </a>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item role="listitem">
+        <a matLine>Reports </a>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item role="listitem">
+        <a matLine>Settings </a>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+</mat-list>
+
+<button mat-raised-button color="warn" (click)="logout()">Logout</button>

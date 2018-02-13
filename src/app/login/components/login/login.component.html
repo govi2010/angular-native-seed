@@ -4,7 +4,7 @@
         <form name="login" action="#" [formGroup]="loginWithPasswordForm" (submit)="login()">
             <input type="text" class="uname" formControlName="uniqueKey" placeholder="Username/Mobile No/Email Id">
             <input type="password" name="password" formControlName="password" class="pass" placeholder="Password">
-            <input class="btn" type="submit" [disabled]="loginWithPasswordForm.invalid" name="submit" value="login">
+            <button class="btn btn-primary" type="submit" [disabled]="loginWithPasswordForm.invalid" name="submit">Login</button>
         </form>
         <div class="helperlinks">
             <ul class="helperlinks">

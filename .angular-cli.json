@@ -19,7 +19,6 @@
             "testTsconfig": "tsconfig.spec.json",
             "prefix": "seed",
             "styles": [
-                "assets/css/bootstrap.min.css",
                 "styles.scss"
             ],
             "scripts": [],

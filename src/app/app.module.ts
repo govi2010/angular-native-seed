@@ -17,7 +17,6 @@ import { storeLogger } from './store/middleware/storeLogger';
 import { NeedsAuthentication } from './decorators/needsAuthentication';
 import { ToastrModule } from 'ngx-toastr';
 import { localStorageSync } from 'ngrx-store-localstorage';
-import { LaddaModule } from 'angular2-ladda';
 
 
 Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
@@ -47,10 +46,6 @@ let metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer, logge
         ServiceModule.forRoot(),
         ActionModule.forRoot(),
         ToastrModule.forRoot({ preventDuplicates: true, maxOpened: 3 }),
-        LaddaModule.forRoot({
-            style: 'slide-left',
-            spinnerSize: 30
-        }),
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

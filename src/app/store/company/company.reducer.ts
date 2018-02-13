@@ -18,7 +18,7 @@ export interface CurrentCompanyState {
  * Setting the InitialState for this Reducer's Store
  */
 const initialState: CurrentCompanyState = {
-    taxes: null,
+    taxes: [],
     isTaxesLoading: false,
     isCreateTaxInProcess: false,
     isCreateTaxSuccess: false,

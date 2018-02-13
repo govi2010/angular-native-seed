@@ -6,12 +6,12 @@
 
             <div class="form-group">
                 <label>Tax Name</label>
-                <input type="password" class="form-control" formControlName="name" placeholder="Name">
+                <input type="text" class="form-control" formControlName="name" placeholder="Name">
             </div>
 
             <div class="form-group" *ngIf="!selectedTaxObj">
                 <label>Unique No</label>
-                <input type="password" class="form-control" formControlName="taxNumber" placeholder="Unique Number">
+                <input type="text" class="form-control" formControlName="taxNumber" placeholder="Unique Number">
             </div>
 
             <div class="form-group">
@@ -22,18 +22,18 @@
             </div>
 
             <div class="form-group">
-                <ng-template *ngIf="!selectedTaxObj && showLinkedAccounts">
+                <ng-container *ngIf="!selectedTaxObj && showLinkedAccounts">
                     <label>Linked Account</label>
                     <select name="account" id="account" class="form-control" formControlName="account" (change)="accountChanged(taxForm.get('account').value)">
                         <option *ngFor="let aType of (flattenAccountsStream$ | async)" [value]="aType.uniqueName">{{ aType.name }}</option>
                     </select>
-                </ng-template>
+                </ng-container>
 
-                <ng-template *ngIf="selectedTaxObj && showLinkedAccounts">
+                <ng-container *ngIf="selectedTaxObj && showLinkedAccounts">
                     <span class="badge badge-default" *ngFor="let acc of taxForm.get('accounts').value">
                         {{ acc.name }}
                     </span>
-                </ng-template>
+                </ng-container>
             </div>
 
             <div class="row">
@@ -47,6 +47,7 @@
 
                 <div class="col col-xs-6">
                     <label>Apply Tax From</label>
+                    <input type="text" class="form-control" #dp="bsDatepicker" bsDatepicker formControlName="taxFileDate">
                     <!-- <select name="taxFileDate" id="taxFileDate" class="form-control" formControlName="taxFileDate">
                         <option *ngFor="let day of days" [value]="day.value">{{ day.display }}</option>
                     </select> -->
@@ -74,7 +75,7 @@
 
             <div class="row">
                 <div class="col col-xs-6 text-center">
-                    <button type="submit" class="btn btn-primary" [disabled]="taxForm.invalid">Submit</button>
+                    <button type="submit" class="btn btn-primary" [disabled]="taxForm.invalid" [ladda]="(isCreateTaxInProcess$ | async) || (isUpdateTaxInProcess$ | async)">Submit</button>
                 </div>
             </div>
 

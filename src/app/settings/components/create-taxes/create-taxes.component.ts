@@ -13,6 +13,7 @@ import { ActivatedRoute } from "../../../common";
 import { LoaderService } from "../../../services/loader.service";
 import { ToasterService } from "../../../services/toaster.service";
 import * as moment from 'moment/moment';
+import * as _ from 'lodash';
 
 @Component({
     selector: 'ns-create-taxes',
@@ -83,24 +84,94 @@ export class CreateTaxesComponent implements OnInit, AfterViewInit, OnDestroy {
                 this._loaderService.hide();
             }
         });
+
+        this.isUpdateTaxInProcess$.subscribe(s => {
+            if (s) {
+                this._loaderService.show('Updating Tax');
+            } else {
+                this._loaderService.hide();
+            }
+        });
+
+        this.isCreateTaxSuccess$.subscribe(s => {
+            if (s) {
+                this.routerExtensions.router.navigate(['/settings', 'taxes']);
+                this.store.dispatch(this._settingsTaxesActions.ResetCreateTaxUi());
+            }
+        });
+        this.isUpdateTaxSuccess$.subscribe(s => {
+            if (s) {
+                this.selectedTaxObj = null;
+                this.routerExtensions.router.navigate(['/settings', 'taxes']);
+                this.store.dispatch(this._settingsTaxesActions.ResetUpdateTaxUi());
+            }
+        });
     }
 
     public taxTypeChanged(val: string) {
         this.showLinkedAccounts = val === 'others';
     }
 
-    public accountChanged(acc: IFlattenAccountsResultItem) {
+    public accountChanged(acc: string) {
+        let account: IFlattenAccountsResultItem;
+        this.flattenAccountsStream$.take(1).subscribe(result => {
+            account = result.find(r => r.uniqueName === acc);
+        });
         this.taxForm.get('accounts').patchValue([{
-            name: acc.name,
-            uniqueName: acc.uniqueName
+            name: account.name,
+            uniqueName: account.uniqueName
         }]);
     }
 
-    public submit() {
+    public fillTaxGroupForm(tax: TaxResponse) {
+        let formObj = tax;
+        formObj.taxType = formObj.taxType ? formObj.taxType : 'others';
+        this.taxTypeChanged(formObj.taxType);
 
+        if (formObj.taxDetail && formObj.taxDetail.length > 0) {
+            formObj.taxValue = formObj.taxDetail[0].taxValue;
+            formObj.date = formObj.taxDetail[0].date;
+        }
+
+        this.taxForm.patchValue(formObj);
+    }
+
+
+    public submit() {
+        if (this.taxForm.invalid) {
+            this._toasterService.errorToast('Please Fill All Details');
+            return;
+        }
+
+        let dataToSave = this.taxForm.value;
+        dataToSave.taxDetail = [{
+            taxValue: dataToSave.taxValue,
+            date: dataToSave.date
+        }];
+
+        if (!this.selectedTaxObj) {
+            dataToSave.accounts = dataToSave.taxType === 'others' ? dataToSave.accounts : [];
+
+            this.store.dispatch(this._settingsTaxesActions.CreateTax(dataToSave));
+        } else {
+            dataToSave.uniqueName = this.selectedTaxObj.uniqueName;
+
+            this.store.dispatch(this._settingsTaxesActions.UpdateTax(dataToSave));
+        }
     }
 
     public ngAfterViewInit(): void {
+        this.pageRoute.params.takeUntil(this.destroyed$)
+            .subscribe(params => {
+                if ('uniqueName' in params) {
+                    let selectedTaxUniqueName = params.uniqueName;
+
+                    this.taxList$.take(1).subscribe(taxes => {
+                        this.selectedTaxObj = _.cloneDeep(taxes.find(tx => tx.uniqueName === selectedTaxUniqueName));
+                        this.fillTaxGroupForm(this.selectedTaxObj);
+                    });
+                }
+            })
     }
 
     public ngOnDestroy() {

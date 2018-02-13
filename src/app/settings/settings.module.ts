@@ -11,6 +11,8 @@ import { CreateTaxesComponent } from '../settings/components/create-taxes/create
 import { RouterModule } from '../common';
 import { CommonModule } from '@angular/common';
 import { SettingsRoutes } from './settings.routes';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { LaddaModule } from 'angular2-ladda';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { SettingsRoutes } from './settings.routes';
         FormsModule,
         RouterModule.forChild(SettingsRoutes),
         ReactiveFormsModule,
-        SharedModule
+        SharedModule,
+        LaddaModule,
+        BsDatepickerModule.forRoot(),
     ],
     declarations: [SettingsComponent, CompanyProfileComponent, CurrenciesComponent,
         CreateCurrenciesComponent, TaxesComponent, CreateTaxesComponent],

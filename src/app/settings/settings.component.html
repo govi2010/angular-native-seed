@@ -1,0 +1,11 @@
+<div class="card">
+    <div class="card-block">
+        <ul class="list-group">
+            <li *ngFor="let item of items" (click)="doAction(item)">
+                <div style="display:flex;">
+                    <a class="card-text">{{ item.text }}</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

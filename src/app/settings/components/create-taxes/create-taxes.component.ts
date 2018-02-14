@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, OnDestroy } from "@angular/core";
+import { Component, OnInit, AfterViewInit, OnDestroy, ViewChild } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Observable } from "rxjs/Observable";
 import { IFlattenAccountsResultItem } from "../../../models/interfaces/flattenAccountsResultItem.interface";
@@ -14,6 +14,8 @@ import { LoaderService } from "../../../services/loader.service";
 import { ToasterService } from "../../../services/toaster.service";
 import * as moment from 'moment/moment';
 import * as _ from 'lodash';
+import { MyDrawerItem } from "../../../shared/my-drawer-item/my-drawer-item";
+import { MyDrawerComponent } from "../../../shared/my-drawer/my-drawer.component";
 
 @Component({
     selector: 'ns-create-taxes',
@@ -21,6 +23,8 @@ import * as _ from 'lodash';
     templateUrl: './create-taxes.component.html'
 })
 export class CreateTaxesComponent implements OnInit, AfterViewInit, OnDestroy {
+    public navItemObj$: Observable<MyDrawerItem[]>;
+    @ViewChild('myDrawer') public myDrawer: MyDrawerComponent;
     public taxForm: FormGroup;
     public isCreateTaxInProcess$: Observable<boolean>;
     public isCreateTaxSuccess$: Observable<boolean>;
@@ -67,6 +71,18 @@ export class CreateTaxesComponent implements OnInit, AfterViewInit, OnDestroy {
         this.isUpdateTaxInProcess$ = this.store.select(s => s.company.isUpdateTaxInProcess).takeUntil(this.destroyed$);
         this.isUpdateTaxSuccess$ = this.store.select(s => s.company.isUpdateTaxSuccess).takeUntil(this.destroyed$);
         this.flattenAccountsStream$ = this.store.select(s => s.general.flattenAccounts).takeUntil(this.destroyed$);
+        this.navItemObj$ = this.store.select(p => p.general.navDrawerObj).map(p => {
+            for (const iterator of p) {
+                if (iterator.router) {
+                    if (iterator.router === '/dashboard') {
+                        iterator.isSelected = true;
+                    } else {
+                        iterator.isSelected = false;
+                    }
+                }
+            }
+            return p;
+        }).takeUntil(this.destroyed$);
     }
     public ngOnInit(): void {
         this.selectedTaxObj = null;
@@ -172,6 +188,10 @@ export class CreateTaxesComponent implements OnInit, AfterViewInit, OnDestroy {
                     });
                 }
             })
+    }
+
+    public toggleDrawer() {
+        this.myDrawer.toggle();
     }
 
     public ngOnDestroy() {

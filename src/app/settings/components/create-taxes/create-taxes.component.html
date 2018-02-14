@@ -1,86 +1,94 @@
-<div class="card container">
+<MyDrawer #myDrawer [pages]="navItemObj$ | async">
+    <ng-template #optionTemplate>
+        <my-header [title]="'Create Taxes'"
+        [leftSideItem]="{ icon:'menu', action: toggleDrawer.bind(this) }"
+        [rightSideItem]="{ title: 'Save', action: submit.bind(this) }"></my-header>
 
-    <div class="card-block">
+        <div class="card container">
 
-        <form [formGroup]="taxForm" (submit)="submit()">
+            <div class="card-block">
 
-            <div class="form-group">
-                <label>Tax Name</label>
-                <input type="text" class="form-control" formControlName="name" placeholder="Name">
-            </div>
+                <form [formGroup]="taxForm" (submit)="submit()">
 
-            <div class="form-group" *ngIf="!selectedTaxObj">
-                <label>Unique No</label>
-                <input type="text" class="form-control" formControlName="taxNumber" placeholder="Unique Number">
-            </div>
-
-            <div class="form-group">
-                <label>Tax Type</label>
-                <select name="taxType" id="taxType" class="form-control" formControlName="taxType" (change)="taxTypeChanged(taxForm.get('taxType').value)">
-                    <option *ngFor="let tType of taxTypeList" [value]="tType.value">{{ tType.display }}</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <ng-container *ngIf="!selectedTaxObj && showLinkedAccounts">
-                    <label>Linked Account</label>
-                    <select name="account" id="account" class="form-control" formControlName="account" (change)="accountChanged(taxForm.get('account').value)">
-                        <option *ngFor="let aType of (flattenAccountsStream$ | async)" [value]="aType.uniqueName">{{ aType.name }}</option>
-                    </select>
-                </ng-container>
-
-                <ng-container *ngIf="selectedTaxObj && showLinkedAccounts">
-                    <span class="badge badge-default" *ngFor="let acc of taxForm.get('accounts').value">
-                        {{ acc.name }}
-                    </span>
-                </ng-container>
-            </div>
-
-            <div class="row">
-
-                <div class="col col-xs-6">
                     <div class="form-group">
-                        <label>Tax Rate</label>
-                        <input type="text" class="form-control" formControlName="taxValue" placeholder="in percentage">
+                        <label>Tax Name</label>
+                        <input type="text" class="form-control" formControlName="name" placeholder="Name">
                     </div>
-                </div>
 
-                <div class="col col-xs-6">
-                    <label>Apply Tax From</label>
-                    <input type="text" class="form-control" bsDatepicker formControlName="taxFileDate">
-                    <!-- <select name="taxFileDate" id="taxFileDate" class="form-control" formControlName="taxFileDate">
-                        <option *ngFor="let day of days" [value]="day.value">{{ day.display }}</option>
-                    </select> -->
-                </div>
-            </div>
+                    <div class="form-group" *ngIf="!selectedTaxObj">
+                        <label>Unique No</label>
+                        <input type="text" class="form-control" formControlName="taxNumber" placeholder="Unique Number">
+                    </div>
 
-            <div class="row">
-
-                <div class="col col-xs-6">
                     <div class="form-group">
-                        <label>Tax Duration</label>
-                        <select name="duration" id="duration" class="form-control" formControlName="duration">
-                            <option *ngFor="let dType of taxDurationList" [value]="dType.value">{{ dType.display }}</option>
+                        <label>Tax Type</label>
+                        <select name="taxType" id="taxType" class="form-control" formControlName="taxType" (change)="taxTypeChanged(taxForm.get('taxType').value)">
+                            <option *ngFor="let tType of taxTypeList" [value]="tType.value">{{ tType.display }}</option>
                         </select>
                     </div>
-                </div>
 
-                <div class="col col-xs-6">
-                    <label>Tax File Date</label>
-                    <select name="taxFileDate" id="taxFileDate" class="form-control" formControlName="taxFileDate">
+                    <div class="form-group">
+                        <ng-container *ngIf="!selectedTaxObj && showLinkedAccounts">
+                            <label>Linked Account</label>
+                            <select name="account" id="account" class="form-control" formControlName="account" (change)="accountChanged(taxForm.get('account').value)">
+                                <option *ngFor="let aType of (flattenAccountsStream$ | async)" [value]="aType.uniqueName">{{ aType.name }}</option>
+                            </select>
+                        </ng-container>
+
+                        <ng-container *ngIf="selectedTaxObj && showLinkedAccounts">
+                            <span class="badge badge-default" *ngFor="let acc of taxForm.get('accounts').value">
+                                {{ acc.name }}
+                            </span>
+                        </ng-container>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col col-xs-6">
+                            <div class="form-group">
+                                <label>Tax Rate</label>
+                                <input type="text" class="form-control" formControlName="taxValue" placeholder="in percentage">
+                            </div>
+                        </div>
+
+                        <div class="col col-xs-6">
+                            <label>Apply Tax From</label>
+                            <input type="text" class="form-control" bsDatepicker formControlName="taxFileDate">
+                            <!-- <select name="taxFileDate" id="taxFileDate" class="form-control" formControlName="taxFileDate">
                         <option *ngFor="let day of days" [value]="day.value">{{ day.display }}</option>
-                    </select>
-                </div>
+                    </select> -->
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col col-xs-6">
+                            <div class="form-group">
+                                <label>Tax Duration</label>
+                                <select name="duration" id="duration" class="form-control" formControlName="duration">
+                                    <option *ngFor="let dType of taxDurationList" [value]="dType.value">{{ dType.display }}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col col-xs-6">
+                            <label>Tax File Date</label>
+                            <select name="taxFileDate" id="taxFileDate" class="form-control" formControlName="taxFileDate">
+                                <option *ngFor="let day of days" [value]="day.value">{{ day.display }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col col-xs-6 text-center">
+                            <button type="submit" class="btn btn-primary" [disabled]="taxForm.invalid" [ladda]="(isCreateTaxInProcess$ | async) || (isUpdateTaxInProcess$ | async)">Submit</button>
+                        </div>
+                    </div>
+
+                </form>
+
             </div>
 
-            <div class="row">
-                <div class="col col-xs-6 text-center">
-                    <button type="submit" class="btn btn-primary" [disabled]="taxForm.invalid" [ladda]="(isCreateTaxInProcess$ | async) || (isUpdateTaxInProcess$ | async)">Submit</button>
-                </div>
-            </div>
-
-        </form>
-
-    </div>
-
-</div>
+        </div>
+    </ng-template>
+</MyDrawer>

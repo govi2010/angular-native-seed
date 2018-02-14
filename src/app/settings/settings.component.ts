@@ -44,6 +44,10 @@ export class SettingsComponent {
     }
 
     public goBack() {
-        Config.IS_MOBILE_NATIVE && (this.routerExtensions.router as any).back();
+        if (Config.IS_MOBILE_NATIVE) {
+            (this.routerExtensions.router as any).back()
+        } else {
+            this.routerExtensions.router.navigate(['/home']);
+        }
     }
 }

@@ -93,6 +93,10 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.drawerComponent.sideDrawer.showDrawer();
     }
 
+    public toggleWebDrawer() {
+        this.drawerComponent.toggle();
+    }
+
     public logout() {
 
         this._toaster.confirm({

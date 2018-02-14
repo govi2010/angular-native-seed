@@ -39,7 +39,7 @@ export class PlChartComponent implements OnInit, OnDestroy, AfterViewInit {
 
     private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
-    constructor(private store: Store<AppState>, private _reportsActions: ReportsActions, private page: Page, private _reportActions: ReportsActions, private cd: ChangeDetectorRef) {
+    constructor(private store: Store<AppState>, private _reportsActions: ReportsActions, private page: Page, private cd: ChangeDetectorRef) {
         this.currentData$ = this.store.select(st => st.report.currentData).takeUntil(this.destroyed$);
         this.previousData$ = this.store.select(st => st.report.previousData).takeUntil(this.destroyed$);
         (this.page as any).on((Page as any).unloadedEvent, ev => this.ngOnDestroy());

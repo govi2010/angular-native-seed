@@ -92,7 +92,7 @@ export class DashboardService {
         this.user = this._generalService.user;
         this.companyUniqueName = this._generalService.companyUniqueName;
         return this._http.post(this.config.apiUrl + DASHBOARD_API.CATEGORY_HISTORY.replace(':companyUniqueName', encodeURIComponent(this.companyUniqueName)).replace(':from', encodeURIComponent(fromDate)).replace(':to', encodeURIComponent(toDate)).replace(':interval', interval), model).map((res) => {
-            let data: BaseResponse<CategoryHistoryResponse[], GroupHistoryRequest> = res.json();
+            let data: BaseResponse<CategoryHistoryResponse[], GroupHistoryRequest> = res;
             data.request = model;
             data.queryString = { fromDate, toDate, interval, refresh };
             return data;
@@ -108,7 +108,7 @@ export class DashboardService {
         this.user = this._generalService.user;
         this.companyUniqueName = this._generalService.companyUniqueName;
         return this._http.post(this.config.apiUrl + DASHBOARD_API.HISTORY.replace(':companyUniqueName', encodeURIComponent(this.companyUniqueName)).replace(':from', encodeURIComponent(fromDate)).replace(':to', encodeURIComponent(toDate)).replace(':interval', interval), model).map((res) => {
-            let data: BaseResponse<GroupHistoryResponse, GroupHistoryRequest> = res.json();
+            let data: BaseResponse<GroupHistoryResponse, GroupHistoryRequest> = res;
             data.request = model;
             data.queryString = { fromDate, toDate, interval, refresh };
             return data;

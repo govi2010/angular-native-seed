@@ -1,0 +1,14 @@
+<my-header [title]="'Profit and Loss'" [leftSideItem]="{ icon:'arrow_back', action: goBack.bind(this) }" [rightSideItem]="{ icon:'file_download' }">
+</my-header>
+
+<mat-card class="mat-elevation-z2">
+    <mat-card-header style="display:flex;align-items: center">
+        <h4 style="flex: 1 0 auto">P & L</h4>
+        <mat-icon>home</mat-icon>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+
+    <mat-card-content>
+        <ns-pl-chart></ns-pl-chart>
+    </mat-card-content>
+</mat-card>

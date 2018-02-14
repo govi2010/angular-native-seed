@@ -43,19 +43,19 @@ const initialNavObj: MyDrawerItem[] = [
         fontFamily: '1515160234',
         router: '/sale'
     } as MyDrawerItem,
-    {
-        title: 'Purchase Invoice',
-        icon: String.fromCharCode(0x6b),
-        needTopHr: true,
-        fontFamily: '1515160234',
-        router: '/purchase'
-    } as MyDrawerItem,
+    // {
+    //     title: 'Purchase Invoice',
+    //     icon: String.fromCharCode(0x6b),
+    //     needTopHr: true,
+    //     fontFamily: '1515160234',
+    //     router: '/purchase'
+    // } as MyDrawerItem,
     {
         title: 'Reports',
         icon: String.fromCharCode(0x69),
         needTopHr: true,
         fontFamily: '1515160234',
-        router: '/new-reports'
+        router: '/reports'
     } as MyDrawerItem,
     {
         title: 'Settings',

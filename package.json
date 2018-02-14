@@ -42,6 +42,8 @@
         "@angular/compiler-cli": "~5.2.0",
         "@types/jasmine": "2.5.38",
         "@types/node": "~6.0.60",
+        "@types/highcharts": "5.0.4",
+        "angular2-highcharts": "git+https://github.com/mtflynn/angular2-highcharts.git",
         "angular2-ladda": "^1.2.3",
         "codelyzer": "~2.0.0",
         "jasmine-core": "~2.5.2",

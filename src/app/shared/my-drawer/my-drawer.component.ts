@@ -17,10 +17,7 @@ import { Subject } from "rxjs/Subject";
     templateUrl: "./my-drawer.component.html",
     styleUrls: ["./my-drawer.component.scss"]
 })
-export class MyDrawerComponent implements OnInit, OnChanges {
-    ngOnChanges(changes: SimpleChanges): void {
-        debugger
-    }
+export class MyDrawerComponent implements OnInit {
     public user$: Observable<VerifyEmailResponseModel>;
     public isOpened: boolean = false;
     @Input() selectedPage: string;

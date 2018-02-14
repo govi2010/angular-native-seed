@@ -1,1 +1,7 @@
+<MyDrawer #myDrawer [pages]="navItemObj$ | async">
+    <ng-template #optionTemplate>
+        <my-header [title]="'Dashboard'" [leftSideItem]="{ icon:'menu', action: toggleDrawer.bind(this) }"></my-header>
+
+    </ng-template>
+</MyDrawer>
 

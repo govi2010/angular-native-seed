@@ -6,7 +6,6 @@ import { Store } from '@ngrx/store';
 import { MyDrawerItem } from '../../../shared/my-drawer-item/my-drawer-item';
 import { AppState } from '../../../store';
 import { RouterService } from '../../../services/router.service';
-import { MyDrawerComponent } from '../../../shared/my-drawer/my-drawer.component';
 
 @Component({
     selector: 'ns-dashboard-chart',
@@ -16,7 +15,8 @@ import { MyDrawerComponent } from '../../../shared/my-drawer/my-drawer.component
 export class DashboardChartComponent implements OnInit {
 
     public navItemObj$: Observable<MyDrawerItem[]>;
-    @ViewChild('myDrawer') public myDrawer: MyDrawerComponent;
+    @ViewChild("drawer") public drawerComponent: any;
+    private _sideDrawerTransition: any;
     constructor(private store: Store<AppState>, private routerExtensions: RouterService) {
         this.navItemObj$ = this.store.select(p => p.general.navDrawerObj).map(p => {
             for (const iterator of p) {
@@ -35,7 +35,12 @@ export class DashboardChartComponent implements OnInit {
     ngOnInit() {
 
     }
-    public toggleDrawer() {
-        this.myDrawer.toggle();
+
+    public get sideDrawerTransition(): any {
+        return this._sideDrawerTransition;
+    }
+
+    public onDrawerButtonTap(): void {
+        this.drawerComponent.sideDrawer.showDrawer();
     }
 }

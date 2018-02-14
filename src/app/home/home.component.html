@@ -1,4 +1,4 @@
-<MyDrawer #drawer [pages]="companies">
+<MyDrawer #drawer [pages]="companies" (itemSelected)="changeCompany($event)">
     <ng-template #optionTemplate>
 
         <my-header [title]="activeCompany?.name"

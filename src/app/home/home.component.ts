@@ -11,6 +11,7 @@ import { MyDrawerItem } from '../shared/my-drawer-item/my-drawer-item';
 import { createSelector } from 'reselect';
 import { RouterService } from '../services/router.service';
 import { ToasterService } from '../services/toaster.service';
+import { Config } from '../common';
 
 @Component({
     selector: 'ns-home',
@@ -114,6 +115,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     public changeCompany(item: MyDrawerItem) {
         this.store.dispatch(this._companyActions.changeCompany(item.customData.uniqueName));
-        this.drawerComponent.sideDrawer.toggleDrawerState();
+        if (Config.IS_MOBILE_NATIVE) {
+            this.drawerComponent.sideDrawer.toggleDrawerState();
+        } else {
+            this.toggleWebDrawer();
+        }
     }
 }

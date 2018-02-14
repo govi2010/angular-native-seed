@@ -40,6 +40,8 @@ export class MyDrawerComponent implements OnInit {
     public onNavItemTap(item: MyDrawerItem) {
         if (item.router && item.router !== '') {
             this.routerExtensions.router.navigate([item.router]);
+        } else {
+            this.itemSelected.emit(item);
         }
     }
 

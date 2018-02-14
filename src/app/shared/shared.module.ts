@@ -11,8 +11,9 @@ import { RouterModule } from "@angular/router";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {
     MatButtonModule, MatCardModule, MatListModule, MatGridListModule, MatChipsModule, MatDatepickerModule,
-    MatFormFieldModule, MatToolbarModule, MatSidenavModule
+    MatFormFieldModule, MatToolbarModule, MatSidenavModule, MatIconModule
 } from '@angular/material';
+import { MyHeaderComponent } from "./my-header/my-header.component";
 
 const matModules = [MatButtonModule,
     MatCardModule,
@@ -22,7 +23,8 @@ const matModules = [MatButtonModule,
     MatDatepickerModule,
     MatFormFieldModule,
     MatToolbarModule,
-    MatSidenavModule];
+    MatSidenavModule,
+    MatIconModule];
 
 @NgModule({
     imports: [
@@ -38,7 +40,8 @@ const matModules = [MatButtonModule,
         MyButonComponent,
         MyLogoutComponent,
         PieChartComponent,
-        MyChipsComponent
+        MyChipsComponent,
+        MyHeaderComponent
     ],
     exports: [
         MyDrawerComponent,
@@ -46,6 +49,7 @@ const matModules = [MatButtonModule,
         MyLogoutComponent,
         MyChipsComponent,
         PieChartComponent,
+        MyHeaderComponent,
         ...matModules
     ],
     schemas: [

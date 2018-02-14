@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 // vendor dependencies
-import { TranslateService } from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
 import { AppState } from './store';
 import { GeneralService } from './services/general.service';
@@ -16,10 +15,9 @@ import 'rxjs/add/operator/distinctUntilChanged'
 })
 export class AppComponent implements OnInit {
 
-    constructor(translate: TranslateService, private store: Store<AppState>, private _generalService: GeneralService,
+    constructor(private store: Store<AppState>, private _generalService: GeneralService,
         private _generalActions: GeneralActions, private _companyActions: CompanyActions) {
-        translate.setDefaultLang('en');
-        translate.use('en');
+
     }
 
     ngOnInit(): void {

@@ -61,13 +61,6 @@ elementRegistryModule.registerElement("FilterSelect", () => require("nativescrip
         StoreModule.forRoot(reducers, { metaReducers }),
         ServiceModule.forRoot(),
         ActionModule.forRoot(),
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: (HttpLoaderFactory),
-                deps: [HttpClient]
-            }
-        }),
         ...SHARED_MODULES
     ],
     declarations: [

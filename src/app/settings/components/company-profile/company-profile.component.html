@@ -1,0 +1,62 @@
+<MyDrawer #myDrawer [pages]="navItemObj$ | async">
+    <ng-template #optionTemplate>
+        <my-header [title]="'Create Taxes'" [leftSideItem]="{ icon:'menu', action: toggleDrawer.bind(this) }" [rightSideItem]="{ title: 'Save', action: submit.bind(this) }"></my-header>
+
+        <mat-card>
+            <mat-card-content>
+                <form [formGroup]="companyProfileForm" class="form">
+
+                    <mat-form-field class="full-width">
+                        <input matInput formControlName="name" placeholder="Company Name">
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width">
+                        <input matInput formControlName="email" placeholder="Email Address">
+                    </mat-form-field>
+
+                    <div class="half-width-container">
+                        <mat-form-field class="half-width">
+                            <input matInput formControlName="contactNo" placeholder="Mobile Number">
+                        </mat-form-field>
+
+                        <mat-form-field class="half-width">
+                            <input matInput formControlName="panNumber" placeholder="Pan Number">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="half-width-container">
+                        <mat-form-field class="half-width">
+                            <input matInput formControlName="contactNo" placeholder="State">
+                        </mat-form-field>
+
+                        <mat-form-field class="half-width">
+                            <mat-select formControlName="state">
+                                <mat-option [value]="st.code" *ngFor="let st of (stateStream$ | async)">{{ st.name }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <mat-form-field class="full-width">
+                        <input matInput formControlName="address" placeholder="Postal Address">
+                    </mat-form-field>
+
+                    <div class="half-width-container">
+                        <mat-form-field class="half-width">
+                            <mat-select formControlName="baseCurrency">
+                                <mat-option [value]="bc" *ngFor="let bc of (currenciesStream$ | async)">{{ bc }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-checkbox class="half-width" matInput formControlName="isMultipleCurrency">Multicurrency?</mat-checkbox>
+                    </div>
+
+                </form>
+            </mat-card-content>
+
+            <mat-card-footer>
+                <button type="submit" [ladda]="isUpdateCompanyProfileInProcess$ | async" mat-raised-button color="primary">Submit</button>
+            </mat-card-footer>
+        </mat-card>
+
+    </ng-template>
+</MyDrawer>

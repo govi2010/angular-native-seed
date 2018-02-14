@@ -11,9 +11,10 @@ import { RouterModule } from "@angular/router";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {
     MatButtonModule, MatCardModule, MatListModule, MatGridListModule, MatChipsModule, MatDatepickerModule,
-    MatFormFieldModule, MatToolbarModule, MatSidenavModule, MatIconModule
+    MatFormFieldModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatInputModule, MatCheckboxModule, MatSelectModule
 } from '@angular/material';
 import { MyHeaderComponent } from "./my-header/my-header.component";
+import { LaddaModule } from 'angular2-ladda';
 
 const matModules = [MatButtonModule,
     MatCardModule,
@@ -22,10 +23,12 @@ const matModules = [MatButtonModule,
     MatChipsModule,
     MatDatepickerModule,
     MatFormFieldModule,
+    MatInputModule,
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
-    MatSidenavModule];
+    MatCheckboxModule,
+    MatSelectModule];
 
 @NgModule({
     imports: [
@@ -33,6 +36,10 @@ const matModules = [MatButtonModule,
         RouterModule,
         FormsModule,
         ReactiveFormsModule,
+        LaddaModule.forRoot({
+            style: 'slide-left',
+            spinnerSize: 30
+        }),
         ...matModules
     ],
     declarations: [
@@ -51,6 +58,7 @@ const matModules = [MatButtonModule,
         MyChipsComponent,
         PieChartComponent,
         MyHeaderComponent,
+        LaddaModule,
         ...matModules
     ],
     schemas: [

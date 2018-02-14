@@ -2,93 +2,80 @@
     <ng-template #optionTemplate>
         <my-header [title]="'Create Taxes'"
         [leftSideItem]="{ icon:'menu', action: toggleDrawer.bind(this) }"
-        [rightSideItem]="{ title: 'Save', action: submit.bind(this) }"></my-header>
+         [rightSideItem]="{ title: 'Save', action: submit.bind(this) }"></my-header>
 
-        <div class="card container">
+        <mat-card>
+            <mat-card-content>
+                <form [formGroup]="taxForm" (submit)="submit()" class="form">
 
-            <div class="card-block">
+                    <mat-form-field class="full-width">
+                        <input matInput formControlName="name" placeholder="Tax Name">
+                    </mat-form-field>
 
-                <form [formGroup]="taxForm" (submit)="submit()">
+                    <mat-form-field class="full-width" *ngIf="!selectedTaxObj">
+                        <input matInput formControlName="taxNumber" placeholder="Unique No">
+                    </mat-form-field>
 
-                    <div class="form-group">
-                        <label>Tax Name</label>
-                        <input type="text" class="form-control" formControlName="name" placeholder="Name">
-                    </div>
+                    <mat-form-field class="full-width">
+                        <mat-select formControlName="taxType" (selectionChange)="taxTypeChanged(taxForm.get('taxType').value)">
+                            <mat-option [value]="tType.value" *ngFor="let tType of taxTypeList">{{ tType.display }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
 
-                    <div class="form-group" *ngIf="!selectedTaxObj">
-                        <label>Unique No</label>
-                        <input type="text" class="form-control" formControlName="taxNumber" placeholder="Unique Number">
-                    </div>
 
-                    <div class="form-group">
-                        <label>Tax Type</label>
-                        <select name="taxType" id="taxType" class="form-control" formControlName="taxType" (change)="taxTypeChanged(taxForm.get('taxType').value)">
-                            <option *ngFor="let tType of taxTypeList" [value]="tType.value">{{ tType.display }}</option>
-                        </select>
-                    </div>
 
-                    <div class="form-group">
+                    <div class="full-width">
                         <ng-container *ngIf="!selectedTaxObj && showLinkedAccounts">
-                            <label>Linked Account</label>
-                            <select name="account" id="account" class="form-control" formControlName="account" (change)="accountChanged(taxForm.get('account').value)">
-                                <option *ngFor="let aType of (flattenAccountsStream$ | async)" [value]="aType.uniqueName">{{ aType.name }}</option>
-                            </select>
+                            <mat-form-field class="full-width">
+                                <mat-select formControlName="account" (selectionChange)="accountChanged(taxForm.get('account').value)">
+                                    <mat-option *ngFor="let aType of (flattenAccountsStream$ | async)" [value]="aType.uniqueName">{{ aType.name }}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
                         </ng-container>
 
                         <ng-container *ngIf="selectedTaxObj && showLinkedAccounts">
-                            <span class="badge badge-default" *ngFor="let acc of taxForm.get('accounts').value">
-                                {{ acc.name }}
-                            </span>
+                            <mat-chip-list>
+                                <mat-chip *ngFor="let acc of taxForm.get('accounts').value">
+                                    {{ acc.name }}
+                                </mat-chip>
+                            </mat-chip-list>
+
                         </ng-container>
                     </div>
 
-                    <div class="row">
+                    <div class="half-width-container">
+                        <mat-form-field class="half-width">
+                            <input matInput formControlName="taxValue" placeholder="Tax Rate">
+                        </mat-form-field>
 
-                        <div class="col col-xs-6">
-                            <div class="form-group">
-                                <label>Tax Rate</label>
-                                <input type="text" class="form-control" formControlName="taxValue" placeholder="in percentage">
-                            </div>
-                        </div>
-
-                        <div class="col col-xs-6">
-                            <label>Apply Tax From</label>
-                            <input type="text" class="form-control" bsDatepicker formControlName="taxFileDate">
-                            <!-- <select name="taxFileDate" id="taxFileDate" class="form-control" formControlName="taxFileDate">
-                        <option *ngFor="let day of days" [value]="day.value">{{ day.display }}</option>
-                    </select> -->
-                        </div>
+                        <mat-form-field class="half-width">
+                            <input matInput [matDatepicker]="picker" formControlName="taxFileDate" placeholder="Apply Tax From">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
                     </div>
 
-                    <div class="row">
+                    <div class="half-width-container">
+                        <mat-form-field class="half-width">
+                            <mat-select formControlName="duration">
+                                <mat-option *ngFor="let dType of taxDurationList" [value]="dType.value">{{ dType.display }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
 
-                        <div class="col col-xs-6">
-                            <div class="form-group">
-                                <label>Tax Duration</label>
-                                <select name="duration" id="duration" class="form-control" formControlName="duration">
-                                    <option *ngFor="let dType of taxDurationList" [value]="dType.value">{{ dType.display }}</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col col-xs-6">
-                            <label>Tax File Date</label>
-                            <select name="taxFileDate" id="taxFileDate" class="form-control" formControlName="taxFileDate">
-                                <option *ngFor="let day of days" [value]="day.value">{{ day.display }}</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col col-xs-6 text-center">
-                            <button type="submit" class="btn btn-primary" [disabled]="taxForm.invalid" [ladda]="(isCreateTaxInProcess$ | async) || (isUpdateTaxInProcess$ | async)">Submit</button>
-                        </div>
+                        <mat-form-field class="half-width">
+                            <mat-select formControlName="taxFileDate">
+                                <mat-option *ngFor="let day of days" [value]="day.value">{{ day.display }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
                     </div>
 
                 </form>
+            </mat-card-content>
 
-            </div>
+            <mat-card-footer>
+                <button type="submit" mat-raised-button color="primary" (click)="submit()" [disabled]="taxForm.invalid" [ladda]="(isCreateTaxInProcess$ | async) || (isUpdateTaxInProcess$ | async)">Submit</button>
+            </mat-card-footer>
+        </mat-card>
 
-        </div>
     </ng-template>
 </MyDrawer>

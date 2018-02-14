@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, EventEmitter, Output, ContentChild, TemplateRef } from "@angular/core";
+import { Component, Input, OnInit, EventEmitter, Output, ContentChild, TemplateRef, OnChanges, SimpleChanges } from "@angular/core";
 import { MyDrawerItem } from "../my-drawer-item/my-drawer-item";
 import { Store } from "@ngrx/store";
 import { AppState } from "../../store";
@@ -17,7 +17,10 @@ import { Subject } from "rxjs/Subject";
     templateUrl: "./my-drawer.component.html",
     styleUrls: ["./my-drawer.component.scss"]
 })
-export class MyDrawerComponent implements OnInit {
+export class MyDrawerComponent implements OnInit, OnChanges {
+    ngOnChanges(changes: SimpleChanges): void {
+        debugger
+    }
     public user$: Observable<VerifyEmailResponseModel>;
     public isOpened: boolean = false;
     @Input() selectedPage: string;

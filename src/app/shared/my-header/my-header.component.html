@@ -5,7 +5,7 @@
                 <mat-icon>{{ leftSideItem.icon }}</mat-icon>
             </button>
 
-            <button mat-button *ngIf="leftSideItem.title">
+            <button mat-button *ngIf="leftSideItem.title" (click)="leftSideItem.action()">
                 {{ leftSideItem.title }}
             </button>
         </div>
@@ -17,7 +17,7 @@
                 <mat-icon>{{ rightSideItem.icon }}</mat-icon>
             </button>
 
-            <button mat-button *ngIf="rightSideItem.title">
+            <button mat-button *ngIf="rightSideItem.title" (click)="rightSideItem.action()">
                 {{ rightSideItem.title }}
             </button>
         </div>

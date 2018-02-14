@@ -1,8 +1,9 @@
 <MyDrawer #drawer [pages]="companies">
     <ng-template #optionTemplate>
 
-        <my-header [title]="activeCompany.name"
-        [leftSideItem]="{ icon:'menu', action: toggleWebDrawer.bind(this) }" [rightSideItem]="{ title: userName, action: logout }"></my-header>
+        <my-header [title]="activeCompany?.name"
+        [leftSideItem]="{ icon:'menu', action: toggleWebDrawer.bind(this) }"
+        [rightSideItem]="{ title: userName, action: logout.bind(this) }"></my-header>
         <mat-list role="list">
             <mat-list-item role="listitem">
                 <a matLine [routerLink]="['/dashboard']">Dashboard </a>

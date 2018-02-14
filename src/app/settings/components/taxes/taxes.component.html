@@ -2,19 +2,20 @@
     <ng-template #optionTemplate>
         <my-header [title]="'Taxes'" [leftSideItem]="{ icon:'menu', action: toggleDrawer.bind(this) }"></my-header>
 
-        <div class="card">
-            <div class="card-block">
-                <ul class="list-group list-group-flush">
-                    <li *ngFor="let item of (taxList$ | async)" class="list-group-item" [routerLink]="['/settings','create-taxes', item.uniqueName]">
-                        <p class="card-text">{{ item.name }}</p>
-                    </li>
-                </ul>
+        <mat-card>
+            <mat-card-content>
+                <mat-list>
+                    <mat-list-item *ngFor="let item of (taxList$ | async)" [routerLink]="['/settings','create-taxes', item.uniqueName]">
+                        {{ item.name }}
+                        <mat-divider></mat-divider>
+                    </mat-list-item>
+                </mat-list>
+            </mat-card-content>
 
-                <div class="card-block">
-                    <a href="#" [routerLink]="['/settings','create-taxes']" class="card-link">Add</a>
-                </div>
+            <mat-card-footer>
+                <button type="button" mat-raised-button color="primary" [routerLink]="['/settings','create-taxes']">Add</button>
+            </mat-card-footer>
+        </mat-card>
 
-            </div>
-        </div>
     </ng-template>
 </MyDrawer>

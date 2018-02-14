@@ -1,15 +1,14 @@
 <my-header [title]="'Settings'" [leftSideItem]="{ icon:'arrow_back', action: goBack.bind(this) }">
 </my-header>
 
-
-<div class="card">
-    <div class="card-block">
-        <ul class="list-group">
-            <li *ngFor="let item of items" (click)="doAction(item)">
-                <div style="display:flex;">
-                    <a class="card-text">{{ item.text }}</a>
-                </div>
-            </li>
-        </ul>
-    </div>
-</div>
+<mat-card>
+    <mat-card-content>
+        <mat-list>
+            <mat-list-item *ngFor="let item of items" (click)="doAction(item)">
+                <mat-icon mat-list-icon>{{ item.icon }}</mat-icon>
+                <h4 mat-line>{{item.text}}</h4>
+                <mat-divider></mat-divider>
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+</mat-card>

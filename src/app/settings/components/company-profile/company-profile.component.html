@@ -30,7 +30,7 @@
                         </mat-form-field>
 
                         <mat-form-field class="half-width">
-                            <mat-select formControlName="state">
+                            <mat-select formControlName="state" placeholder="State">
                                 <mat-option [value]="st.code" *ngFor="let st of (stateStream$ | async)">{{ st.name }}</mat-option>
                             </mat-select>
                         </mat-form-field>
@@ -42,7 +42,7 @@
 
                     <div class="half-width-container">
                         <mat-form-field class="half-width">
-                            <mat-select formControlName="baseCurrency">
+                            <mat-select formControlName="baseCurrency" placeholder="Currency">
                                 <mat-option [value]="bc" *ngFor="let bc of (currenciesStream$ | async)">{{ bc }}</mat-option>
                             </mat-select>
                         </mat-form-field>

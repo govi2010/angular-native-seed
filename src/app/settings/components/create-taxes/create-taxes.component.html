@@ -17,7 +17,7 @@
                     </mat-form-field>
 
                     <mat-form-field class="full-width">
-                        <mat-select formControlName="taxType" (selectionChange)="taxTypeChanged(taxForm.get('taxType').value)">
+                        <mat-select formControlName="taxType" placeholder="Select Tax Type" (selectionChange)="taxTypeChanged(taxForm.get('taxType').value)">
                             <mat-option [value]="tType.value" *ngFor="let tType of taxTypeList">{{ tType.display }}</mat-option>
                         </mat-select>
                     </mat-form-field>
@@ -27,7 +27,7 @@
                     <div class="full-width">
                         <ng-container *ngIf="!selectedTaxObj && showLinkedAccounts">
                             <mat-form-field class="full-width">
-                                <mat-select formControlName="account" (selectionChange)="accountChanged(taxForm.get('account').value)">
+                                <mat-select formControlName="account" placeholder="Select Account" (selectionChange)="accountChanged(taxForm.get('account').value)">
                                     <mat-option *ngFor="let aType of (flattenAccountsStream$ | async)" [value]="aType.uniqueName">{{ aType.name }}</mat-option>
                                 </mat-select>
                             </mat-form-field>
@@ -57,13 +57,13 @@
 
                     <div class="half-width-container">
                         <mat-form-field class="half-width">
-                            <mat-select formControlName="duration">
+                            <mat-select formControlName="duration" placeholder="Tax Duration">
                                 <mat-option *ngFor="let dType of taxDurationList" [value]="dType.value">{{ dType.display }}</mat-option>
                             </mat-select>
                         </mat-form-field>
 
                         <mat-form-field class="half-width">
-                            <mat-select formControlName="taxFileDate">
+                            <mat-select formControlName="taxFileDate" placeholder="Tax File Date">
                                 <mat-option *ngFor="let day of days" [value]="day.value">{{ day.display }}</mat-option>
                             </mat-select>
                         </mat-form-field>

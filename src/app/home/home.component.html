@@ -2,19 +2,19 @@
 [rightSideItem]="{ title: userName, action: logout }"></my-header>
 <mat-list role="list">
     <mat-list-item role="listitem">
-        <a matLine>Dashboard </a>
+        <a matLine [routerLink]="['/dashboard']">Dashboard </a>
     </mat-list-item>
     <mat-divider></mat-divider>
     <mat-list-item role="listitem">
-        <a matLine>Sales Invoice </a>
+        <a matLine [routerLink]="['/sale']">Sales Invoice </a>
     </mat-list-item>
     <mat-divider></mat-divider>
     <mat-list-item role="listitem">
-        <a matLine>Reports </a>
+        <a matLine [routerLink]="['/reports']">Reports </a>
     </mat-list-item>
     <mat-divider></mat-divider>
     <mat-list-item role="listitem">
-        <a matLine>Settings </a>
+        <a matLine [routerLink]="['/settings']">Settings </a>
     </mat-list-item>
     <mat-divider></mat-divider>
 </mat-list>

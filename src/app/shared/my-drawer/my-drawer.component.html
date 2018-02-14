@@ -1,0 +1,24 @@
+<mat-sidenav-container class="example-container">
+    <mat-sidenav mode="over" [(opened)]="isOpened">
+        <mat-card>
+            <mat-card-title-group>
+                <mat-card-title>{{ (user$ | async)?.user?.name }}</mat-card-title>
+                <mat-card-subtitle>{{ (user$ | async)?.user?.email }}</mat-card-subtitle>
+            </mat-card-title-group>
+
+            <h3 mat-subheader>Pages</h3>
+            <mat-card-content>
+                <mat-list>
+                    <mat-list-item *ngFor="let item of pages" (click)="onNavItemTap(item)">
+                        <mat-icon mat-list-icon>{{ item.icon }}</mat-icon>
+                        <h4 mat-line>{{item.title}}</h4>
+                    </mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <ng-template [ngTemplateOutlet]="optionTemplate"></ng-template>
+    </mat-sidenav-content>
+</mat-sidenav-container>

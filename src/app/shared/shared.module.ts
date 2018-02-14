@@ -24,7 +24,8 @@ const matModules = [MatButtonModule,
     MatFormFieldModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatIconModule];
+    MatIconModule,
+    MatSidenavModule];
 
 @NgModule({
     imports: [

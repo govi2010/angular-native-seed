@@ -1,11 +1,10 @@
-import { Component, Input, OnInit, EventEmitter, Output, ContentChild, TemplateRef } from "@angular/core";
+import { Component, Input, OnInit, EventEmitter, Output } from "@angular/core";
 import { MyDrawerItem } from "../my-drawer-item/my-drawer-item";
 import { Store } from "@ngrx/store";
 import { AppState } from "../../store";
 import { UserDetails, VerifyEmailResponseModel } from "../../models/api-models/loginModels";
 import { Observable } from "rxjs/Observable";
 import { RouterService } from "../../services/router.service";
-import { Subject } from "rxjs/Subject";
 
 /* ***********************************************************
 * Keep data that is displayed in your app drawer in the MyDrawer component class.
@@ -19,12 +18,9 @@ import { Subject } from "rxjs/Subject";
 })
 export class MyDrawerComponent implements OnInit {
     public user$: Observable<VerifyEmailResponseModel>;
-    public isOpened: boolean = false;
     @Input() selectedPage: string;
     @Output() public itemSelected: EventEmitter<MyDrawerItem> = new EventEmitter();
     @Input() pages: MyDrawerItem[];
-
-    @ContentChild('optionTemplate') public optionTemplate: TemplateRef<any>;
 
     constructor(private store: Store<AppState>, private routerExtensions: RouterService) {
         this.user$ = this.store.select(p => p.session.user);
@@ -32,15 +28,15 @@ export class MyDrawerComponent implements OnInit {
 
     ngOnInit(): void {
     }
-
-    public toggle() {
-        this.isOpened = !this.isOpened;
+    isPageSelected(pageTitle: string): boolean {
+        return pageTitle === this.selectedPage;
     }
 
-    public onNavItemTap(item: MyDrawerItem) {
+    onNavItemTap(item: MyDrawerItem): void {
         if (item.router && item.router !== '') {
-            this.routerExtensions.router.navigate([item.router]);
+            (this.routerExtensions.router as any).navigate([item.router],{ clearHistory: true });
+        } else {
+            this.itemSelected.emit(item);
         }
     }
-
 }

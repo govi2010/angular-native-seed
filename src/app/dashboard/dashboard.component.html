@@ -1,3 +1,8 @@
-<page-router-outlet>
+<MyDrawer #myDrawer [pages]="navItemObj$ | async">
+    <ng-template #optionTemplate>
+        <my-header [title]="'Dashboard'" [leftSideItem]="{ icon:'menu', action: toggleDrawer.bind(this) }"></my-header>
+        <page-router-outlet>
 
-</page-router-outlet>
+        </page-router-outlet>
+    </ng-template>
+</MyDrawer>
